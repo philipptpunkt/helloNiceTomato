@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { PublicProfileSetupOverlay } from "@/components/overlays/PublicProfileSetupOverlay"
 import { BioEditOverlay } from "@/components/overlays/BioEditOverlay"
-import { CheckCircleIcon } from "@heroicons/react/24/outline"
+import { CheckCircleIcon, PencilIcon } from "@heroicons/react/24/outline"
 import { PublicProfile } from "@/types/profile"
 
 interface PublicProfileEditorProps {
@@ -47,50 +47,57 @@ export function PublicProfileEditor({
       <h2 className="text-xl font-semibold mb-4">Public Profile</h2>
 
       <div className="space-y-4">
-        <div>
+        <div className="group relative">
           <h3 className="font-medium mb-2">Title</h3>
-          <p className="text-gray-600">
-            {publicProfile.title || "No title set"}
-          </p>
+          <div className="flex items-center">
+            <p className="text-gray-600 flex-grow">
+              {publicProfile.title || "No title set"}
+            </p>
+            <button
+              onClick={() => setShowSetupOverlay(true)}
+              className="p-2 text-gray-400 hover:text-gray-600"
+            >
+              <PencilIcon className="h-5 w-5" />
+            </button>
+          </div>
         </div>
 
-        {publicProfile.redirectUrl && (
-          <div>
-            <h3 className="font-medium mb-2">Redirect URL</h3>
-            <div className="flex items-center space-x-2">
-              <p className="text-gray-600">{publicProfile.redirectUrl}</p>
-              {publicProfile.redirectActive && (
+        <div className="group relative">
+          <h3 className="font-medium mb-2">Redirect URL</h3>
+          <div className="flex items-center">
+            <div className="flex items-center space-x-2 flex-grow">
+              <p className="text-gray-600">
+                {publicProfile.redirectUrl || "No redirect URL set"}
+              </p>
+              {publicProfile.redirectActive && publicProfile.redirectUrl && (
                 <span className="inline-flex items-center text-sm text-green-600">
-                  <CheckCircleIcon className="h-5 w-5 mr-1" />
+                  <CheckCircleIcon className="h-5 w-5" />
                   Active
                 </span>
               )}
             </div>
+            <button
+              onClick={() => setShowSetupOverlay(true)}
+              className="p-2 text-gray-400 hover:text-gray-600"
+            >
+              <PencilIcon className="h-5 w-5" />
+            </button>
           </div>
-        )}
-
-        <div>
-          <h3 className="font-medium mb-2">Bio</h3>
-          {publicProfile.bio ? (
-            <p className="text-gray-600">{publicProfile.bio}</p>
-          ) : (
-            <p className="text-gray-400">No bio added yet</p>
-          )}
         </div>
 
-        <div className="flex space-x-2">
-          <button
-            onClick={() => setShowSetupOverlay(true)}
-            className="bg-gray-100 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200"
-          >
-            Edit Settings
-          </button>
-          <button
-            onClick={() => setShowBioOverlay(true)}
-            className="bg-gray-100 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200"
-          >
-            Edit Bio
-          </button>
+        <div className="group relative">
+          <h3 className="font-medium mb-2">Bio</h3>
+          <div className="flex items-start">
+            <p className="text-gray-600 flex-grow">
+              {publicProfile.bio || "No bio added yet"}
+            </p>
+            <button
+              onClick={() => setShowBioOverlay(true)}
+              className="p-2 text-gray-400 hover:text-gray-600"
+            >
+              <PencilIcon className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </div>
 

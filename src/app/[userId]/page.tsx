@@ -3,6 +3,10 @@ import { createClient } from "@/utils/supabase/server"
 import { ProfileEditor } from "./_components/ProfileEditor"
 import { PublicProfileEditor } from "./_components/PublicProfileEditor"
 import { PublicProfile } from "@/types/profile"
+import { notFound } from "next/navigation"
+
+const uuidRegex =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
 export default async function AccountPage({
   params,
@@ -10,6 +14,12 @@ export default async function AccountPage({
   params: { userId: string }
 }) {
   const { userId } = await params
+
+  // Validate UUID format
+  if (!uuidRegex.test(userId)) {
+    notFound()
+  }
+
   const supabase = await createClient()
 
   const { data: userProfile, error } = await supabase

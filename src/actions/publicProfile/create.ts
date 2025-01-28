@@ -27,9 +27,7 @@ export async function createPublicProfile({
     return { error: userProfileError.message }
   }
 
-  console.log(">>>> USER PROFILE ID: " + userProfile.id)
-
-  const { data, error } = await supabase
+  const { error } = await supabase
     .schema("private")
     .from("public_profiles")
     .insert({
@@ -39,8 +37,6 @@ export async function createPublicProfile({
       redirect_url: redirectUrl,
       redirect_active: redirectActive,
     })
-
-  console.log(">>>> DATA", data)
 
   if (error) {
     return { error: error.message }

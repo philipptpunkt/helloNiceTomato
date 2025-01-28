@@ -1,5 +1,5 @@
 import { createClient } from "@/utils/supabase/server"
-import { redirect } from "next/navigation"
+import { redirect, notFound } from "next/navigation"
 
 export default async function PublicProfilePage({
   params,
@@ -18,11 +18,7 @@ export default async function PublicProfilePage({
     .single()
 
   if (error || !pageData) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p>Profile not found</p>
-      </div>
-    )
+    notFound()
   }
 
   if (pageData.redirect_url) {

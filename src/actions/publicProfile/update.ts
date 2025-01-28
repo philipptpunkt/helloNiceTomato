@@ -29,23 +29,15 @@ export async function updatePublicProfile({
       updated_at: new Date().toISOString(),
     })
     .eq("id", profileId)
-    .select("user_profile_id")
+    .select("user_id")
     .single()
 
   if (error) {
     return { error: error.message }
   }
 
-  // Get the user_id to revalidate the correct path
-  const { data: userProfile } = await supabase
-    .schema("private")
-    .from("user_profiles")
-    .select("user_id")
-    .eq("id", data.user_profile_id)
-    .single()
-
-  if (userProfile) {
-    revalidatePath(`/${userProfile.user_id}`)
+  if (data) {
+    revalidatePath(`/${data.user_id}`)
   }
 
   return { success: true }
