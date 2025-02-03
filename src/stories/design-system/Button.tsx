@@ -1,41 +1,54 @@
-import React from 'react';
+import {
+  Button as ButtonUI,
+  ButtonProps,
+} from "../../design-system/Button/Button"
+import React from "react"
+import { StoryWrapper } from "../components/StoryWrapper"
+import { Label } from "../components/Label"
+import { Spacer } from "../components/Spacer"
 
-import './button.css';
-
-export interface ButtonProps {
-  /** Is this the principal call to action on the page? */
-  primary?: boolean;
-  /** What background color to use */
-  backgroundColor?: string;
-  /** How large should the button be? */
-  size?: 'small' | 'medium' | 'large';
-  /** Button contents */
-  label: string;
-  /** Optional click handler */
-  onClick?: () => void;
+export interface ButtonUIProps {
+  variant: ButtonProps["variant"]
+  contentStyle?: ButtonProps["contentStyle"]
+  label: string
+  onClick?: () => void
+  secondary?: boolean
 }
 
-/** Primary UI component for user interaction */
+function getTypeHeadline(type: ButtonProps["variant"]) {
+  switch (type) {
+    case "outlined":
+      return "Outlined Button"
+    case "text":
+      return "Text Button"
+    default:
+      return "Contained Button"
+  }
+}
+
 export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  variant = "contained",
+  contentStyle = "wide",
+  label = "Button",
+  onClick,
+}: ButtonUIProps) => {
+  const typeHeadline = getTypeHeadline(variant)
+
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      {...props}
-    >
-      {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
-    </button>
-  );
-};
+    <StoryWrapper topic="Design System" headline="Button" padded>
+      <Label text={`${typeHeadline} (${contentStyle})`} />
+      <div className="w-full">
+        <ButtonUI
+          type="button"
+          variant={variant}
+          onClick={onClick}
+          contentStyle={contentStyle}
+          // secondary={secondary}
+        >
+          {label}
+        </ButtonUI>
+      </div>
+      <Spacer />
+    </StoryWrapper>
+  )
+}

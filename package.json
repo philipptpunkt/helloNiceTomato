@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "type-check": "tsc --noEmit",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -15,8 +16,11 @@
     "@hookform/resolvers": "^3.10.0",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.48.0",
+    "@tailwindcss/postcss": "^4.0.3",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "next": "15.1.6",
+    "next-themes": "^0.4.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
@@ -28,7 +32,6 @@
     "@eslint/eslintrc": "^3",
     "@storybook/addon-essentials": "^8.5.2",
     "@storybook/addon-interactions": "^8.5.2",
-    "@storybook/addon-onboarding": "^8.5.2",
     "@storybook/blocks": "^8.5.2",
     "@storybook/nextjs": "^8.5.2",
     "@storybook/react": "^8.5.2",
@@ -39,9 +42,8 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "eslint-plugin-storybook": "^0.11.2",
-    "postcss": "^8",
     "storybook": "^8.5.2",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^4.0.3",
     "typescript": "^5"
   },
   "eslintConfig": {

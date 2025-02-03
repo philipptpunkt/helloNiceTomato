@@ -6,6 +6,7 @@ import { z } from "zod"
 import { updateProfile } from "@/actions/userProfile/update"
 import { useToast } from "@/components/toast/ToastContext"
 import { useEffect, useRef } from "react"
+import { Button } from "@/design-system/Button/Button"
 
 const ProfileSchema = z.object({
   displayName: z.string().min(2, "Display name must be at least 2 characters"),
@@ -126,20 +127,22 @@ export function ProfileEditOverlay({
             )}
           </div>
           <div className="flex justify-end space-x-2">
-            <button
+            <Button
               type="button"
-              onClick={onClose}
-              className="px-4 py-2 text-gray-600 hover:text-gray-800"
+              variant="outlined"
+              contentStyle="narrow"
+              onClick={() => console.log(">>>> CLOSE")}
             >
               Cancel
-            </button>
-            <button
+            </Button>
+            <Button
               type="submit"
+              variant="contained"
+              contentStyle="narrow"
               disabled={isSubmitting}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
             >
               {isSubmitting ? "Saving..." : "Save"}
-            </button>
+            </Button>
           </div>
         </form>
       </div>
