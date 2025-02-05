@@ -3,8 +3,8 @@
 import { useState } from "react"
 import { PublicProfileSetupOverlay } from "@/components/overlays/PublicProfileSetupOverlay"
 import { BioEditOverlay } from "@/components/overlays/BioEditOverlay"
-import { CheckCircleIcon, PencilIcon } from "@heroicons/react/24/outline"
 import { PublicProfile } from "@/types/profile"
+import { Icon, IconName } from "@/design-system/Icon"
 
 interface PublicProfileEditorProps {
   userId: string
@@ -57,7 +57,7 @@ export function PublicProfileEditor({
               onClick={() => setShowSetupOverlay(true)}
               className="p-2 text-gray-400 hover:text-gray-600"
             >
-              <PencilIcon className="h-5 w-5" />
+              <Icon iconName={IconName.icPencilSimple} />
             </button>
           </div>
         </div>
@@ -71,7 +71,7 @@ export function PublicProfileEditor({
               </p>
               {publicProfile.redirectActive && publicProfile.redirectUrl && (
                 <span className="inline-flex items-center text-sm text-green-600">
-                  <CheckCircleIcon className="h-5 w-5" />
+                  <Icon iconName={IconName.icCheckCircle} />
                   Active
                 </span>
               )}
@@ -80,7 +80,7 @@ export function PublicProfileEditor({
               onClick={() => setShowSetupOverlay(true)}
               className="p-2 text-gray-400 hover:text-gray-600"
             >
-              <PencilIcon className="h-5 w-5" />
+              <Icon iconName={IconName.icPencilSimple} />
             </button>
           </div>
         </div>
@@ -95,7 +95,7 @@ export function PublicProfileEditor({
               onClick={() => setShowBioOverlay(true)}
               className="p-2 text-gray-400 hover:text-gray-600"
             >
-              <PencilIcon className="h-5 w-5" />
+              <Icon iconName={IconName.icPencilSimple} />
             </button>
           </div>
         </div>

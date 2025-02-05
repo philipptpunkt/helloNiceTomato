@@ -4,7 +4,6 @@ import { ProfileEditor } from "./_components/ProfileEditor"
 import { PublicProfileEditor } from "./_components/PublicProfileEditor"
 import { PublicProfile } from "@/types/profile"
 import { notFound } from "next/navigation"
-import { Test } from "./_test"
 
 const uuidRegex =
   /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -65,7 +64,6 @@ export default async function AccountPage({
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">Your Profile</h1>
-      <Test />
       <Suspense fallback={<div>Loading profile...</div>}>
         <ProfileEditor userId={userId} profile={userProfile} />
       </Suspense>

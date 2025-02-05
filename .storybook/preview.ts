@@ -22,8 +22,10 @@ const preview: Preview = {
   decorators: [
     (story, context) => {
       const theme = context.globals.theme || "light"
-      document.documentElement.classList.remove("light", "dark")
-      document.documentElement.classList.add(theme)
+      document.documentElement.removeAttribute("data-theme")
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark")
+      }
 
       return story()
     },

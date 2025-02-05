@@ -1,7 +1,27 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
+import type { RuleSetRule } from "webpack"
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  webpack(config) {
+    config.module.rules = config.module.rules.filter(
+      (rule: RuleSetRule) =>
+        !(rule.test instanceof RegExp && rule.test.test(".svg"))
+    )
 
-export default nextConfig;
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "svg-sprite-loader",
+          options: {
+            symbolId: "[name]_[hash]",
+          },
+        },
+      ],
+    })
+
+    return config
+  },
+}
+
+export default nextConfig

@@ -2,7 +2,8 @@
 
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
-import { SunIcon, MoonIcon } from "@heroicons/react/24/outline"
+import { ThemeToggleFallback } from "./ThemeToggleFallback"
+import { Icon, IconName } from "@/design-system/Icon"
 
 export function ThemeToggle() {
   const [isMounted, setIsMounted] = useState(false)
@@ -13,7 +14,7 @@ export function ThemeToggle() {
   }, [])
 
   if (!isMounted) {
-    return null
+    return <ThemeToggleFallback />
   }
 
   const toggleTheme = () => {
@@ -25,9 +26,9 @@ export function ThemeToggle() {
       className="p-2 hover:bg-primary-50 rounded-full"
     >
       {theme === "dark" ? (
-        <SunIcon className="h-5 w-5" />
+        <Icon iconName={IconName.icSun} />
       ) : (
-        <MoonIcon className="h-5 w-5" />
+        <Icon iconName={IconName.icMoon} />
       )}
     </button>
   )

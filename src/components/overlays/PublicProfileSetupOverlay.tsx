@@ -4,11 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useState } from "react"
-import { InformationCircleIcon } from "@heroicons/react/24/outline"
 import { useToast } from "@/components/toast/ToastContext"
 import { PublicProfile } from "@/types/profile"
 import { updatePublicProfile } from "@/actions/publicProfile/update"
 import { createPublicProfile } from "@/actions/publicProfile/create"
+import { Icon, IconName } from "@/design-system/Icon"
 
 const PublicProfileSchema = z.object({
   title: z.string().max(50, "Title must be 50 characters or less"),
@@ -112,7 +112,7 @@ export function PublicProfileSetupOverlay({
                 onClick={() => setShowUrlInfo(!showUrlInfo)}
                 className="text-gray-400 hover:text-gray-600"
               >
-                <InformationCircleIcon className="h-5 w-5" />
+                <Icon iconName={IconName.icPencilSimple} />
               </button>
             </div>
 

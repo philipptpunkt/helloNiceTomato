@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { PencilIcon } from "@heroicons/react/24/outline"
 import { ProfileEditOverlay } from "@/components/overlays/ProfileEditOverlay"
+import { Icon, IconName } from "@/design-system/Icon"
 
 interface ProfileEditorProps {
   userId: string
@@ -45,7 +45,7 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
             onClick={() => handleEdit("name")}
             className="p-2 text-gray-400 hover:text-gray-600"
           >
-            <PencilIcon className="h-5 w-5" />
+            <Icon iconName={IconName.icPencilSimple} />
           </button>
         </div>
 
@@ -58,7 +58,7 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
             onClick={() => handleEdit("company")}
             className="p-2 text-gray-400 hover:text-gray-600"
           >
-            <PencilIcon className="h-5 w-5" />
+            <Icon iconName={IconName.icPencilSimple} />
           </button>
         </div>
 
