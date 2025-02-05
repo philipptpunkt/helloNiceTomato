@@ -19,7 +19,7 @@
   --color-primary-950: oklch(13.8% 0.041 34);
 
   /* Secondary Color HEX: #5fb306  */
-  --color-primary: oklch(68.62% 0.198 134);
+  --color-secondary: oklch(68.62% 0.198 134);
   --color-secondary-50: oklch(91.45% 0.064 134);
   --color-secondary-100: oklch(86.91% 0.136 134);
   --color-secondary-200: oklch(82.29% 0.19 134);
