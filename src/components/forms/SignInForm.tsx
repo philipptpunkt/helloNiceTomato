@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { signIn } from "../../actions/signIn"
 import { Button } from "@/design-system/Button/Button"
+import { Input } from "@/design-system/Input"
 
 const SignInSchema = z.object({
   email: z
@@ -31,34 +32,20 @@ export function SignInForm() {
   return (
     <div className="p-8 w-full max-w-[400px]">
       <form onSubmit={handleSubmit(signIn)}>
-        <input
-          className="mt-4 block w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+        <Input
+          placeholder="email address"
           type="email"
-          placeholder="email"
           {...register("email")}
+          error={errors.email?.message}
+          reserveHelpTextSpace
         />
-        {errors.email && (
-          <span className="text-sm font-light text-red-600">
-            {errors.email.message}
-          </span>
-        )}
-        <input
-          className="my-4 block w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-          type="password"
+        <Input
           placeholder="password"
+          type="password"
           {...register("password")}
+          error={errors.password?.message}
+          reserveHelpTextSpace
         />
-        {errors.password && (
-          <span className="text-sm font-light text-red-600">
-            {errors.password.message}
-          </span>
-        )}
-
-        {/* <input
-          type="submit"
-          className="mt-4 w-full cursor-pointer rounded-md bg-black py-2 text-lg text-white"
-          value={isSubmitting ? "loading..." : "Let's Go"}
-        /> */}
         <Button type="submit" contentStyle="full">
           {isSubmitting ? "loading..." : "Let's Go"}
         </Button>

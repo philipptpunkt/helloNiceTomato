@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { ButtonHTMLAttributes } from "react"
 import Link, { LinkProps } from "next/link"
+import { cn } from "@/utils/cn"
 
 const buttonVariants = cva(
   [
@@ -11,11 +12,12 @@ const buttonVariants = cva(
     "flex-shrink-0",
     "w-fit",
     "py-2",
+    "m-1",
     "text-md",
     "font-semibold",
     "transition-colors",
     "focus:outline-2",
-    "focus:outline-primary",
+    "focus:outline-focus",
     "focus:outline-offset-2",
     "disabled:opacity-50",
     "disabled:pointer-events-none",
@@ -66,7 +68,6 @@ const buttonVariants = cva(
         variant: "contained",
         secondary: true,
         class: [
-          "focus:outline-secondary",
           "bg-secondary",
           "hover:bg-secondary-400 dark:hover:bg-secondary-500",
           "active:bg-secondary dark:active:bg-secondary",
@@ -79,7 +80,6 @@ const buttonVariants = cva(
         variant: "outlined",
         secondary: true,
         class: [
-          "focus:outline-secondary",
           "text-secondary",
           "hover:text-secondary-400 dark:hover:text-secondary-500",
           "active:text-secondary dark:active:text-secondary",
@@ -92,7 +92,6 @@ const buttonVariants = cva(
         variant: "text",
         secondary: true,
         class: [
-          "focus:outline-secondary",
           "text-secondary",
           "hover:text-secondary-400 dark:hover:text-secondary-500",
           "hover:border-secondary-400 dark:hover:border-secondary-500",
@@ -127,7 +126,7 @@ function Button({ variant, contentStyle, secondary, ...props }: ButtonProps) {
     const { href, ...linkProps } = props
     return (
       <Link
-        className={buttonVariants({ variant, contentStyle, secondary })}
+        className={cn(buttonVariants({ variant, contentStyle, secondary }))}
         href={href}
         {...linkProps}
       />

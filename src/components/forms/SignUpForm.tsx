@@ -6,6 +6,8 @@ import { z } from "zod"
 import { useState } from "react"
 import { signUp } from "@/actions/signUp"
 import Link from "next/link"
+import { Input } from "@/design-system/Input"
+import { Button } from "@/design-system/Button/Button"
 
 const SignUpSchema = z.object({
   email: z
@@ -67,35 +69,23 @@ export function SignUpForm() {
       {errors.root && (
         <div className="text-red-600 mb-4 text-sm">{errors.root.message}</div>
       )}
-      <input
+      <Input
+        placeholder="email address"
         type="email"
-        placeholder="Email"
-        className="border border-gray-300 rounded-xl px-4 py-2 mb-4 w-full"
         {...register("email")}
+        error={errors.email?.message}
+        reserveHelpTextSpace
       />
-      {errors.email && (
-        <span className="text-sm font-light text-red-600 mb-4 block">
-          {errors.email.message}
-        </span>
-      )}
-      <input
+      <Input
+        placeholder="password"
         type="password"
-        placeholder="Password"
-        className="border border-gray-300 rounded-xl px-4 py-2 mb-4 w-full"
         {...register("password")}
+        error={errors.password?.message}
+        reserveHelpTextSpace
       />
-      {errors.password && (
-        <span className="text-sm font-light text-red-600 mb-4 block">
-          {errors.password.message}
-        </span>
-      )}
-      <button
-        type="submit"
-        className="bg-blue-500 text-white rounded-xl px-4 py-2 w-full hover:bg-blue-600"
-        disabled={isSubmitting}
-      >
+      <Button type="submit" contentStyle="full">
         {isSubmitting ? "Signing up..." : "Sign Up"}
-      </button>
+      </Button>
     </form>
   )
 }

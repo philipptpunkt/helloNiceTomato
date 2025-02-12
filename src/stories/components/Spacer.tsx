@@ -17,7 +17,19 @@ function getSizeClassName(size?: Size) {
   }
 }
 
-export function Spacer({ size }: { size?: Size }) {
+export function Spacer({
+  size,
+  withDivider = false,
+}: {
+  size?: Size
+  withDivider?: boolean
+}) {
   const sizeClassName = getSizeClassName(size)
-  return <div className={cn(sizeClassName, "ignore-check")} />
+  return (
+    <div
+      className={cn(sizeClassName, "ignore-check", {
+        "border-b-1 border-dotted border-neutral-500": withDivider,
+      })}
+    />
+  )
 }

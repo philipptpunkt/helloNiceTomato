@@ -49,7 +49,7 @@ export const Button = ({
           {label}
         </ButtonUI>
       </div>
-      <Spacer />
+      <Spacer withDivider />
       <Label text="Disabled" size="sm" />
       <div className="w-full">
         <ButtonUI
