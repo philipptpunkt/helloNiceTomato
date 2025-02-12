@@ -37,7 +37,7 @@ export const Contained: Story = {
   args: {
     variant: "contained",
     contentStyle: "wide",
-    label: "Button",
+    label: "Click Me",
     secondary: false,
   },
 }
@@ -45,13 +45,15 @@ export const Contained: Story = {
 export const Outlined: Story = {
   args: {
     variant: "outlined",
-    label: "Button",
+    label: "Click Me",
+    secondary: false,
   },
 }
 
 export const Text: Story = {
   args: {
     variant: "text",
-    label: "Button",
+    label: "Click Me",
+    secondary: false,
   },
 }

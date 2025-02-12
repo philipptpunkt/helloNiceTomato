@@ -4,7 +4,7 @@ import { redirect, notFound } from "next/navigation"
 export default async function PublicProfilePage({
   params,
 }: {
-  params: { publicPageId: string }
+  params: Promise<{ publicPageId: string }>
 }) {
   const { publicPageId } = await params
   const supabase = await createClient()

@@ -26,7 +26,7 @@ export async function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur">
-      <nav className="relative mx-auto flex h-16 max-w-7xl w-full items-center justify-center px-4">
+      <nav className="relative mx-auto flex h-16 max-w-[1280px] w-full items-center justify-center px-4">
         <HomeLink containerClass="absolute left-0" />
 
         <div className="hidden md:flex items-center space-x-8">

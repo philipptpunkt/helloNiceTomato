@@ -1,10 +1,14 @@
 import { SignInForm } from "@/components/forms/SignInForm"
+import { Section } from "@/design-system/Layout"
 import Link from "next/link"
 
 export default function Home() {
   return (
     <main className="flex flex-col">
-      <section className="min-h-[600px] h-screen flex flex-col md:flex-row ">
+      <Section
+        width="narrow"
+        className="min-h-[600px] h-screen flex flex-col md:flex-row "
+      >
         <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-center">
           <div>
             <h1>
@@ -21,7 +25,7 @@ export default function Home() {
         <div className="w-full md:w-1/2 p-4 md:pt-8 flex items-center justify-center">
           <SignInForm />
         </div>
-      </section>
+      </Section>
 
       {/* Features Section */}
       <section className="py-16 px-8 md:px-16 bg-primary-50">

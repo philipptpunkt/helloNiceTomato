@@ -4,6 +4,7 @@ import Link, { LinkProps } from "next/link"
 
 const buttonVariants = cva(
   [
+    "cursor-pointer",
     "inline-flex",
     "items-center",
     "justify-center",
@@ -13,10 +14,9 @@ const buttonVariants = cva(
     "text-md",
     "font-semibold",
     "transition-colors",
-    "focus:outline-none",
-    "focus:ring-2",
-    "focus:ring-primary-500",
-    "focus:ring-offset-2",
+    "focus:outline-2",
+    "focus:outline-primary",
+    "focus:outline-offset-2",
     "disabled:opacity-50",
     "disabled:pointer-events-none",
   ],
@@ -24,22 +24,32 @@ const buttonVariants = cva(
     variants: {
       variant: {
         contained: [
-          "bg-primary-500",
-          "text-white",
-          "hover:bg-primary-600",
+          "text-neutral-50",
           "rounded-full",
-          "shadow-sm",
+          "bg-primary",
+          "hover:bg-primary-400 dark:hover:bg-primary-500",
+          "active:bg-primary dark:active:bg-primary",
           "border-2",
-          "border-primary-500 hover:border-primary-200",
+          "border-primary-500 dark:border-primary-400",
+          "hover:border-primary-500 dark:hover:border-primary-400",
+          "active:border-primary-200 dark:active:border-primary-600",
         ],
         outlined: [
           "border-2",
-          "border-primary-500",
-          "text-primary-500",
-          "hover:bg-primary-50",
+          "text-primary",
+          "hover:text-primary-400 dark:hover:text-primary-500",
+          "active:text-primary dark:active:text-primary",
+          "border-primary",
+          "hover:border-primary-300 dark:hover:border-primary-600",
+          "active:border-primary dark:active:border-primary",
           "rounded-full",
         ],
-        text: ["text-primary-500", "hover:bg-primary-50"],
+        text: [
+          "text-primary",
+          "border-b-2 border-transparent",
+          "hover:text-primary-400 dark:hover:text-primary-500",
+          "hover:border-primary-400 dark:hover:border-primary-500",
+        ],
       },
       contentStyle: {
         snug: ["px-1"],
@@ -48,17 +58,47 @@ const buttonVariants = cva(
         full: ["w-full"],
       },
       secondary: {
-        true: [
-          "[&.bg-primary-500]:bg-secondary-500",
-          "[&.text-primary-500]:text-secondary-500",
-          "[&.hover\\:bg-primary-600]:hover:bg-secondary-600",
-          "[&.hover\\:bg-primary-50]:hover:bg-secondary-50",
-          "[&.border-primary-500]:border-secondary-500",
-          "[&.hover\\:border-primary-200]:hover:border-secondary-200",
-          "[&.focus\\:ring-primary-500]:focus:ring-secondary-500",
-        ],
+        false: null,
       },
     },
+    compoundVariants: [
+      {
+        variant: "contained",
+        secondary: true,
+        class: [
+          "focus:outline-secondary",
+          "bg-secondary",
+          "hover:bg-secondary-400 dark:hover:bg-secondary-500",
+          "active:bg-secondary dark:active:bg-secondary",
+          "border-secondary-500 dark:border-secondary-400",
+          "hover:border-secondary-500 dark:hover:border-secondary-400",
+          "active:border-secondary-200 dark:active:border-secondary-600",
+        ],
+      },
+      {
+        variant: "outlined",
+        secondary: true,
+        class: [
+          "focus:outline-secondary",
+          "text-secondary",
+          "hover:text-secondary-400 dark:hover:text-secondary-500",
+          "active:text-secondary dark:active:text-secondary",
+          "border-secondary",
+          "hover:border-secondary-300 dark:hover:border-secondary-600",
+          "active:border-secondary dark:active:border-secondary",
+        ],
+      },
+      {
+        variant: "text",
+        secondary: true,
+        class: [
+          "focus:outline-secondary",
+          "text-secondary",
+          "hover:text-secondary-400 dark:hover:text-secondary-500",
+          "hover:border-secondary-400 dark:hover:border-secondary-500",
+        ],
+      },
+    ],
     defaultVariants: {
       variant: "contained",
       contentStyle: "wide",
@@ -67,7 +107,6 @@ const buttonVariants = cva(
   }
 )
 
-// Update the types
 type ButtonBaseProps = VariantProps<typeof buttonVariants>
 
 type ButtonAsButton = {

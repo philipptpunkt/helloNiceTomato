@@ -31,6 +31,7 @@ export const Button = ({
   contentStyle = "wide",
   label = "Button",
   onClick,
+  secondary,
 }: ButtonUIProps) => {
   const typeHeadline = getTypeHeadline(variant)
 
@@ -43,7 +44,21 @@ export const Button = ({
           variant={variant}
           onClick={onClick}
           contentStyle={contentStyle}
-          // secondary={secondary}
+          secondary={secondary}
+        >
+          {label}
+        </ButtonUI>
+      </div>
+      <Spacer />
+      <Label text="Disabled" size="sm" />
+      <div className="w-full">
+        <ButtonUI
+          type="button"
+          variant={variant}
+          onClick={onClick}
+          contentStyle={contentStyle}
+          secondary={secondary}
+          disabled
         >
           {label}
         </ButtonUI>

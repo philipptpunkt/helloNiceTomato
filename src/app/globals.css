@@ -3,9 +3,21 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 80rem; /* 1280px */
+  --breakpoint-2xl: 96rem;
+
+  /* --breakpoint-*: initial; */
+  --breakpoint-tablet: 40rem;
+  --breakpoint-laptop: 64rem;
+  --breakpoint-desktop: 80rem;
+
   /* Color Paletts with https://www.colorpalett.es/ */
   /* Secondary Color HEX: #E73806  */
-  --color-primary: oklch(60.8% 0.216 33);
+  /* --color-primary: oklch(60.8% 0.216 33); */
+  --color-primary: var(--theme-color-primary);
   --color-primary-50: oklch(91.43% 0.04 35);
   --color-primary-100: oklch(85.38% 0.075 34);
   --color-primary-200: oklch(79.25% 0.117 33);
@@ -19,7 +31,8 @@
   --color-primary-950: oklch(13.8% 0.041 34);
 
   /* Secondary Color HEX: #5fb306  */
-  --color-secondary: oklch(68.62% 0.198 134);
+  /* --color-secondary: oklch(68.62% 0.198 134); */
+  --color-secondary: var(--theme-color-secondary);
   --color-secondary-50: oklch(91.45% 0.064 134);
   --color-secondary-100: oklch(86.91% 0.136 134);
   --color-secondary-200: oklch(82.29% 0.19 134);
@@ -46,14 +59,26 @@
 }
 
 @layer base {
-  [data-theme="light"] {
-    --theme-color-text: hsl(0 0% 8%);
+  :root {
+    --theme-color-primary: var(--color-primary-500);
+    --theme-color-secondary: var(--color-secondary-500);
+
+    --theme-color-text: var(--color-neutral-900);
+    --theme-color-text-inverted: var(--color-neutral-50);
+
     --theme-color-background: var(--color-neutral-50);
+    --theme-color-background-inverted: var(--color-neutral-900);
   }
 
   [data-theme="dark"] {
-    --theme-color-text: hsl(0 0% 98%);
+    --theme-color-primary: var(--color-primary-400);
+    --theme-color-secondary: var(--color-secondary-400);
+
+    --theme-color-text: var(--color-neutral-50);
+    --theme-color-text-inverted: var(--color-neutral-900);
+
     --theme-color-background: var(--color-neutral-900);
+    --theme-color-background-inverted: var(--color-neutral-50);
   }
 }
 
@@ -63,15 +88,34 @@
     background: var(--color-background);
     letter-spacing: var(--tracking-wide);
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+
   h1 {
-    font-size: var(--text-6xl);
+    font-size: var(--text-4xl);
     font-weight: var(--font-weight-extrabold);
     color: var(--color-text);
-    line-height: var(--leading-none);
+
+    @variant md {
+      font-size: var(--text-5xl);
+    }
+
+    @variant lg {
+      font-size: var(--text-6xl);
+    }
   }
 
   h2 {
-    font-size: var(--text-xl);
+    font-size: var(--text-4xl);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text);
   }
