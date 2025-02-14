@@ -7,18 +7,18 @@ export default function Home() {
     <main className="flex flex-col">
       <Section
         width="narrow"
-        className="min-h-[600px] h-screen flex flex-col md:flex-row "
+        className="min-h-[600px] h-screen flex flex-col md:flex-row md:-mt-16 justify-center"
       >
-        <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-center">
+        <div className="w-full md:w-1/2 px-4 md:px-8 flex flex-col justify-center">
           <div>
-            <h1>
+            <h1 className="text-center md:text-left">
               <span>Hello&nbsp;nice </span>
-              <span className="text-primary-500">to&nbsp;meet&nbsp;you</span>
+              <span className="text-text-highlight">to&nbsp;meet&nbsp;you</span>
             </h1>
-            <p className="text-xl lg:text-2xl mt-8">
+            <p className="text-md md:text-xl lg:text-2xl text-center md:text-left mt-4 md:mt-8">
               With HelloNiceTomato you can connect with people, promote your
               business and much more. Just be creative. Simply create your
-              profile and share the QR code we provide.
+              profile and share the QR code or link we provide.
             </p>
           </div>
         </div>

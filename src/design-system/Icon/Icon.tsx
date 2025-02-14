@@ -18,6 +18,8 @@ const iconVariants = cva("text-text-light dark:text-text-dark", {
   },
 })
 
+export type IconSize = NonNullable<VariantProps<typeof iconVariants>["size"]>
+
 interface IconProps extends VariantProps<typeof iconVariants> {
   iconName: IconName
   className?: string

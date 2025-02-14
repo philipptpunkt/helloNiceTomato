@@ -15,7 +15,7 @@
   --breakpoint-desktop: 80rem;
 
   /* Color Paletts with https://www.colorpalett.es/ */
-  /* Secondary Color HEX: #E73806  */
+  /* Primary Color HEX: #E73806  */
   --color-primary: var(--theme-color-primary);
   --color-primary-50: oklch(91.43% 0.04 35);
   --color-primary-100: oklch(85.38% 0.075 34);
@@ -78,6 +78,7 @@
     --theme-color-text-soft: var(--color-neutral-500);
     --theme-color-text-placeholder: var(--color-neutral-300);
     --theme-color-text-inverted: var(--color-neutral-50);
+    --theme-color-text-highlight: var(--color-primary-500);
 
     --theme-color-background: var(--color-neutral-50);
     --theme-color-background-inverted: var(--color-neutral-900);
@@ -102,6 +103,7 @@
     --theme-color-text-soft: var(--color-neutral-300);
     --theme-color-text-placeholder: var(--color-neutral-700);
     --theme-color-text-inverted: var(--color-neutral-900);
+    --theme-color-text-highlight: var(--color-primary-400);
 
     --theme-color-background: var(--color-neutral-900);
     --theme-color-background-inverted: var(--color-neutral-50);
@@ -138,16 +140,16 @@
   }
 
   h1 {
-    font-size: var(--text-4xl);
+    font-size: var(--text-5xl);
     font-weight: var(--font-weight-extrabold);
     color: var(--color-text);
 
     @variant md {
-      font-size: var(--text-5xl);
+      font-size: var(--text-6xl);
     }
 
     @variant lg {
-      font-size: var(--text-6xl);
+      font-size: var(--text-7xl);
     }
   }
 
