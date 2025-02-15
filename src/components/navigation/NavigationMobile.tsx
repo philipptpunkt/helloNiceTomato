@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { Squash as BurgerIcon } from "hamburger-react"
+import { SetStateAction, useEffect, useState } from "react"
+import { Spin as BurgerIcon } from "hamburger-react"
 import { topNavigationRoutes as routes } from "./routes"
 import { useClickAway } from "react-use"
 import { useRef } from "react"
@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { ThemeToggle } from "../theme/ThemeToggle"
 import Link from "next/link"
 import { LogoutButton } from "./LogoutButton"
+import { cn } from "@/utils/cn"
 
 function ListItemAnimationWrapper({
   index,
@@ -27,10 +28,45 @@ function ListItemAnimationWrapper({
         damping: 20,
         delay: 0.1 + index / 20,
       }}
-      className="w-full p-[0.08rem] rounded-xl bg-gradient-to-tr from-neutral-300 via-neutral-400 to-neutral-500"
+      className="w-full"
     >
       {children}
     </motion.li>
+  )
+}
+
+function IconButtonWrapper({ children }: { children?: React.ReactNode }) {
+  return (
+    <div className="flex justify-center items-center w-12 h-12 bg-primary rounded-full not-last:mr-2">
+      {children}
+    </div>
+  )
+}
+
+function StyledLink({
+  href,
+  label,
+  onClick,
+}: {
+  href: string
+  label: string
+  onClick: (value: SetStateAction<boolean>) => void
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={() => onClick((prev) => !prev)}
+      className={cn(
+        "flex items-center justify-between",
+        "w-full px-6 py-4",
+        "rounded-full",
+        "border-2 border-border",
+        "transition-colors",
+        "hover:bg-neutral-300 dark:hover:bg-neutral-600 hover:border-secondary"
+      )}
+    >
+      <span className="font-semibold">{label}</span>
+    </Link>
   )
 }
 
@@ -39,10 +75,20 @@ interface NavigationMobileProps {
 }
 
 export function NavigationMobile({ hasSession }: NavigationMobileProps) {
+  const [isMounted, setIsMounted] = useState(false)
   const [isOpen, setOpen] = useState(false)
   const ref = useRef(null)
 
   useClickAway(ref, () => setOpen(false))
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+  console.log("is Mounted", isMounted)
+  if (!isMounted) {
+    return <div className="h-8 w-8" />
+  }
+
   return (
     <div ref={ref} className="relative">
       <BurgerIcon toggled={isOpen} size={24} toggle={setOpen} />
@@ -53,23 +99,28 @@ export function NavigationMobile({ hasSession }: NavigationMobileProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed max-w-[400px] w-full shadow-4xl right-0 top-[3.5rem] p-5 pt-0 bg-white"
+            className="fixed w-full sm:max-w-96 bg-background-soft right-0 top-16 px-4 py-8"
           >
-            <ul className="grid gap-2">
+            <ul className="grid gap-4">
               <ListItemAnimationWrapper index={0}>
-                <div className="flex">
-                  {hasSession ? <LogoutButton /> : null}
-                  <ThemeToggle />
+                <div className="flex px-2 py-2 rounded-full border-2 border-border">
+                  {hasSession ? (
+                    <IconButtonWrapper>
+                      <LogoutButton className="text-neutral-50" />
+                    </IconButtonWrapper>
+                  ) : null}
+                  <IconButtonWrapper>
+                    <ThemeToggle className="text-neutral-50" />
+                  </IconButtonWrapper>
                 </div>
               </ListItemAnimationWrapper>
               {hasSession ? (
                 <ListItemAnimationWrapper index={1}>
-                  <Link
+                  <StyledLink
                     href="/profile"
-                    className="text-foreground hover:text-primary"
-                  >
-                    My Profile
-                  </Link>
+                    label="My Profile"
+                    onClick={setOpen}
+                  />
                 </ListItemAnimationWrapper>
               ) : null}
               {routes.map((route, index) => {
@@ -78,15 +129,11 @@ export function NavigationMobile({ hasSession }: NavigationMobileProps) {
                     index={index + (hasSession ? 2 : 1)}
                     key={route.id}
                   >
-                    <Link
+                    <StyledLink
                       href={route.href}
-                      onClick={() => setOpen((prev) => !prev)}
-                      className={
-                        "flex items-center justify-between w-full p-5 rounded-xl bg-neutral-600"
-                      }
-                    >
-                      <span className="flex gap-1 text-lg">{route.label}</span>
-                    </Link>
+                      label={route.label}
+                      onClick={setOpen}
+                    />
                   </ListItemAnimationWrapper>
                 )
               })}

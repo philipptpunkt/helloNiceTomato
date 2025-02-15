@@ -4,8 +4,9 @@ import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import { ThemeToggleFallback } from "./ThemeToggleFallback"
 import { Icon, IconName } from "@/design-system/Icon"
+import { cn } from "@/utils/cn"
 
-export function ThemeToggle() {
+export function ThemeToggle({ className }: { className?: string }) {
   const [isMounted, setIsMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -23,7 +24,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 hover:bg-primary-50 rounded-full"
+      className={cn("p-2 hover:bg-primary-50 rounded-full", className)}
     >
       {theme === "dark" ? (
         <Icon iconName={IconName.icSun} />

@@ -59,6 +59,8 @@
   --color-success: var(--theme-color-success);
 
   --color-background-error: var(--theme-color-background-error);
+  --color-background-soft: var(--theme-color-background-soft);
+  --color-background-highlight: var(--theme-color-background-highlight);
   --color-background-success: var(--theme-color-background-success);
 
   /* Border Color Tokens */
@@ -81,6 +83,8 @@
     --theme-color-text-highlight: var(--color-primary-500);
 
     --theme-color-background: var(--color-neutral-50);
+    --theme-color-background-soft: var(--color-neutral-200);
+    /* --theme-color-background-soft: var(--color-primary-50); */
     --theme-color-background-inverted: var(--color-neutral-900);
 
     --theme-color-error: var(--color-red-500);
@@ -106,6 +110,7 @@
     --theme-color-text-highlight: var(--color-primary-400);
 
     --theme-color-background: var(--color-neutral-900);
+    --theme-color-background-soft: var(--color-neutral-700);
     --theme-color-background-inverted: var(--color-neutral-50);
 
     --theme-color-error: var(--color-red-500);
