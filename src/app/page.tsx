@@ -17,8 +17,8 @@ export default function Home() {
             </h1>
             <p className="text-md md:text-xl lg:text-2xl text-center md:text-left mt-4 md:mt-8">
               With HelloNiceTomato you can connect with people, promote your
-              business and much more. Just be creative. Simply create your
-              profile and share the QR code or link we provide.
+              business and much more. Simply create your profile and share the
+              QR code or link we provide.
             </p>
           </div>
         </div>

@@ -86,8 +86,9 @@ export function NavigationMobile({ session }: NavigationMobileProps) {
 
   useEffect(() => {
     setIsMounted(true)
+    return () => setIsMounted(false)
   }, [])
-  console.log("is Mounted", isMounted)
+
   if (!isMounted) {
     return <div className="h-8 w-8" />
   }

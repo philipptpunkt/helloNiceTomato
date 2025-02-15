@@ -10,7 +10,7 @@ export async function signUp(data: { email: string; password: string }) {
       email: data.email,
       password: data.password,
       options: {
-        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/verify`,
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/auth/verify`,
       },
     })
 

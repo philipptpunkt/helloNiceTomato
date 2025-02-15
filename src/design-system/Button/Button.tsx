@@ -12,7 +12,6 @@ const buttonVariants = cva(
     "flex-shrink-0",
     "w-fit",
     "py-2",
-    "m-1",
     "text-md",
     "font-semibold",
     "transition-colors",

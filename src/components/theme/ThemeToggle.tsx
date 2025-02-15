@@ -12,6 +12,7 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   useEffect(() => {
     setIsMounted(true)
+    return () => setIsMounted(false)
   }, [])
 
   if (!isMounted) {

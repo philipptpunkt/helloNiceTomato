@@ -7,7 +7,7 @@ import { useState } from "react"
 import { signUp } from "@/actions/signUp"
 import Link from "next/link"
 import { Input } from "@/design-system/Input"
-import { Button } from "@/design-system/Button/Button"
+import { Button } from "@/design-system/Button"
 
 const SignUpSchema = z.object({
   email: z

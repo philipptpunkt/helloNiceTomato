@@ -8,7 +8,6 @@ const inputVariants = cva(
     "w-full",
     "px-4",
     "py-2",
-    "m-1",
     "rounded-full",
     "border-2",
     "transition-colors",

@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { signIn } from "../../actions/signIn"
-import { Button } from "@/design-system/Button/Button"
+import { Button } from "@/design-system/Button"
 import { Input } from "@/design-system/Input"
 
 const SignInSchema = z.object({
@@ -46,12 +46,21 @@ export function SignInForm() {
           error={errors.password?.message}
           reserveHelpTextSpace
         />
-        <Button type="submit" contentStyle="full">
+        <Button type="submit" contentStyle="full" disabled={isSubmitting}>
           {isSubmitting ? "loading..." : "Let's Go"}
         </Button>
+        <div className="flex justify-center mt-2">
+          <Button
+            type="link"
+            href="/auth/identify"
+            contentStyle="snug"
+            variant="text"
+          >
+            Forgot password?
+          </Button>
+        </div>
       </form>
       <div className="flex flex-col items-center mt-4">
-        <p className="my-4">{`Don't have an account yet?`}</p>
         <Button type="link" contentStyle="narrow" secondary href="/auth/signup">
           Create new account
         </Button>
