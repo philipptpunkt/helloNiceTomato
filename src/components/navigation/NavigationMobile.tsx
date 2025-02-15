@@ -10,6 +10,7 @@ import { ThemeToggle } from "../theme/ThemeToggle"
 import Link from "next/link"
 import { LogoutButton } from "./LogoutButton"
 import { cn } from "@/utils/cn"
+import { Session } from "@supabase/supabase-js"
 
 function ListItemAnimationWrapper({
   index,
@@ -71,13 +72,15 @@ function StyledLink({
 }
 
 interface NavigationMobileProps {
-  hasSession: boolean
+  session: Session | null
 }
 
-export function NavigationMobile({ hasSession }: NavigationMobileProps) {
+export function NavigationMobile({ session }: NavigationMobileProps) {
   const [isMounted, setIsMounted] = useState(false)
   const [isOpen, setOpen] = useState(false)
   const ref = useRef(null)
+
+  const hasSession = Boolean(session)
 
   useClickAway(ref, () => setOpen(false))
 
@@ -117,7 +120,7 @@ export function NavigationMobile({ hasSession }: NavigationMobileProps) {
               {hasSession ? (
                 <ListItemAnimationWrapper index={1}>
                   <StyledLink
-                    href="/profile"
+                    href={`/${session!.user.id}`}
                     label="My Profile"
                     onClick={setOpen}
                   />

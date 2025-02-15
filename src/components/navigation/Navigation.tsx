@@ -33,7 +33,7 @@ export async function Navigation() {
           <NavigationDesktop />
           {hasSession && (
             <Link
-              href="/profile"
+              href={`/${session!.user.id}`}
               className="text-foreground hover:text-primary"
             >
               My Profile
@@ -47,7 +47,7 @@ export async function Navigation() {
         </div>
 
         <div className="md:hidden flex absolute right-0">
-          <NavigationMobile hasSession={hasSession} />
+          <NavigationMobile session={session} />
         </div>
       </nav>
     </header>
