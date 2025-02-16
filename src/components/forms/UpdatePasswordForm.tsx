@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { updatePassword } from "@/actions/updatePassword"
+import { useToast } from "../toast/ToastContext"
+import { useRouter } from "next/navigation"
 
 const UpdatePasswordSchema = z.object({
   password: z
@@ -17,6 +19,8 @@ const UpdatePasswordSchema = z.object({
 type Inputs = z.infer<typeof UpdatePasswordSchema>
 
 export function UpdatePasswordForm() {
+  const { addToast } = useToast()
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -28,7 +32,17 @@ export function UpdatePasswordForm() {
 
   const onSubmit = async (data: Inputs) => {
     try {
-      await updatePassword(data.password)
+      const { userId } = await updatePassword(data.password)
+
+      addToast({
+        type: "success",
+        title: "Password updated",
+        description: "Your password has been successfully updated",
+        position: "top",
+        alignment: "center",
+      })
+
+      router.push(`/${userId}`)
     } catch (error) {
       setError("password", {
         message:

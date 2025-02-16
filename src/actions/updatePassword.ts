@@ -1,12 +1,12 @@
 "use server"
 
 import { createClient } from "@/utils/supabase/server"
-import { redirect } from "next/navigation"
+// import { redirect } from "next/navigation"
 
 export async function updatePassword(password: string) {
   const supabase = await createClient()
 
-  const { error } = await supabase.auth.updateUser({
+  const { data, error } = await supabase.auth.updateUser({
     password: password,
   })
 
@@ -14,5 +14,6 @@ export async function updatePassword(password: string) {
     throw new Error(error.message)
   }
 
-  redirect("/")
+  // redirect(`/${data.user.id}`)
+  return { userId: data.user.id }
 }

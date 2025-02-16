@@ -6,7 +6,7 @@ import { z } from "zod"
 import { updateProfile } from "@/actions/userProfile/update"
 import { useToast } from "@/components/toast/ToastContext"
 import { useEffect, useRef } from "react"
-import { Button } from "@/design-system/Button/Button"
+import { Button } from "@/design-system/Button"
 
 const ProfileSchema = z.object({
   displayName: z.string().min(2, "Display name must be at least 2 characters"),
