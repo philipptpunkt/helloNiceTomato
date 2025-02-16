@@ -38,7 +38,10 @@ export function UpdatePasswordForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[400px]">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col gap-2 w-full max-w-[400px]"
+    >
       <Input
         type="password"
         placeholder="New password"

@@ -65,7 +65,10 @@ export function SignUpForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(handleSignUp)}>
+    <form
+      onSubmit={handleSubmit(handleSignUp)}
+      className="flex flex-col gap-2 w-full max-w-[400px]"
+    >
       {errors.root && (
         <div className="text-red-600 mb-4 text-sm">{errors.root.message}</div>
       )}

@@ -27,7 +27,7 @@ export function ForgotPasswordForm() {
   return (
     <form
       onSubmit={handleSubmit(resetPassword)}
-      className="w-full max-w-[400px]"
+      className="flex flex-col w-full max-w-[400px] gap-2"
     >
       <Input
         type="email"

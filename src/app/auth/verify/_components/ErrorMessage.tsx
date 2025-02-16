@@ -21,7 +21,7 @@ export function ErrorMessage() {
       position: "top",
       alignment: "center",
     })
-    router.push("/")
+    router.push("/auth/signin")
   }
 
   const errorMessage =

@@ -1,12 +1,15 @@
-"use client"
-
 import { SignUpForm } from "@/components/forms/SignUpForm"
+import { SimpleFormPage } from "@/design-system/Layout"
 
 export default function SignUpPage() {
   return (
-    <div className="flex flex-col max-w-[32rem] p-16">
-      <h2 className="text-2xl font-bold mb-6">Sign Up</h2>
+    <SimpleFormPage
+      title={{
+        default: "You're the new",
+        hightlight: "tomato?",
+      }}
+    >
       <SignUpForm />
-    </div>
+    </SimpleFormPage>
   )
 }
