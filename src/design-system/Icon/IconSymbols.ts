@@ -2,11 +2,35 @@ import { IconName } from "./IconNames"
 
 import icButterfly from "./svgs/ic-butterfly.svg"
 import icCheckCircle from "./svgs/ic-check-circle.svg"
+import icCodesandboxLogo from "./svgs/ic-codesandbox-logo.svg"
+import icDiscordLogo from "./svgs/ic-discord-logo.svg"
+import icDribbbleLogo from "./svgs/ic-dribbble-logo.svg"
+import icFacebookLogo from "./svgs/ic-facebook-logo.svg"
+import icFigmaLogo from "./svgs/ic-figma-logo.svg"
 import icGithubLogo from "./svgs/ic-github-logo.svg"
+import icGitlabLogo from "./svgs/ic-gitlab-logo.svg"
+import icGoodreadsLogo from "./svgs/ic-goodreads-logo.svg"
+import icInstagramLogo from "./svgs/ic-instagram-logo.svg"
+import icLink from "./svgs/ic-link.svg"
+import icLinkedinLogo from "./svgs/ic-linkedin-logo.svg"
+import icMapPinArea from "./svgs/ic-map-pin-area.svg"
+import icMastodonLogo from "./svgs/ic-mastodon-logo.svg"
+import icMediumLogo from "./svgs/ic-medium-logo.svg"
 import icMoon from "./svgs/ic-moon.svg"
+import icPatreonLogo from "./svgs/ic-patreon-logo.svg"
 import icPencilSimple from "./svgs/ic-pencil-simple.svg"
+import icPinterestLogo from "./svgs/ic-pinterest-logo.svg"
+import icRedditLogo from "./svgs/ic-reddit-logo.svg"
 import icSignOut from "./svgs/ic-sign-out.svg"
+import icSnapchatLogo from "./svgs/ic-snapchat-logo.svg"
+import icSoundcloudLogo from "./svgs/ic-soundcloud-logo.svg"
+import icSpotifyLogo from "./svgs/ic-spotify-logo.svg"
 import icSun from "./svgs/ic-sun.svg"
+import icTelegramLogo from "./svgs/ic-telegram-logo.svg"
+import icThreadsLogo from "./svgs/ic-threads-logo.svg"
+import icTiktokLogo from "./svgs/ic-tiktok-logo.svg"
+import icTwitchLogo from "./svgs/ic-twitch-logo.svg"
+import icYoutubeLogo from "./svgs/ic-youtube-logo.svg"
 
 export interface Svg {
   src: string
@@ -16,9 +40,33 @@ export interface Svg {
 export const iconSymbols = {
   icButterfly,
   icCheckCircle,
+  icCodesandboxLogo,
+  icDiscordLogo,
+  icDribbbleLogo,
+  icFacebookLogo,
+  icFigmaLogo,
   icGithubLogo,
+  icGitlabLogo,
+  icGoodreadsLogo,
+  icInstagramLogo,
+  icLink,
+  icLinkedinLogo,
+  icMapPinArea,
+  icMastodonLogo,
+  icMediumLogo,
   icMoon,
+  icPatreonLogo,
   icPencilSimple,
+  icPinterestLogo,
+  icRedditLogo,
   icSignOut,
+  icSnapchatLogo,
+  icSoundcloudLogo,
+  icSpotifyLogo,
   icSun,
+  icTelegramLogo,
+  icThreadsLogo,
+  icTiktokLogo,
+  icTwitchLogo,
+  icYoutubeLogo,
 } satisfies Record<IconName, Svg>

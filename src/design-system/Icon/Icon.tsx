@@ -35,3 +35,24 @@ export function Icon({ iconName, size, className, style }: IconProps) {
     </svg>
   )
 }
+
+interface IconButtonProps extends IconProps {
+  onClick: () => void
+}
+
+export function IconButton({
+  iconName,
+  size,
+  className,
+  style,
+  onClick,
+}: IconButtonProps) {
+  return (
+    <button
+      className={cn("p-2 hover:bg-primary-50 rounded-full", className)}
+      onClick={onClick}
+    >
+      <Icon iconName={iconName} size={size} style={style} />
+    </button>
+  )
+}
