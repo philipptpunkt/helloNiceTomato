@@ -1,3 +1,3 @@
-export { Icon } from "./Icon"
-export type { IconSize } from "./Icon"
+export { Icon, IconButton } from "./Icon"
+export type { IconSize, IconColor, IconStrokeWidth } from "./Icon"
 export { IconName } from "./IconNames"

@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/nextjs"
+import type { RuleSetRule } from "webpack"
 
 const config: StorybookConfig = {
   stories: [
@@ -8,7 +9,6 @@ const config: StorybookConfig = {
     "../src/stories/ui-components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
-    // "@storybook/addon-onboarding",
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
@@ -18,5 +18,35 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["../public"],
+  
+  webpackFinal: async (config) => {
+    const fileLoaderRule = config.module?.rules?.find((rule): rule is RuleSetRule => 
+      typeof rule === 'object' && 
+      rule !== null && 
+      'test' in rule &&
+      rule.test instanceof RegExp &&
+      rule.test.test('.svg')
+    );
+
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/;
+    }
+
+    // Add svg-sprite-loader
+    config.module?.rules?.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "svg-sprite-loader",
+          options: {
+            symbolId: "[name]_[hash]",
+          },
+        },
+      ],
+    });
+
+    return config;
+  },
 }
+
 export default config
