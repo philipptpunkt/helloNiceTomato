@@ -18,7 +18,11 @@ export interface IconProps {
 
 const icons = Object.values(IconName)
 
-export const Icons = ({ iconSize, color, strokeWidth }: IconProps) => {
+export const Icons = ({
+  iconSize = "md",
+  color = "default",
+  strokeWidth = "regular",
+}: IconProps) => {
   return (
     <StoryWrapper topic="Design System" headline="Icons" padded>
       <Label text="Overview" />

@@ -8,17 +8,14 @@ const meta: Meta = {
   argTypes: {
     iconSize: {
       control: "radio",
-      default: "md",
       options: ["xs", "sm", "md", "lg", "xl"],
     },
     color: {
       control: "radio",
-      default: "default",
       options: ["default", "primary", "secondary"],
     },
     strokeWidth: {
       control: "radio",
-      default: "regular",
       options: ["thin", "light", "regular", "bold"],
     },
   },

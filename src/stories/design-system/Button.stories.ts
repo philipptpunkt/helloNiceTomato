@@ -44,16 +44,14 @@ export const Contained: Story = {
 
 export const Outlined: Story = {
   args: {
+    ...Contained.args,
     variant: "outlined",
-    label: "Click Me",
-    secondary: false,
   },
 }
 
 export const Text: Story = {
   args: {
+    ...Contained.args,
     variant: "text",
-    label: "Click Me",
-    secondary: false,
   },
 }

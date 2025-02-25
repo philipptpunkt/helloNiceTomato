@@ -36,13 +36,13 @@ function ListItemAnimationWrapper({
   )
 }
 
-function IconButtonWrapper({ children }: { children?: React.ReactNode }) {
-  return (
-    <div className="flex justify-center items-center w-12 h-12 bg-primary rounded-full not-last:mr-2">
-      {children}
-    </div>
-  )
-}
+// function IconButtonWrapper({ children }: { children?: React.ReactNode }) {
+//   return (
+//     <div className="flex justify-center items-center w-12 h-12 bg-primary rounded-full">
+//       {children}
+//     </div>
+//   )
+// }
 
 function StyledLink({
   href,
@@ -63,7 +63,7 @@ function StyledLink({
         "rounded-full",
         "border-2 border-border",
         "transition-colors",
-        "hover:bg-neutral-300 dark:hover:bg-neutral-600 hover:border-secondary"
+        "hover:bg-neutral-200 dark:hover:bg-neutral-600 hover:border-secondary"
       )}
     >
       <span className="font-semibold">{label}</span>
@@ -109,13 +109,12 @@ export function NavigationMobile({ session }: NavigationMobileProps) {
               <ListItemAnimationWrapper index={0}>
                 <div className="flex px-2 py-2 rounded-full border-2 border-border">
                   {hasSession ? (
-                    <IconButtonWrapper>
-                      <LogoutButton className="text-neutral-50" />
-                    </IconButtonWrapper>
+                    <>
+                      <LogoutButton />
+                      <div className="w-2" />
+                    </>
                   ) : null}
-                  <IconButtonWrapper>
-                    <ThemeToggle className="text-neutral-50" />
-                  </IconButtonWrapper>
+                  <ThemeToggle />
                 </div>
               </ListItemAnimationWrapper>
               {hasSession ? (
