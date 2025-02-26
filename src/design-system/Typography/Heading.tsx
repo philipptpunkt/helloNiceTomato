@@ -16,13 +16,13 @@ interface HighlightHeadline extends Shared {
   highlightText: string
 }
 
-export type HeadlineProps = DefaultHeadline | HighlightHeadline
+export type HeadingProps = DefaultHeadline | HighlightHeadline
 
-export function Headline({
+export function Heading({
   size = "normal",
   className,
   ...props
-}: HeadlineProps) {
+}: HeadingProps) {
   const reducedSizeClasses = "text-2xl sm:text-3xl md:text-4xl font-semibold"
 
   if (props.type === "default") {

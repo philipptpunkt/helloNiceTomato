@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { ProfileEditOverlay } from "@/components/overlays/ProfileEditOverlay"
-import { Icon, IconName } from "@/design-system/Icon"
+import { IconButton, IconName } from "@/design-system/Icon"
+import { Card } from "@/design-system/Card"
 
 interface ProfileEditorProps {
   userId: string
@@ -35,38 +36,38 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
 
   return (
     <>
-      <div className="bg-white shadow rounded-lg p-6 space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <label className="text-sm text-gray-600">Display Name</label>
-            <p className="font-medium h-6">{profile.display_name}</p>
+      <Card>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <label className="text-sm text-gray-600">Display Name</label>
+              <p className="font-medium h-6">{profile.display_name}</p>
+            </div>
+            <IconButton
+              iconName={IconName.icPencilSimple}
+              color="soft"
+              onClick={() => handleEdit("name")}
+            />
           </div>
-          <button
-            onClick={() => handleEdit("name")}
-            className="p-2 text-gray-400 hover:text-gray-600"
-          >
-            <Icon iconName={IconName.icPencilSimple} />
-          </button>
-        </div>
 
-        <div className="flex items-center justify-between">
-          <div>
-            <label className="text-sm text-gray-600">Company Name</label>
-            <p className="font-medium h-6">{profile.company_name}</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <label className="text-sm text-gray-600">Company Name</label>
+              <p className="font-medium h-6">{profile.company_name}</p>
+            </div>
+            <IconButton
+              iconName={IconName.icPencilSimple}
+              color="soft"
+              onClick={() => handleEdit("company")}
+            />
           </div>
-          <button
-            onClick={() => handleEdit("company")}
-            className="p-2 text-gray-400 hover:text-gray-600"
-          >
-            <Icon iconName={IconName.icPencilSimple} />
-          </button>
-        </div>
 
-        <div>
-          <label className="text-sm text-gray-600">Email</label>
-          <p className="font-medium">{profile.email}</p>
+          <div>
+            <label className="text-sm text-gray-600">Email</label>
+            <p className="font-medium">{profile.email}</p>
+          </div>
         </div>
-      </div>
+      </Card>
 
       {showEditOverlay && (
         <ProfileEditOverlay

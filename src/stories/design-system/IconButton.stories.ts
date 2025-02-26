@@ -6,7 +6,7 @@ import { IconName } from "@/design-system/Icon"
 
 const icons = Object.values(IconName)
 
-const meta: Meta<typeof IconButton> = {
+const meta: Meta = {
   title: "Design System/IconButton",
   component: IconButton,
   argTypes: {

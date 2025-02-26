@@ -4,7 +4,8 @@ import { useState } from "react"
 import { PublicProfileSetupOverlay } from "@/components/overlays/PublicProfileSetupOverlay"
 import { BioEditOverlay } from "@/components/overlays/BioEditOverlay"
 import { PublicProfile } from "@/types/profile"
-import { Icon, IconName } from "@/design-system/Icon"
+import { Icon, IconButton, IconName } from "@/design-system/Icon"
+import { CardWithHeading } from "@/design-system/Card"
 
 interface PublicProfileEditorProps {
   userId: string
@@ -43,9 +44,9 @@ export function PublicProfileEditor({
   }
 
   return (
-    <div className="mt-8 p-6 bg-white shadow rounded-lg">
-      <h2 className="text-xl font-semibold mb-4">Public Profile</h2>
-
+    <CardWithHeading
+      heading={<h2 className="text-xl font-semibold mb-4">Public Profile</h2>}
+    >
       <div className="space-y-4">
         <div className="group relative">
           <h3 className="font-medium mb-2">Title</h3>
@@ -53,12 +54,11 @@ export function PublicProfileEditor({
             <p className="text-gray-600 flex-grow">
               {publicProfile.title || "No title set"}
             </p>
-            <button
+            <IconButton
+              iconName={IconName.icPencilSimple}
+              color="soft"
               onClick={() => setShowSetupOverlay(true)}
-              className="p-2 text-gray-400 hover:text-gray-600"
-            >
-              <Icon iconName={IconName.icPencilSimple} />
-            </button>
+            />
           </div>
         </div>
 
@@ -69,19 +69,23 @@ export function PublicProfileEditor({
               <p className="text-gray-600">
                 {publicProfile.redirectUrl || "No redirect URL set"}
               </p>
-              {publicProfile.redirectActive && publicProfile.redirectUrl && (
-                <span className="inline-flex items-center text-sm text-green-600">
-                  <Icon iconName={IconName.icCheckCircle} />
+              {publicProfile.redirectActive && publicProfile.redirectUrl ? (
+                <span className="inline-flex gap-2 items-center text-sm text-success">
+                  <Icon iconName={IconName.icCheckCircle} color="success" />
                   Active
+                </span>
+              ) : (
+                <span className="inline-flex gap-2 items-center text-sm text-error">
+                  <Icon iconName={IconName.icProhibit} color="error" />
+                  Not active
                 </span>
               )}
             </div>
-            <button
+            <IconButton
+              iconName={IconName.icPencilSimple}
+              color="soft"
               onClick={() => setShowSetupOverlay(true)}
-              className="p-2 text-gray-400 hover:text-gray-600"
-            >
-              <Icon iconName={IconName.icPencilSimple} />
-            </button>
+            />
           </div>
         </div>
 
@@ -91,12 +95,11 @@ export function PublicProfileEditor({
             <p className="text-gray-600 flex-grow">
               {publicProfile.bio || "No bio added yet"}
             </p>
-            <button
+            <IconButton
+              iconName={IconName.icPencilSimple}
+              color="soft"
               onClick={() => setShowBioOverlay(true)}
-              className="p-2 text-gray-400 hover:text-gray-600"
-            >
-              <Icon iconName={IconName.icPencilSimple} />
-            </button>
+            />
           </div>
         </div>
       </div>
@@ -115,6 +118,6 @@ export function PublicProfileEditor({
           onClose={() => setShowBioOverlay(false)}
         />
       )}
-    </div>
+    </CardWithHeading>
   )
 }

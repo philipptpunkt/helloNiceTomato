@@ -20,6 +20,7 @@ import icMoon from "./svgs/ic-moon.svg"
 import icPatreonLogo from "./svgs/ic-patreon-logo.svg"
 import icPencilSimple from "./svgs/ic-pencil-simple.svg"
 import icPinterestLogo from "./svgs/ic-pinterest-logo.svg"
+import icProhibit from "./svgs/ic-prohibit.svg"
 import icRedditLogo from "./svgs/ic-reddit-logo.svg"
 import icSignOut from "./svgs/ic-sign-out.svg"
 import icSnapchatLogo from "./svgs/ic-snapchat-logo.svg"
@@ -58,6 +59,7 @@ export const iconSymbols = {
   icPatreonLogo,
   icPencilSimple,
   icPinterestLogo,
+  icProhibit,
   icRedditLogo,
   icSignOut,
   icSnapchatLogo,

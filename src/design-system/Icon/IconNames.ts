@@ -19,6 +19,7 @@ export enum IconName {
   icPatreonLogo = "icPatreonLogo",
   icPencilSimple = "icPencilSimple",
   icPinterestLogo = "icPinterestLogo",
+  icProhibit = "icProhibit",
   icRedditLogo = "icRedditLogo",
   icSignOut = "icSignOut",
   icSnapchatLogo = "icSnapchatLogo",

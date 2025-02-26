@@ -13,9 +13,12 @@ export const iconVariants = cva("text-text-light dark:text-text-dark", {
       xl: "h-10 w-10",
     },
     color: {
-      default: ["text-text-light", "dark:text-text-dark"],
+      default: ["text-text"],
+      soft: ["text-text-soft"],
       primary: "text-primary",
       secondary: "text-secondary",
+      error: "text-error",
+      success: "text-success",
     },
     strokeWidth: {
       thin: "stroke-[0.25em]",

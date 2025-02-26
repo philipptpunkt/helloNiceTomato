@@ -67,6 +67,7 @@ export default async function AccountPage({
       <Suspense fallback={<div>Loading profile...</div>}>
         <ProfileEditor userId={userId} profile={userProfile} />
       </Suspense>
+      <div className="h-8" />
       <Suspense fallback={<div>Loading public profile...</div>}>
         <PublicProfileEditor userId={userId} publicProfile={publicProfile} />
       </Suspense>

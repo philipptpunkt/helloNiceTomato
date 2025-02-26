@@ -1,6 +1,6 @@
 import { cn } from "@/utils/cn"
 import { Section } from "./Section"
-import { Headline } from "./Headline"
+import { Heading } from "../Typography/Heading"
 
 interface SimpleFormPageProps {
   title: { default: string; hightlight: string; reducedPadding?: boolean }
@@ -21,7 +21,7 @@ export function SimpleFormPage({
         "text-center"
       )}
     >
-      <Headline
+      <Heading
         type="highlight"
         defaultText={title.default}
         highlightText={title.hightlight}
