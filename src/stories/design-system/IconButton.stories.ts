@@ -1,4 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryContext, StoryObj } from "@storybook/react"
+import { useChannel } from "@storybook/preview-api"
+import { HIGHLIGHT, RESET_HIGHLIGHT } from "@storybook/addon-highlight"
 import { fn } from "@storybook/test"
 
 import { IconButton } from "./IconButton"
@@ -13,7 +15,9 @@ const meta: Meta = {
     storyHeadline: "Icon Button",
   },
   argTypes: {
-    onClick: { action: "clicked", description: "Click handler" },
+    onClick: {
+      action: "clicked",
+    },
     iconName: {
       description: "Enum value from IconName",
       control: { type: "select" },
@@ -38,6 +42,19 @@ const meta: Meta = {
       options: ["thin", "light", "regular", "bold"],
     },
   },
+  decorators: [
+    (story, context: StoryContext) => {
+      const emit = useChannel({})
+      emit(RESET_HIGHLIGHT)
+
+      if (context.globals.highlightMode) {
+        emit(HIGHLIGHT, {
+          elements: ["button"],
+        })
+      }
+      return story()
+    },
+  ],
   tags: ["autodocs"],
   args: {
     onClick: fn(),

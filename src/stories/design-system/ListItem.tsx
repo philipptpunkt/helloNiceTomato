@@ -16,12 +16,14 @@ export const ListItem = ({
   horizontalPadding = false,
 }: Props) => {
   return (
-    <ListItemUI
-      label={label}
-      iconName={iconName}
-      horizontalPadding={horizontalPadding}
-    >
-      {children}
-    </ListItemUI>
+    <ul>
+      <ListItemUI
+        label={label}
+        iconName={iconName}
+        horizontalPadding={horizontalPadding}
+      >
+        {children}
+      </ListItemUI>
+    </ul>
   )
 }

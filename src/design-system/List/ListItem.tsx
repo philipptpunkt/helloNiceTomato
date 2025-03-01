@@ -17,7 +17,7 @@ export function ListItem({
   horizontalPadding = false,
 }: ListItemProps) {
   return (
-    <div
+    <li
       className={cn([
         "flex justify-between items-center",
         {
@@ -35,6 +35,6 @@ export function ListItem({
         <div>{children}</div>
       </div>
       {iconName ? <Icon iconName={iconName} /> : null}
-    </div>
+    </li>
   )
 }

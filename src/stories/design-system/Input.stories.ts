@@ -1,4 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryContext, StoryObj } from "@storybook/react"
+import { useChannel } from "@storybook/preview-api"
+import { HIGHLIGHT, RESET_HIGHLIGHT } from "@storybook/addon-highlight"
 
 import { InputStory } from "./Input"
 
@@ -27,6 +29,19 @@ const meta: Meta = {
       control: "boolean",
     },
   },
+  decorators: [
+    (story, context: StoryContext) => {
+      const emit = useChannel({})
+      emit(RESET_HIGHLIGHT)
+
+      if (context.globals.highlightMode) {
+        emit(HIGHLIGHT, {
+          elements: ["input"],
+        })
+      }
+      return story()
+    },
+  ],
   tags: ["autodocs"],
   args: {
     variant: "default",

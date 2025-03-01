@@ -1,4 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryContext, StoryObj } from "@storybook/react"
+import { useChannel } from "@storybook/preview-api"
+import { HIGHLIGHT, RESET_HIGHLIGHT } from "@storybook/addon-highlight"
 import { fn } from "@storybook/test"
 
 import { Button } from "./Button"
@@ -25,6 +27,19 @@ const meta: Meta = {
       control: "boolean",
     },
   },
+  decorators: [
+    (story, context: StoryContext) => {
+      const emit = useChannel({})
+      emit(RESET_HIGHLIGHT)
+
+      if (context.globals.highlightMode) {
+        emit(HIGHLIGHT, {
+          elements: ["button"],
+        })
+      }
+      return story()
+    },
+  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args

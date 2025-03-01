@@ -11,8 +11,21 @@ const preview: Preview = {
       toolbar: {
         title: "Theme",
         items: [
-          { value: "light", title: "Light", icon: "circlehollow" },
-          { value: "dark", title: "Dark", icon: "circle" },
+          { value: "light", title: "Light Theme", icon: "circlehollow" },
+          { value: "dark", title: "Dark Theme", icon: "circle" },
+        ],
+        dynamicTitle: true,
+      },
+    },
+    highlightMode: {
+      description: "Toggle element highlighting",
+      defaultValue: false,
+      toolbar: {
+        title: "Highlight",
+        icon: "button",
+        items: [
+          { value: true, title: "Highlight ON", icon: "eye" },
+          { value: false, title: "Highlight OFF", icon: "eyeclose" },
         ],
         dynamicTitle: true,
       },
@@ -49,6 +62,15 @@ const preview: Preview = {
     },
   ],
   parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "White", value: "#ffffff" },
+        { name: "Black", value: "#1a1a1a" },
+        { name: "Pink", value: "#ff0090" },
+        { name: "Blue", value: "#0066cc" },
+      ],
+    },
     layout: "fullscreen",
     controls: {
       matchers: {
