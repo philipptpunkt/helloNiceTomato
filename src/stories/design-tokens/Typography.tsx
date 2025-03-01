@@ -1,10 +1,9 @@
 import { Label } from "../components/Label"
-import { StoryWrapper } from "../components/StoryWrapper"
 import { Spacer } from "../components/Spacer"
 
 export function Typography() {
   return (
-    <StoryWrapper topic="Design Tokens" headline="Typography" padded>
+    <>
       <div>
         <Label text="Headings" />
       </div>
@@ -26,6 +25,6 @@ export function Typography() {
       <p className="text-textLabel-light dark:text-textLabel-dark">Label</p>
       <Spacer />
       <hr className="ignore-check" />
-    </StoryWrapper>
+    </>
   )
 }

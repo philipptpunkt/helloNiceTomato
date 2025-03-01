@@ -1,4 +1,5 @@
-import { cn } from "@/utils/cn"
+import React from "react"
+import { cn } from "../../src/utils/cn"
 
 export function StoryWrapper({
   topic,
@@ -13,12 +14,12 @@ export function StoryWrapper({
 }) {
   return (
     <div
-      className={cn("bg-background ignore-check", {
+      className={cn("bg-transparent ignore-check", {
         "p-4": padded,
       })}
     >
       <h1 className="mb-2 ignore-check">
-        <span className="text-slate-200 dark:text-slate-600 block text-2xl uppercase font-normal tracking-widest ignore-check">
+        <span className="text-slate-300 dark:text-slate-600 block text-2xl uppercase font-normal tracking-widest ignore-check">
           {topic}
         </span>
         <span className="text-4xl font-bold ignore-check">{headline}</span>

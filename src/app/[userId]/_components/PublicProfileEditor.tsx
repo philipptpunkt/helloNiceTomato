@@ -6,6 +6,7 @@ import { BioEditOverlay } from "@/components/overlays/BioEditOverlay"
 import { PublicProfile } from "@/types/profile"
 import { Icon, IconButton, IconName } from "@/design-system/Icon"
 import { CardWithHeading } from "@/design-system/Card"
+import { Label } from "@/design-system/Typography"
 
 interface PublicProfileEditorProps {
   userId: string
@@ -49,9 +50,9 @@ export function PublicProfileEditor({
     >
       <div className="space-y-4">
         <div className="group relative">
-          <h3 className="font-medium mb-2">Title</h3>
+          <Label label="Title" />
           <div className="flex items-center">
-            <p className="text-gray-600 flex-grow">
+            <p className="flex-grow font-medium">
               {publicProfile.title || "No title set"}
             </p>
             <IconButton
@@ -63,10 +64,10 @@ export function PublicProfileEditor({
         </div>
 
         <div className="group relative">
-          <h3 className="font-medium mb-2">Redirect URL</h3>
+          <Label label="Redirect URL" />
           <div className="flex items-center">
             <div className="flex items-center space-x-2 flex-grow">
-              <p className="text-gray-600">
+              <p className="font-medium">
                 {publicProfile.redirectUrl || "No redirect URL set"}
               </p>
               {publicProfile.redirectActive && publicProfile.redirectUrl ? (
@@ -90,9 +91,9 @@ export function PublicProfileEditor({
         </div>
 
         <div className="group relative">
-          <h3 className="font-medium mb-2">Bio</h3>
+          <Label label="Bio" />
           <div className="flex items-start">
-            <p className="text-gray-600 flex-grow">
+            <p className="flex-grow font-medium">
               {publicProfile.bio || "No bio added yet"}
             </p>
             <IconButton

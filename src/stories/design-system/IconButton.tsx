@@ -1,7 +1,4 @@
 import React from "react"
-import { StoryWrapper } from "../components/StoryWrapper"
-import { Label } from "../components/Label"
-import { Spacer } from "../components/Spacer"
 import {
   IconButton as Button,
   IconName,
@@ -29,17 +26,13 @@ export const IconButton = ({
   strokeWidth = "regular",
 }: IconProps) => {
   return (
-    <StoryWrapper topic="Design System" headline="IconButton" padded>
-      <Label text="Default" />
-      <Button
-        onClick={onClick}
-        iconName={iconName}
-        size={size}
-        color={color}
-        background={background}
-        strokeWidth={strokeWidth}
-      />
-      <Spacer />
-    </StoryWrapper>
+    <Button
+      onClick={onClick}
+      iconName={iconName}
+      size={size}
+      color={color}
+      background={background}
+      strokeWidth={strokeWidth}
+    />
   )
 }

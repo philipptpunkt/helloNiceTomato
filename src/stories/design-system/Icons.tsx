@@ -1,7 +1,4 @@
 import React from "react"
-import { StoryWrapper } from "../components/StoryWrapper"
-import { Label } from "../components/Label"
-import { Spacer } from "../components/Spacer"
 import {
   Icon,
   IconName,
@@ -24,26 +21,22 @@ export const Icons = ({
   strokeWidth = "regular",
 }: IconProps) => {
   return (
-    <StoryWrapper topic="Design System" headline="Icons" padded>
-      <Label text="Overview" />
-      <div className="flex flex-wrap w-full">
-        {icons.map((icon, index) => {
-          return (
-            <div className="w-36 mb-8" key={index}>
-              <div className="flex justify-center">
-                <Icon
-                  iconName={icon}
-                  size={iconSize}
-                  color={color}
-                  strokeWidth={strokeWidth}
-                />
-              </div>
-              <p className="font-thin mt-4 text-center">{icon}</p>
+    <div className="flex flex-wrap w-full">
+      {icons.map((icon, index) => {
+        return (
+          <div className="w-36 mb-8" key={index}>
+            <div className="flex justify-center">
+              <Icon
+                iconName={icon}
+                size={iconSize}
+                color={color}
+                strokeWidth={strokeWidth}
+              />
             </div>
-          )
-        })}
-      </div>
-      <Spacer />
-    </StoryWrapper>
+            <p className="font-thin mt-4 text-center">{icon}</p>
+          </div>
+        )
+      })}
+    </div>
   )
 }

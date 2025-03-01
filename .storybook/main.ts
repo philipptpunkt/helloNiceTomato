@@ -12,24 +12,26 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    "@storybook/addon-a11y",
   ],
   framework: {
     name: "@storybook/nextjs",
     options: {},
   },
   staticDirs: ["../public"],
-  
+
   webpackFinal: async (config) => {
-    const fileLoaderRule = config.module?.rules?.find((rule): rule is RuleSetRule => 
-      typeof rule === 'object' && 
-      rule !== null && 
-      'test' in rule &&
-      rule.test instanceof RegExp &&
-      rule.test.test('.svg')
-    );
+    const fileLoaderRule = config.module?.rules?.find(
+      (rule): rule is RuleSetRule =>
+        typeof rule === "object" &&
+        rule !== null &&
+        "test" in rule &&
+        rule.test instanceof RegExp &&
+        rule.test.test(".svg")
+    )
 
     if (fileLoaderRule) {
-      fileLoaderRule.exclude = /\.svg$/;
+      fileLoaderRule.exclude = /\.svg$/
     }
 
     // Add svg-sprite-loader
@@ -43,9 +45,9 @@ const config: StorybookConfig = {
           },
         },
       ],
-    });
+    })
 
-    return config;
+    return config
   },
 }
 

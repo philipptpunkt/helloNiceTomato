@@ -1,5 +1,4 @@
 import { Label } from "../components/Label"
-import { StoryWrapper } from "../components/StoryWrapper"
 import { Spacer } from "../components/Spacer"
 import { cn } from "@/utils/cn"
 
@@ -103,7 +102,7 @@ export function Colors({ type }: { type: "primary" | "secondary" }) {
   const colorValues = isPrimary ? colorsPrimary : colorsSecondary
 
   return (
-    <StoryWrapper topic="Design Tokens" headline="Color Palette" padded>
+    <>
       <div>
         <Label text={isPrimary ? "Primary Color" : "Secondary Color"} />
         <div
@@ -127,6 +126,6 @@ export function Colors({ type }: { type: "primary" | "secondary" }) {
           })}
         </div>
       </div>
-    </StoryWrapper>
+    </>
   )
 }

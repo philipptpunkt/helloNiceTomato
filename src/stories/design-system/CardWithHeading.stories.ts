@@ -5,6 +5,9 @@ import { CardWithHeading } from "./CardWithHeading"
 const meta: Meta = {
   title: "Design System/Cards/CardWithHeading",
   component: CardWithHeading,
+  parameters: {
+    storyHeadline: "Card with heading",
+  },
   argTypes: {
     heading: { control: "text" },
     children: { control: "text" },

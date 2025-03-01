@@ -1,6 +1,8 @@
+import React from "react"
 import type { Preview } from "@storybook/react"
 import "../src/app/globals.css"
-// import "./globals.css"
+import { StoryWrapper } from "./components/StoryWrapper"
+import { Label } from "./components/Label"
 
 const preview: Preview = {
   globalTypes: {
@@ -20,14 +22,30 @@ const preview: Preview = {
     theme: "light",
   },
   decorators: [
-    (story, context) => {
+    (Story, context) => {
       const theme = context.globals.theme || "light"
       document.documentElement.removeAttribute("data-theme")
       if (theme === "dark") {
         document.documentElement.setAttribute("data-theme", "dark")
       }
 
-      return story()
+      let label = context.parameters.storyLabel
+      if (context.viewMode === "docs") {
+        label = ""
+      }
+
+      const topic = context.parameters.storyTopic ?? "Design System"
+
+      return (
+        <StoryWrapper
+          topic={topic}
+          headline={context.parameters.storyHeadline}
+          padded
+        >
+          <Label text={label} />
+          <Story />
+        </StoryWrapper>
+      )
     },
   ],
   parameters: {

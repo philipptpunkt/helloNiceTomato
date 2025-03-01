@@ -4,6 +4,8 @@ import { useState } from "react"
 import { ProfileEditOverlay } from "@/components/overlays/ProfileEditOverlay"
 import { IconButton, IconName } from "@/design-system/Icon"
 import { Card } from "@/design-system/Card"
+import { Label } from "@/design-system/Typography"
+import { cn } from "@/utils/cn"
 
 interface ProfileEditorProps {
   userId: string
@@ -40,7 +42,7 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <label className="text-sm text-gray-600">Display Name</label>
+              <Label label="Display name" />
               <p className="font-medium h-6">{profile.display_name}</p>
             </div>
             <IconButton
@@ -52,8 +54,17 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
 
           <div className="flex items-center justify-between">
             <div>
-              <label className="text-sm text-gray-600">Company Name</label>
-              <p className="font-medium h-6">{profile.company_name}</p>
+              <Label label="Company name" />
+              <p
+                className={cn([
+                  "font-medium h-6",
+                  {
+                    "opacity-20": !profile.company_name,
+                  },
+                ])}
+              >
+                {profile.company_name ? profile.company_name : "not set"}
+              </p>
             </div>
             <IconButton
               iconName={IconName.icPencilSimple}

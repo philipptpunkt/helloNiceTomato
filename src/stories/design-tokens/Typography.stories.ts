@@ -7,6 +7,8 @@ const meta: Meta = {
   component: TypographyUI,
   tags: ["autodocs"],
   parameters: {
+    storyTopic: "Design Tokens",
+    storyHeadline: "Typography",
     controls: { disable: true },
     // a11y: { disable: true },
     actions: { disable: true },

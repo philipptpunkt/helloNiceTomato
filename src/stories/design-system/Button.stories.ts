@@ -6,6 +6,9 @@ import { Button } from "./Button"
 const meta: Meta = {
   title: "Design System/Button",
   component: Button,
+  parameters: {
+    storyHeadline: "Button",
+  },
   argTypes: {
     variant: {
       control: "radio",
@@ -18,6 +21,9 @@ const meta: Meta = {
     secondary: {
       control: "boolean",
     },
+    disabled: {
+      control: "boolean",
+    },
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
@@ -27,6 +33,7 @@ const meta: Meta = {
     variant: "contained",
     contentStyle: "wide",
     secondary: false,
+    disabled: false,
   },
 } satisfies Meta<typeof Button>
 
@@ -39,6 +46,10 @@ export const Contained: Story = {
     contentStyle: "wide",
     label: "Click Me",
     secondary: false,
+    disabled: false,
+  },
+  parameters: {
+    storyLabel: "Contained Button",
   },
 }
 
@@ -47,11 +58,17 @@ export const Outlined: Story = {
     ...Contained.args,
     variant: "outlined",
   },
+  parameters: {
+    storyLabel: "Outlined Button",
+  },
 }
 
 export const Text: Story = {
   args: {
     ...Contained.args,
     variant: "text",
+  },
+  parameters: {
+    storyLabel: "Text Button",
   },
 }

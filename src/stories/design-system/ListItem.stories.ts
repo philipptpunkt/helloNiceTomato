@@ -1,0 +1,68 @@
+import type { Meta, StoryObj } from "@storybook/react"
+
+import { ListItem } from "./ListItem"
+import { IconName } from "@/design-system/Icon"
+
+const icons = Object.values(IconName)
+
+const meta: Meta = {
+  title: "Design System/List/ListItem",
+  component: ListItem,
+  parameters: {
+    storyHeadline: "List item",
+  },
+  argTypes: {
+    label: { control: "text" },
+    iconName: {
+      control: { type: "select" },
+      options: icons,
+    },
+    children: { control: "text" },
+    horizontalPadding: { control: "boolean" },
+  },
+  tags: ["autodocs"],
+} satisfies Meta<typeof ListItem>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  args: {
+    children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    horizontalPadding: false,
+  },
+  parameters: {
+    storyLabel: "List item default",
+  },
+}
+
+export const WithLabel: Story = {
+  args: {
+    ...Default.args,
+    label: "Label",
+  },
+  parameters: {
+    storyLabel: "List item with label",
+  },
+}
+
+export const WithIcon: Story = {
+  args: {
+    ...Default.args,
+    iconName: IconName.icPencilSimple,
+  },
+  parameters: {
+    storyLabel: "List item with icon",
+  },
+}
+
+export const WithLabelAndIcon: Story = {
+  args: {
+    ...Default.args,
+    label: "Label",
+    iconName: IconName.icPencilSimple,
+  },
+  parameters: {
+    storyLabel: "List item with label and icon",
+  },
+}

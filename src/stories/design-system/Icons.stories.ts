@@ -5,6 +5,9 @@ import { Icons } from "./Icons"
 const meta: Meta = {
   title: "Design System/Icons",
   component: Icons,
+  parameters: {
+    storyHeadline: "Icons",
+  },
   argTypes: {
     iconSize: {
       control: "radio",
