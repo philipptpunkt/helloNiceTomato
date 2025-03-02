@@ -1,4 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryContext, StoryObj } from "@storybook/react"
+import { useChannel } from "@storybook/preview-api"
+import { HIGHLIGHT, RESET_HIGHLIGHT } from "@storybook/addon-highlight"
+
 import { Heading } from "./Heading"
 
 const meta: Meta = {
@@ -30,6 +33,19 @@ const meta: Meta = {
       description: "The primary color part of the heading",
     },
   },
+  decorators: [
+    (story, context: StoryContext) => {
+      const emit = useChannel({})
+      emit(RESET_HIGHLIGHT)
+
+      if (context.globals.highlightMode) {
+        emit(HIGHLIGHT, {
+          elements: ["h1"],
+        })
+      }
+      return story()
+    },
+  ],
   tags: ["autodocs"],
   args: {
     type: "default",
