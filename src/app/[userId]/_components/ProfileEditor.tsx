@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import { ProfileEditOverlay } from "@/components/overlays/ProfileEditOverlay"
-import { IconButton, IconName } from "@/design-system/Icon"
+import { IconName } from "@/design-system/Icon"
 import { Card } from "@/design-system/Card"
-import { Label } from "@/design-system/Typography"
 import { cn } from "@/utils/cn"
+import { ListItem } from "@/design-system/List"
 
 interface ProfileEditorProps {
   userId: string
@@ -39,45 +39,38 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
   return (
     <>
       <Card>
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <Label label="Display name" />
-              <p className="font-medium h-6">{profile.display_name}</p>
-            </div>
-            <IconButton
-              iconName={IconName.icPencilSimple}
-              color="soft"
-              onClick={() => handleEdit("name")}
-            />
-          </div>
-
-          <div className="flex items-center justify-between">
-            <div>
-              <Label label="Company name" />
-              <p
-                className={cn([
-                  "font-medium h-6",
-                  {
-                    "opacity-20": !profile.company_name,
-                  },
-                ])}
-              >
-                {profile.company_name ? profile.company_name : "not set"}
-              </p>
-            </div>
-            <IconButton
-              iconName={IconName.icPencilSimple}
-              color="soft"
-              onClick={() => handleEdit("company")}
-            />
-          </div>
-
-          <div>
-            <label className="text-sm text-gray-600">Email</label>
-            <p className="font-medium">{profile.email}</p>
-          </div>
-        </div>
+        <ul>
+          <ListItem
+            label="Display name"
+            iconName={IconName.icPencilSimple}
+            iconColor="soft"
+            onClick={() => handleEdit("name")}
+            verticalPadding
+          >
+            {profile.display_name}
+          </ListItem>
+          <ListItem
+            label="Company name"
+            iconName={IconName.icPencilSimple}
+            iconColor="soft"
+            onClick={() => handleEdit("company")}
+            verticalPadding
+          >
+            <p
+              className={cn([
+                "font-medium h-6",
+                {
+                  "opacity-20": !profile.company_name,
+                },
+              ])}
+            >
+              {profile.company_name ? profile.company_name : "not set"}
+            </p>
+          </ListItem>
+          <ListItem label="Email" verticalPadding>
+            {profile.email}
+          </ListItem>
+        </ul>
       </Card>
 
       {showEditOverlay && (

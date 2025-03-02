@@ -1,12 +1,15 @@
 import { cn } from "@/utils/cn"
-import { Icon } from "../Icon/Icon"
+import { Icon, IconColor } from "../Icon/Icon"
 import { IconName } from "../Icon/IconNames"
 import { Label } from "../Typography/Label"
+import { IconButton } from "../Icon/IconButton"
 
 interface ListItemProps {
   label?: string
   iconName?: IconName
+  iconColor?: IconColor
   children: React.ReactNode
+  onClick?: () => void
   horizontalPadding?: boolean
   verticalPadding?: boolean
 }
@@ -14,7 +17,9 @@ interface ListItemProps {
 export function ListItem({
   label,
   iconName,
+  iconColor,
   children,
+  onClick,
   horizontalPadding = false,
   verticalPadding = false,
 }: ListItemProps) {
@@ -31,13 +36,19 @@ export function ListItem({
       <div className="flex flex-col">
         {label ? (
           <>
-            <Label label={label} />
+            <Label label={label} uppercase />
             <div className="h-1" />
           </>
         ) : null}
-        <div>{children}</div>
+        <div className="font-medium">{children}</div>
       </div>
-      {iconName ? <Icon iconName={iconName} /> : null}
+      {iconName ? (
+        onClick ? (
+          <IconButton iconName={iconName} onClick={onClick} color={iconColor} />
+        ) : (
+          <Icon iconName={iconName} color={iconColor} />
+        )
+      ) : null}
     </li>
   )
 }

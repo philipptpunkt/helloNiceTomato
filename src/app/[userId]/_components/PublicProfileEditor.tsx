@@ -4,9 +4,9 @@ import { useState } from "react"
 import { PublicProfileSetupOverlay } from "@/components/overlays/PublicProfileSetupOverlay"
 import { BioEditOverlay } from "@/components/overlays/BioEditOverlay"
 import { PublicProfile } from "@/types/profile"
-import { Icon, IconButton, IconName } from "@/design-system/Icon"
+import { Icon, IconName } from "@/design-system/Icon"
 import { CardWithHeading } from "@/design-system/Card"
-import { Label } from "@/design-system/Typography"
+import { ListItem } from "@/design-system/List"
 
 interface PublicProfileEditorProps {
   userId: string
@@ -48,62 +48,48 @@ export function PublicProfileEditor({
     <CardWithHeading
       heading={<h2 className="text-xl font-semibold mb-4">Public Profile</h2>}
     >
-      <div className="space-y-4">
-        <div className="group relative">
-          <Label label="Title" />
-          <div className="flex items-center">
-            <p className="flex-grow font-medium">
-              {publicProfile.title || "No title set"}
-            </p>
-            <IconButton
-              iconName={IconName.icPencilSimple}
-              color="soft"
-              onClick={() => setShowSetupOverlay(true)}
-            />
+      <ul>
+        <ListItem
+          label="Title"
+          iconName={IconName.icPencilSimple}
+          iconColor="soft"
+          onClick={() => setShowSetupOverlay(true)}
+          verticalPadding
+        >
+          {publicProfile.title || "No title set"}
+        </ListItem>
+        <ListItem
+          label="Redirect Urls"
+          iconName={IconName.icPencilSimple}
+          iconColor="soft"
+          onClick={() => setShowSetupOverlay(true)}
+          verticalPadding
+        >
+          <div className="flex items-center space-x-2 flex-grow">
+            <p>{publicProfile.redirectUrl || "No redirect URL set"}</p>
+            {publicProfile.redirectActive && publicProfile.redirectUrl ? (
+              <span className="inline-flex gap-2 items-center text-sm text-success">
+                <Icon iconName={IconName.icCheckCircle} color="success" />
+                Active
+              </span>
+            ) : (
+              <span className="inline-flex gap-2 items-center text-sm text-error">
+                <Icon iconName={IconName.icProhibit} color="error" />
+                Not active
+              </span>
+            )}
           </div>
-        </div>
-
-        <div className="group relative">
-          <Label label="Redirect URL" />
-          <div className="flex items-center">
-            <div className="flex items-center space-x-2 flex-grow">
-              <p className="font-medium">
-                {publicProfile.redirectUrl || "No redirect URL set"}
-              </p>
-              {publicProfile.redirectActive && publicProfile.redirectUrl ? (
-                <span className="inline-flex gap-2 items-center text-sm text-success">
-                  <Icon iconName={IconName.icCheckCircle} color="success" />
-                  Active
-                </span>
-              ) : (
-                <span className="inline-flex gap-2 items-center text-sm text-error">
-                  <Icon iconName={IconName.icProhibit} color="error" />
-                  Not active
-                </span>
-              )}
-            </div>
-            <IconButton
-              iconName={IconName.icPencilSimple}
-              color="soft"
-              onClick={() => setShowSetupOverlay(true)}
-            />
-          </div>
-        </div>
-
-        <div className="group relative">
-          <Label label="Bio" />
-          <div className="flex items-start">
-            <p className="flex-grow font-medium">
-              {publicProfile.bio || "No bio added yet"}
-            </p>
-            <IconButton
-              iconName={IconName.icPencilSimple}
-              color="soft"
-              onClick={() => setShowBioOverlay(true)}
-            />
-          </div>
-        </div>
-      </div>
+        </ListItem>
+        <ListItem
+          label="Bio"
+          iconName={IconName.icPencilSimple}
+          iconColor="soft"
+          onClick={() => setShowBioOverlay(true)}
+          verticalPadding
+        >
+          {publicProfile.bio || "No bio added yet"}
+        </ListItem>
+      </ul>
 
       {showSetupOverlay && (
         <PublicProfileSetupOverlay
