@@ -7,6 +7,7 @@ interface Props {
   iconName?: IconName
   children: React.ReactNode
   horizontalPadding?: boolean
+  verticalPadding?: boolean
 }
 
 export const ListItem = ({
@@ -14,6 +15,7 @@ export const ListItem = ({
   iconName,
   children,
   horizontalPadding = false,
+  verticalPadding = false,
 }: Props) => {
   return (
     <ul>
@@ -21,6 +23,7 @@ export const ListItem = ({
         label={label}
         iconName={iconName}
         horizontalPadding={horizontalPadding}
+        verticalPadding={verticalPadding}
       >
         {children}
       </ListItemUI>

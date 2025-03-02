@@ -12,18 +12,24 @@ const meta: Meta = {
     storyHeadline: "Button",
   },
   argTypes: {
+    onClick: { action: "clicked", description: "OnClick handler" },
+    label: { control: "text", description: "Button label" },
     variant: {
+      description: "Base variant selection",
       control: "radio",
       options: ["contained", "outlined", "text"],
     },
     contentStyle: {
+      description: "Defines the horizontal spacing around the button label",
       control: "radio",
       options: ["wide", "narrow", "snug", "full"],
     },
     secondary: {
+      description: "Enables the secondary color option",
       control: "boolean",
     },
     disabled: {
+      description: "Disabled state of the button",
       control: "boolean",
     },
   },

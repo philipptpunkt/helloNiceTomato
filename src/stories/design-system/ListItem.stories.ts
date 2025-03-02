@@ -21,6 +21,7 @@ const meta: Meta = {
     },
     children: { control: "text" },
     horizontalPadding: { control: "boolean" },
+    verticalPadding: { control: "boolean" },
   },
   decorators: [
     (story, context: StoryContext) => {
@@ -45,6 +46,7 @@ export const Default: Story = {
   args: {
     children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     horizontalPadding: false,
+    verticalPadding: false,
   },
   parameters: {
     storyLabel: "List item default",

@@ -8,6 +8,7 @@ interface ListItemProps {
   iconName?: IconName
   children: React.ReactNode
   horizontalPadding?: boolean
+  verticalPadding?: boolean
 }
 
 export function ListItem({
@@ -15,6 +16,7 @@ export function ListItem({
   iconName,
   children,
   horizontalPadding = false,
+  verticalPadding = false,
 }: ListItemProps) {
   return (
     <li
@@ -22,6 +24,7 @@ export function ListItem({
         "flex justify-between items-center",
         {
           "px-4": horizontalPadding,
+          "py-2": verticalPadding,
         },
       ])}
     >
