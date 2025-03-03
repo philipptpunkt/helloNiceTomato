@@ -1,31 +1,29 @@
 import { cn } from "@/utils/cn"
 import { Icon, IconProps } from "./Icon"
 import { IconBackground, interactiveIconVariants } from "./variants"
+import Link from "next/link"
 
-interface IconButtonProps extends IconProps {
-  onClick: () => void
+interface IconLinkProps extends IconProps {
+  href: string
   background?: IconBackground
 }
 
-export function IconButton({
+export function IconLink({
   iconName,
   size,
   color,
   background,
   strokeWidth,
-  onClick,
-}: IconButtonProps) {
+  href,
+}: IconLinkProps) {
   return (
-    <button
-      className={cn(interactiveIconVariants({ background }))}
-      onClick={onClick}
-    >
+    <Link className={cn(interactiveIconVariants({ background }))} href={href}>
       <Icon
         iconName={iconName}
         size={size}
         color={color}
         strokeWidth={strokeWidth}
       />
-    </button>
+    </Link>
   )
 }

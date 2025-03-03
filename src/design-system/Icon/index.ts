@@ -1,5 +1,6 @@
 export { Icon } from "./Icon"
-export type { IconSize, IconColor, IconStrokeWidth } from "./Icon"
 export { IconButton } from "./IconButton"
-export type { IconBackground } from "./IconButton"
+export { IconLink } from "./IconLink"
 export { IconName } from "./IconNames"
+export type { IconSize, IconColor, IconStrokeWidth } from "./Icon"
+export type { IconBackground } from "./variants"

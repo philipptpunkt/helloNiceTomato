@@ -11,7 +11,7 @@ interface ListItemProps {
   children: React.ReactNode
   onClick?: () => void
   horizontalPadding?: boolean
-  verticalPadding?: boolean
+  verticalPadding?: boolean | "wide" | "wider"
 }
 
 export function ListItem({
@@ -30,10 +30,12 @@ export function ListItem({
         {
           "px-4": horizontalPadding,
           "py-2": verticalPadding,
+          "py-4": verticalPadding === "wide",
+          "py-8": verticalPadding === "wider",
         },
       ])}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         {label ? (
           <>
             <Label label={label} uppercase />

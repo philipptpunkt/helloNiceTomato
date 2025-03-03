@@ -3,10 +3,12 @@ import { IconName } from "./IconNames"
 import icButterfly from "./svgs/ic-butterfly.svg"
 import icCheckCircle from "./svgs/ic-check-circle.svg"
 import icCodesandboxLogo from "./svgs/ic-codesandbox-logo.svg"
+import icCopy from "./svgs/ic-copy.svg"
 import icDiscordLogo from "./svgs/ic-discord-logo.svg"
 import icDribbbleLogo from "./svgs/ic-dribbble-logo.svg"
 import icFacebookLogo from "./svgs/ic-facebook-logo.svg"
 import icFigmaLogo from "./svgs/ic-figma-logo.svg"
+import icGear from "./svgs/ic-gear.svg"
 import icGithubLogo from "./svgs/ic-github-logo.svg"
 import icGitlabLogo from "./svgs/ic-gitlab-logo.svg"
 import icGoodreadsLogo from "./svgs/ic-goodreads-logo.svg"
@@ -42,10 +44,12 @@ export const iconSymbols = {
   icButterfly,
   icCheckCircle,
   icCodesandboxLogo,
+  icCopy,
   icDiscordLogo,
   icDribbbleLogo,
   icFacebookLogo,
   icFigmaLogo,
+  icGear,
   icGithubLogo,
   icGitlabLogo,
   icGoodreadsLogo,

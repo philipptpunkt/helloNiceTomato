@@ -5,6 +5,7 @@ import { PublicProfileEditor } from "./_components/PublicProfileEditor"
 import { PublicProfile } from "@/types/profile"
 import { notFound } from "next/navigation"
 import { Heading } from "@/design-system/Typography"
+import { Section } from "@/design-system/Layout"
 
 const uuidRegex =
   /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -63,7 +64,7 @@ export default async function AccountPage({
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <Section width="document" horizontalPadding>
       <Heading
         type="highlight"
         defaultText="Your"
@@ -78,6 +79,6 @@ export default async function AccountPage({
       <Suspense fallback={<div>Loading public profile...</div>}>
         <PublicProfileEditor userId={userId} publicProfile={publicProfile} />
       </Suspense>
-    </div>
+    </Section>
   )
 }

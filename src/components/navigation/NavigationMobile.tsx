@@ -11,6 +11,7 @@ import Link from "next/link"
 import { LogoutButton } from "./LogoutButton"
 import { cn } from "@/utils/cn"
 import { Session } from "@supabase/supabase-js"
+import { SettingsButton } from "./SettingsButton"
 
 function ListItemAnimationWrapper({
   index,
@@ -110,6 +111,8 @@ export function NavigationMobile({ session }: NavigationMobileProps) {
                 <div className="flex px-2 py-2 rounded-full border-2 border-border">
                   {hasSession ? (
                     <>
+                      <SettingsButton userId={session!.user.id} />
+                      <div className="w-2" />
                       <LogoutButton />
                       <div className="w-2" />
                     </>

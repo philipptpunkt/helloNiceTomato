@@ -67,7 +67,7 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
               {profile.company_name ? profile.company_name : "not set"}
             </p>
           </ListItem>
-          <ListItem label="Email" verticalPadding>
+          <ListItem label="Email" verticalPadding="wide">
             {profile.email}
           </ListItem>
         </ul>

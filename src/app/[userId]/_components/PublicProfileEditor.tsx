@@ -7,6 +7,7 @@ import { PublicProfile } from "@/types/profile"
 import { Icon, IconName } from "@/design-system/Icon"
 import { CardWithHeading } from "@/design-system/Card"
 import { ListItem } from "@/design-system/List"
+import Link from "next/link"
 
 interface PublicProfileEditorProps {
   userId: string
@@ -88,6 +89,17 @@ export function PublicProfileEditor({
           verticalPadding
         >
           {publicProfile.bio || "No bio added yet"}
+        </ListItem>
+        <ListItem
+          label="Public profile link"
+          iconName={IconName.icCopy}
+          iconColor="soft"
+          onClick={() => console.log("COPY URL")}
+          verticalPadding="wider"
+        >
+          <Link
+            href={`${process.env.NEXT_PUBLIC_BASE_URL}/tpp/${publicProfile.id}`}
+          >{`${process.env.NEXT_PUBLIC_BASE_URL}/tpp/${publicProfile.id}`}</Link>
         </ListItem>
       </ul>
 

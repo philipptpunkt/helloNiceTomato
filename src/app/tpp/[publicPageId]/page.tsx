@@ -1,3 +1,4 @@
+import { Section } from "@/design-system/Layout"
 import { createClient } from "@/utils/supabase/server"
 import { redirect, notFound } from "next/navigation"
 
@@ -9,7 +10,6 @@ export default async function PublicProfilePage({
   const { publicPageId } = await params
   const supabase = await createClient()
 
-  // Fetch public profile data
   const { data: pageData, error } = await supabase
     .schema("private")
     .from("public_profiles")
@@ -21,16 +21,16 @@ export default async function PublicProfilePage({
     notFound()
   }
 
-  if (pageData.redirect_url) {
+  if (pageData.redirect_url && pageData.redirect_active) {
     redirect(pageData.redirect_url)
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <Section width="document" horizontalPadding>
       <h1 className="text-2xl font-bold mb-6">{pageData.title}</h1>
       <div className="bg-white shadow rounded-lg p-6">
         {pageData.bio && <p className="mb-4 text-gray-600">{pageData.bio}</p>}
       </div>
-    </div>
+    </Section>
   )
 }

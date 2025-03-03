@@ -6,6 +6,7 @@ import { cn } from "@/utils/cn"
 import { NavigationMobile } from "./NavigationMobile"
 import { createClient } from "@/utils/supabase/server"
 import { LogoutButton } from "./LogoutButton"
+import { SettingsButton } from "./SettingsButton"
 
 function HomeLink({ containerClass }: { containerClass?: string }) {
   return (
@@ -44,6 +45,8 @@ export async function Navigation() {
         <div className="hidden md:flex absolute right-0">
           {hasSession ? (
             <>
+              <SettingsButton userId={session!.user.id} />
+              <div className="w-2" />
               <LogoutButton />
               <div className="w-2" />
             </>
