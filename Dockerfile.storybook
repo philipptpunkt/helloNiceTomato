@@ -18,7 +18,6 @@ COPY . .
 RUN mkdir -p public
 
 RUN npm run build-storybook
-RUN echo "Verifying build output:" && ls -la storybook-static/
 
 # Use NGINX to serve the static files
 FROM nginx:alpine AS runner
@@ -27,7 +26,6 @@ WORKDIR /usr/share/nginx/html
 
 # Copy the built Storybook static files
 COPY --from=installer /app/storybook-static ./
-RUN echo "Verifying copied content:" && ls -la /usr/share/nginx/html/
 
 EXPOSE 80
 

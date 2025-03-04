@@ -1,5 +1,6 @@
 import { SignInForm } from "@/components/forms/SignInForm"
 import { Section } from "@/design-system/Layout"
+import { cn } from "@/utils/cn"
 import Link from "next/link"
 
 export default function Home() {
@@ -7,7 +8,16 @@ export default function Home() {
     <main className="flex flex-col">
       <Section
         width="narrow"
-        className="min-h-[600px] h-screen flex flex-col md:flex-row md:-mt-16 justify-center"
+        containerClassName={cn([
+          "bg-gradient-to-b from-neutral-50 from-10% to-primary-400 to-100%",
+          "dark:from-primary-950 dark:from-30% dark:to-primary-600",
+        ])}
+        className={cn([
+          "min-h-[600px]",
+          "h-screen",
+          "flex flex-col md:flex-row",
+          "md:-mt-16 justify-center",
+        ])}
       >
         <div className="w-full md:w-1/2 px-4 md:px-8 flex flex-col justify-center">
           <div>

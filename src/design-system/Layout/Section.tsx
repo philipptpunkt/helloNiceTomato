@@ -5,6 +5,7 @@ interface SectionProps {
   width?: "full" | "content" | "narrow" | "document"
   horizontalPadding?: boolean
   className?: string
+  containerClassName?: string
 }
 
 export function Section({
@@ -12,21 +13,24 @@ export function Section({
   width = "content",
   horizontalPadding = false,
   className,
+  containerClassName,
 }: SectionProps) {
   return (
-    <section
-      className={cn(
-        "mx-auto w-full",
-        {
-          "max-w-[1920px]": width === "content",
-          "max-w-[1280px]": width === "narrow",
-          "max-w-[1024px]": width === "document",
-          "px-4 md:px-8": horizontalPadding,
-        },
-        className
-      )}
-    >
-      {children}
+    <section className={cn(["w-full"], containerClassName)}>
+      <div
+        className={cn(
+          "mx-auto w-full",
+          {
+            "max-w-[1920px]": width === "content",
+            "max-w-[1280px]": width === "narrow",
+            "max-w-[1024px]": width === "document",
+            "px-4 md:px-8": horizontalPadding,
+          },
+          className
+        )}
+      >
+        {children}
+      </div>
     </section>
   )
 }

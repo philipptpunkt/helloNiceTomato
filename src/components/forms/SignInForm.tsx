@@ -61,8 +61,8 @@ export function SignInForm() {
         </div>
       </form>
       <div className="flex flex-col items-center mt-4">
-        <Button type="link" contentStyle="narrow" secondary href="/auth/signup">
-          Create new account
+        <Button type="link" contentStyle="wide" secondary href="/auth/signup">
+          Sign up for free
         </Button>
       </div>
     </div>

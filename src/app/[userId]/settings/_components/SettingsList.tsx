@@ -4,6 +4,7 @@ import { Button } from "@/design-system/Button"
 import { ListItem } from "@/design-system/List"
 import { LogoutButton } from "./LogoutButton"
 import { IconName } from "@/design-system/Icon"
+import { Divider } from "@/design-system/Layout"
 
 export function SettingsList() {
   return (
@@ -26,7 +27,9 @@ export function SettingsList() {
           <div className="">Change password</div>
         </ListItem>
       </ul>
-      <div className="h-16" />
+      <div className="h-8" />
+      <Divider size="sm" />
+      <div className="h-8" />
       <ul>
         <ListItem verticalPadding>
           <div className="flex justify-center">
@@ -35,7 +38,7 @@ export function SettingsList() {
         </ListItem>
         <ListItem verticalPadding>
           <div className="flex justify-center">
-            <Button type="button" variant="text">
+            <Button type="button" variant="text" contentStyle="snug">
               Delete account
             </Button>
           </div>

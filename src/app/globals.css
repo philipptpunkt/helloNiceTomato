@@ -143,6 +143,11 @@
     color: var(--color-text);
     background: var(--color-background);
     letter-spacing: var(--tracking-wide);
+    font-size: var(--text-sm);
+
+    @variant md {
+      font-size: var(--text-base);
+    }
   }
 
   h1,
