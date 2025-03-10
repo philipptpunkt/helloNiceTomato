@@ -10,7 +10,6 @@ const inputVariants = cva(
     "py-2",
     "rounded-full",
     "border-2",
-    "transition-colors",
     "bg-white dark:bg-black",
     "text-text-soft",
     "font-medium",
