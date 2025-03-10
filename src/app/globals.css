@@ -1,142 +1,8 @@
 @import "tailwindcss";
+@import "./theme.css";
+@import "./base.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
-@theme {
-  --breakpoint-sm: 40rem; /* 640px */
-  --breakpoint-md: 48rem; /* 768px */
-  --breakpoint-lg: 64rem; /* 1024px */
-  --breakpoint-xl: 80rem; /* 1280px */
-  --breakpoint-2xl: 96rem;
-
-  /* --breakpoint-*: initial; */
-  --breakpoint-tablet: 40rem;
-  --breakpoint-laptop: 64rem;
-  --breakpoint-desktop: 80rem;
-
-  /* Color Paletts with https://www.colorpalett.es/ */
-  /* Primary Color HEX: #E73806  */
-  --color-primary: var(--theme-color-primary);
-  --color-primary-50: oklch(91.43% 0.04 35);
-  --color-primary-100: oklch(85.38% 0.075 34);
-  --color-primary-200: oklch(79.25% 0.117 33);
-  --color-primary-300: oklch(73.01% 0.163 33);
-  --color-primary-400: oklch(66.9% 0.215 33);
-  --color-primary-500: oklch(60.8% 0.216 33);
-  --color-primary-600: oklch(52.13% 0.185 33);
-  --color-primary-700: oklch(43.47% 0.152 33);
-  --color-primary-800: oklch(34.68% 0.116 34);
-  --color-primary-900: oklch(25.28% 0.081 34);
-  --color-primary-950: oklch(13.8% 0.041 34);
-
-  /* Secondary Color HEX: #5fb306  */
-  --color-secondary: var(--theme-color-secondary);
-  --color-secondary-50: oklch(91.45% 0.064 134);
-  --color-secondary-100: oklch(86.91% 0.136 134);
-  --color-secondary-200: oklch(82.29% 0.19 134);
-  --color-secondary-300: oklch(77.66% 0.203 134);
-  --color-secondary-400: oklch(73.25% 0.207 134);
-  --color-secondary-500: oklch(68.62% 0.198 134);
-  --color-secondary-600: oklch(58.33% 0.163 134);
-  --color-secondary-700: oklch(48.26% 0.125 134);
-  --color-secondary-800: oklch(37.87% 0.088 135);
-  --color-secondary-900: oklch(26.9% 0.056 134);
-  --color-secondary-950: oklch(13.84% 0.024 136);
-
-  /* Background Color Tokens */
-  --color-background: var(--theme-color-background);
-  --color-background-inverted: var(--theme-color-background-inverted);
-
-  --color-background-soft: var(--theme-color-background-soft);
-  --color-background-card: var(--theme-color-background-card);
-  --color-background-highlight: var(--theme-color-background-highlight);
-
-  /* Text Color Tokens */
-  --color-text: var(--theme-color-text);
-  --color-text-soft: var(--theme-color-text-soft);
-  --color-text-placeholder: var(--theme-color-text-placeholder);
-  --color-text-inverted: var(--theme-color-text-inverted);
-  --color-text-highlight: var(--theme-color-text-highlight);
-
-  /* Semantic Color Tokens */
-  --color-error: var(--theme-color-error);
-  --color-success: var(--theme-color-success);
-
-  --color-background-error: var(--theme-color-background-error);
-  --color-background-success: var(--theme-color-background-success);
-
-  /* Border Color Tokens */
-  --color-border: var(--theme-color-border);
-  --color-border-soft: var(--theme-color-border-soft);
-  --color-border-card: var(--theme-color-border-card);
-  --color-border-hover: var(--theme-color-border-hover);
-
-  /* Miscellaneous Color Tokens */
-  --color-focus: var(--theme-color-focus);
-  --color-shadow: var(--theme-color-shadow);
-}
-
-@layer base {
-  :root {
-    --theme-color-primary: var(--color-primary-500);
-    --theme-color-secondary: var(--color-secondary-500);
-
-    --theme-color-text: var(--color-neutral-900);
-    --theme-color-text-soft: var(--color-neutral-500);
-    --theme-color-text-placeholder: var(--color-neutral-300);
-    --theme-color-text-inverted: var(--color-neutral-50);
-    --theme-color-text-highlight: var(--color-primary-500);
-
-    --theme-color-background: var(--color-neutral-50);
-    --theme-color-background-soft: var(--color-neutral-100);
-    --theme-color-background-card: var(--color-white);
-    --theme-color-background-inverted: var(--color-neutral-900);
-
-    --theme-color-error: var(--color-red-500);
-    --theme-color-success: var(--color-green-500);
-
-    --theme-color-background-error: var(--color-red-100);
-    --theme-color-background-success: var(--color-green-100);
-
-    --theme-color-border: var(--color-neutral-300);
-    --theme-color-border-soft: var(--color-neutral-200);
-    --theme-color-border-card: var(--color-neutral-100);
-    --theme-color-border-hover: var(--color-neutral-500);
-
-    --theme-color-focus: var(--color-sky-500);
-    --theme-color-shadow: var(--color-neutral-300);
-  }
-
-  [data-theme="dark"] {
-    --theme-color-primary: var(--color-primary-400);
-    --theme-color-secondary: var(--color-secondary-400);
-
-    --theme-color-text: var(--color-neutral-50);
-    --theme-color-text-soft: var(--color-neutral-300);
-    --theme-color-text-placeholder: var(--color-neutral-700);
-    --theme-color-text-inverted: var(--color-neutral-900);
-    --theme-color-text-highlight: var(--color-primary-400);
-
-    --theme-color-background: var(--color-neutral-900);
-    --theme-color-background-soft: var(--color-neutral-800);
-    --theme-color-background-card: var(--color-neutral-950);
-    --theme-color-background-inverted: var(--color-neutral-50);
-
-    --theme-color-error: var(--color-red-500);
-    --theme-color-success: var(--color-green-500);
-
-    --theme-color-background-error: var(--color-red-950);
-    --theme-color-background-success: var(--color-green-950);
-
-    --theme-color-border: var(--color-neutral-500);
-    --theme-color-border-soft: var(--color-neutral-600);
-    --theme-color-border-card: var(--color-neutral-800);
-    --theme-color-border-hover: var(--color-neutral-800);
-
-    --theme-color-focus: var(--color-sky-500);
-    --theme-color-shadow: var(--color-neutral-800);
-  }
-}
 
 @layer components {
   body {
@@ -179,5 +45,61 @@
     font-size: var(--text-4xl);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text);
+  }
+
+  @keyframes loading-skeleton {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .loading-skeleton {
+    --animation-duration: 1.5s;
+    --animation-direction: normal;
+    --pseudo-element-display: block; /* Enable animation */
+
+    background-color: var(--color-skeleton-background);
+
+    width: 100%;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    line-height: 1;
+
+    position: relative;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  .loading-skeleton::after {
+    content: " ";
+    display: var(--pseudo-element-display);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: var(
+      --custom-highlight-background,
+      linear-gradient(
+        90deg,
+        var(--color-skeleton-background) 0%,
+        var(--color-skeleton-highlight) 50%,
+        var(--color-skeleton-background) 100%
+      )
+    );
+    transform: translateX(-100%);
+
+    animation-name: loading-skeleton;
+    animation-direction: var(--animation-direction);
+    animation-duration: var(--animation-duration);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @media (prefers-reduced-motion) {
+    .loading-skeleton {
+      --pseudo-element-display: none; /* Disable animation */
+    }
   }
 }

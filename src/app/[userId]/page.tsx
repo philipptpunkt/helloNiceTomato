@@ -5,7 +5,8 @@ import { PublicProfileEditor } from "./_components/PublicProfileEditor"
 import { PublicProfile } from "@/types/profile"
 import { notFound } from "next/navigation"
 import { Heading } from "@/design-system/Typography"
-import { Section } from "@/design-system/Layout"
+import { Section, Spacer } from "@/design-system/Layout"
+import { Skeleton } from "./_components/Skeleton"
 
 const uuidRegex =
   /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -71,12 +72,16 @@ export default async function AccountPage({
         highlightText="profile"
         size="reduced"
       />
-      <div className="h-8" />
-      <Suspense fallback={<div>Loading profile...</div>}>
+      <Spacer size="xl" />
+      <Suspense
+        fallback={<Skeleton screenReaderInfoText="Loading User Profile" />}
+      >
         <ProfileEditor userId={userId} profile={userProfile} />
       </Suspense>
-      <div className="h-8" />
-      <Suspense fallback={<div>Loading public profile...</div>}>
+      <Spacer size="xl" />
+      <Suspense
+        fallback={<Skeleton screenReaderInfoText="Loading Public Profile" />}
+      >
         <PublicProfileEditor userId={userId} publicProfile={publicProfile} />
       </Suspense>
     </Section>

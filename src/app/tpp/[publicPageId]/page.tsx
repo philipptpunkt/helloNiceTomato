@@ -1,6 +1,9 @@
+import { CardWithHeading } from "@/design-system/Card"
 import { Section } from "@/design-system/Layout"
+import { Heading } from "@/design-system/Typography"
 import { createClient } from "@/utils/supabase/server"
 import { redirect, notFound } from "next/navigation"
+import { Suspense } from "react"
 
 export default async function PublicProfilePage({
   params,
@@ -27,10 +30,17 @@ export default async function PublicProfilePage({
 
   return (
     <Section width="document" horizontalPadding>
-      <h1 className="text-2xl font-bold mb-6">{pageData.title}</h1>
-      <div className="bg-white shadow rounded-lg p-6">
-        {pageData.bio && <p className="mb-4 text-gray-600">{pageData.bio}</p>}
-      </div>
+      <Suspense fallback={<div>Loading Profile...</div>}>
+        <CardWithHeading
+          heading={
+            <Heading type="default" text={pageData.title} size="reduced" />
+          }
+        >
+          <div className="">
+            {pageData.bio && <p className="font-medium">{pageData.bio}</p>}
+          </div>
+        </CardWithHeading>
+      </Suspense>
     </Section>
   )
 }

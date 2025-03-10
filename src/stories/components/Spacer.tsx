@@ -2,23 +2,23 @@ import { cn } from "@/utils/cn"
 
 export type Size = "sm" | "md" | "lg" | "xl" | "xxl"
 
-function getSizeClassName(size?: Size) {
+function getSizeClassName(size: Size) {
   switch (size) {
     case "sm":
-      return "h-4"
+      return "h-2"
     case "md":
+      return "h-4"
+    case "lg":
       return "h-6"
     case "xl":
-      return "h-12"
-    case "xxl":
-      return "h-16"
-    default:
       return "h-8"
+    case "xxl":
+      return "h-10"
   }
 }
 
 export function Spacer({
-  size,
+  size = "lg",
   withDivider = false,
 }: {
   size?: Size
