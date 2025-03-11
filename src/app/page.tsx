@@ -16,7 +16,7 @@ export default function Home() {
           "min-h-[600px]",
           "h-screen",
           "flex flex-col md:flex-row",
-          "md:-mt-16 justify-center",
+          "justify-center",
         ])}
       >
         <div className="w-full md:w-1/2 px-4 md:px-8 flex flex-col justify-center">

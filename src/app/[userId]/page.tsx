@@ -5,8 +5,10 @@ import { PublicProfileEditor } from "./_components/PublicProfileEditor"
 import { PublicProfile } from "@/types/profile"
 import { notFound } from "next/navigation"
 import { Heading } from "@/design-system/Typography"
-import { Section, Spacer } from "@/design-system/Layout"
+import { Section } from "@/design-system/Layout"
 import { Skeleton } from "./_components/Skeleton"
+import { QrCodeEditor } from "./_components/QrCodeEditor"
+import { SkeletonQrCode } from "./_components/SkeletonQrCode"
 
 const uuidRegex =
   /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -66,24 +68,29 @@ export default async function AccountPage({
 
   return (
     <Section width="document" horizontalPadding>
-      <Heading
-        type="highlight"
-        defaultText="Your"
-        highlightText="profile"
-        size="reduced"
-      />
-      <Spacer size="xl" />
-      <Suspense
-        fallback={<Skeleton screenReaderInfoText="Loading User Profile" />}
-      >
-        <ProfileEditor userId={userId} profile={userProfile} />
-      </Suspense>
-      <Spacer size="xl" />
-      <Suspense
-        fallback={<Skeleton screenReaderInfoText="Loading Public Profile" />}
-      >
-        <PublicProfileEditor userId={userId} publicProfile={publicProfile} />
-      </Suspense>
+      <div className="space-y-8 mt-4">
+        <Heading
+          type="highlight"
+          defaultText="Your"
+          highlightText="profile"
+          size="reduced"
+        />
+        <Suspense
+          fallback={<Skeleton screenReaderInfoText="Loading User Profile" />}
+        >
+          <ProfileEditor userId={userId} profile={userProfile} />
+        </Suspense>
+        <Suspense
+          fallback={<Skeleton screenReaderInfoText="Loading Public Profile" />}
+        >
+          <PublicProfileEditor userId={userId} publicProfile={publicProfile} />
+        </Suspense>
+        <Suspense
+          fallback={<SkeletonQrCode screenReaderInfoText="Loading QR Code" />}
+        >
+          <QrCodeEditor />
+        </Suspense>
+      </div>
     </Section>
   )
 }

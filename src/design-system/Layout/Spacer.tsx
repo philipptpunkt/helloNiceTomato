@@ -1,6 +1,6 @@
 import { cn } from "@/utils/cn"
 
-export type Size = "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+export type Size = "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
 
 function getHeightClassName(size: Size) {
   switch (size) {
@@ -14,7 +14,7 @@ function getHeightClassName(size: Size) {
       return "h-6"
     case "xl":
       return "h-8"
-    case "xxl":
+    case "2xl":
       return "h-10"
   }
 }
@@ -31,7 +31,7 @@ function getWidthClassName(size: Size) {
       return "w-6"
     case "xl":
       return "w-8"
-    case "xxl":
+    case "2xl":
       return "w-10"
   }
 }
@@ -44,7 +44,7 @@ interface SpacerProps {
    * - md: h-4 (16px) or w-4 (16px)
    * - lg: h-6 (24px) or w-6 (24px)
    * - xl: h-8 (32px) or w-8 (32px)
-   * - xxl: h-10 (40px) or w-10 (40px)
+   * - 2xl: h-10 (40px) or w-10 (40px)
    * @default "lg"
    */
   size?: Size
