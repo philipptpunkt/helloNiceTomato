@@ -1,24 +1,26 @@
 "use client"
 
 import { useState } from "react"
-import { PublicProfileSetupOverlay } from "@/components/overlays/PublicProfileSetupOverlay"
 import { BioEditOverlay } from "@/components/overlays/BioEditOverlay"
 import { PublicProfile } from "@/types/profile"
 import { Icon, IconName } from "@/design-system/Icon"
 import { CardWithHeading } from "@/design-system/Card"
 import { ListItem } from "@/design-system/List"
 import Link from "next/link"
+import { PublicProfileEditModal } from "./PublicProfileEditModal"
+import { cn } from "@/utils/cn"
 
-interface PublicProfileEditorProps {
+interface PublicProfileSectionProps {
   userId: string
   publicProfile: PublicProfile | null
 }
 
-export function PublicProfileEditor({
+export function PublicProfileSection({
   userId,
   publicProfile,
-}: PublicProfileEditorProps) {
-  const [showSetupOverlay, setShowSetupOverlay] = useState(false)
+}: PublicProfileSectionProps) {
+  const [showPublicProfilEditModal, setShowPublicProfilEditModal] =
+    useState(false)
   const [showBioOverlay, setShowBioOverlay] = useState(false)
 
   if (!publicProfile) {
@@ -29,16 +31,16 @@ export function PublicProfileEditor({
           Create a public profile to share your information with others.
         </p>
         <button
-          onClick={() => setShowSetupOverlay(true)}
+          onClick={() => setShowPublicProfilEditModal(true)}
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
         >
           Create Public Profile
         </button>
-        {showSetupOverlay && (
-          <PublicProfileSetupOverlay
+        {showPublicProfilEditModal && (
+          <PublicProfileEditModal
             userId={userId}
             publicProfile={null}
-            onClose={() => setShowSetupOverlay(false)}
+            onClose={() => setShowPublicProfilEditModal(false)}
           />
         )}
       </div>
@@ -53,38 +55,49 @@ export function PublicProfileEditor({
         <ListItem
           label="Title"
           iconName={IconName.icPencilSimple}
-          iconColor="soft"
-          onClick={() => setShowSetupOverlay(true)}
+          iconColor="light"
+          onClick={() => setShowPublicProfilEditModal(true)}
           verticalPadding
         >
           {publicProfile.title || "No title set"}
         </ListItem>
         <ListItem
-          label="Redirect Urls"
+          label="Redirect Url"
           iconName={IconName.icPencilSimple}
-          iconColor="soft"
-          onClick={() => setShowSetupOverlay(true)}
+          iconColor="light"
+          onClick={() => setShowPublicProfilEditModal(true)}
           verticalPadding
         >
-          <div className="flex items-center space-x-2 flex-grow">
-            <p>{publicProfile.redirectUrl || "No redirect URL set"}</p>
-            {publicProfile.redirectActive && publicProfile.redirectUrl ? (
-              <span className="inline-flex gap-2 items-center text-sm text-success">
-                <Icon iconName={IconName.icCheckCircle} color="success" />
-                Active
-              </span>
-            ) : (
-              <span className="inline-flex gap-2 items-center text-sm text-error">
-                <Icon iconName={IconName.icProhibit} color="error" />
-                Not active
-              </span>
-            )}
+          <div className="flex flex-col sm:flex-row sm:items-center space-x-2 flex-grow">
+            <p
+              className={cn([
+                "font-medium h-6",
+                {
+                  "opacity-20": !publicProfile.redirectUrl,
+                },
+              ])}
+            >
+              {publicProfile.redirectUrl || "No redirect URL set"}
+            </p>
+            {publicProfile.redirectUrl ? (
+              publicProfile.redirectActive ? (
+                <span className="inline-flex gap-2 items-center text-sm text-success">
+                  <Icon iconName={IconName.icCheckCircle} color="success" />
+                  Active
+                </span>
+              ) : (
+                <span className="inline-flex gap-2 items-center text-sm text-error">
+                  <Icon iconName={IconName.icProhibit} color="error" />
+                  Not active
+                </span>
+              )
+            ) : null}
           </div>
         </ListItem>
         <ListItem
           label="Bio"
           iconName={IconName.icPencilSimple}
-          iconColor="soft"
+          iconColor="light"
           onClick={() => setShowBioOverlay(true)}
           verticalPadding
         >
@@ -93,7 +106,7 @@ export function PublicProfileEditor({
         <ListItem
           label="Public profile link"
           iconName={IconName.icCopy}
-          iconColor="soft"
+          iconColor="light"
           onClick={() => console.log("COPY URL")}
           verticalPadding="wider"
         >
@@ -103,11 +116,11 @@ export function PublicProfileEditor({
         </ListItem>
       </ul>
 
-      {showSetupOverlay && (
-        <PublicProfileSetupOverlay
+      {showPublicProfilEditModal && (
+        <PublicProfileEditModal
           userId={userId}
           publicProfile={publicProfile}
-          onClose={() => setShowSetupOverlay(false)}
+          onClose={() => setShowPublicProfilEditModal(false)}
         />
       )}
       {showBioOverlay && (

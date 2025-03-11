@@ -15,6 +15,7 @@ export const iconVariants = cva("text-text-light dark:text-text-dark", {
     color: {
       default: ["text-text"],
       soft: ["text-text-soft"],
+      light: ["text-text-light"],
       primary: "text-primary",
       secondary: "text-secondary",
       error: "text-error",
@@ -46,6 +47,18 @@ export interface IconProps extends VariantProps<typeof iconVariants> {
   style?: React.CSSProperties
 }
 
+/**
+ * Icon component that displays SVG icons from the icon library
+ *
+ * @param {Object} props - Component props
+ * @param {IconName} props.iconName - Name of the icon to display
+ * @param {IconSize} [props.size="md"] - Size of the icon (xs, sm, md, lg, xl)
+ * @param {IconColor} [props.color="default"] - Color of the icon (default, soft, light, primary, secondary, error, success)
+ * @param {IconStrokeWidth} [props.strokeWidth="regular"] - Stroke width of the icon (thin, light, regular, bold)
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {React.CSSProperties} [props.style] - Inline styles
+ * @returns {JSX.Element} Icon component
+ */
 export function Icon({ iconName, size, color, strokeWidth }: IconProps) {
   const iconSymbol = iconSymbols[iconName]
 

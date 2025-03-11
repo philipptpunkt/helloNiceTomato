@@ -5,6 +5,7 @@ import { cn } from "@/utils/cn"
 const selectVariants = cva(
   [
     "w-full",
+    "cursor-pointer",
     "px-4",
     "py-2",
     "rounded-full",

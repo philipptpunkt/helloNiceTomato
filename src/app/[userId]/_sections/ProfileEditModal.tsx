@@ -7,6 +7,8 @@ import { updateProfile } from "@/actions/userProfile/update"
 import { useToast } from "@/components/toast/ToastContext"
 import { useEffect, useRef } from "react"
 import { Button } from "@/design-system/Button"
+import { Modal } from "@/design-system/Modal"
+import { Input } from "@/design-system/Input"
 
 const ProfileSchema = z.object({
   displayName: z.string().min(2, "Display name must be at least 2 characters"),
@@ -15,7 +17,7 @@ const ProfileSchema = z.object({
 
 type Inputs = z.infer<typeof ProfileSchema>
 
-interface ProfileEditOverlayProps {
+interface ProfileEditModalProps {
   userId: string
   initialDisplayName?: string
   initialCompanyName?: string
@@ -23,13 +25,13 @@ interface ProfileEditOverlayProps {
   onClose: () => void
 }
 
-export function ProfileEditOverlay({
+export function ProfileEditModal({
   userId,
   initialDisplayName,
   initialCompanyName,
   focusField,
   onClose,
-}: ProfileEditOverlayProps) {
+}: ProfileEditModalProps) {
   const displayNameRef = useRef<HTMLInputElement>(null)
   const companyNameRef = useRef<HTMLInputElement>(null)
 
@@ -82,56 +84,41 @@ export function ProfileEditOverlay({
   }, [focusField])
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-6 rounded-lg max-w-md w-full">
-        <h2 className="text-xl font-semibold mb-4">Edit Profile</h2>
+    <Modal onClose={onClose}>
+      <div className="w-full md:w-xl">
+        <h2 className="mb-6">Edit User Data</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Display Name *
-            </label>
-            <input
-              {...register("displayName")}
-              ref={(e) => {
-                register("displayName").ref(e)
-                displayNameRef.current = e
-              }}
-              type="text"
-              placeholder={"Enter your display name"}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-            />
-            {errors.displayName && (
-              <p className="mt-1 text-sm text-red-600">
-                {errors.displayName.message}
-              </p>
-            )}
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Company Name
-            </label>
-            <input
-              {...register("companyName")}
-              ref={(e) => {
-                register("companyName").ref(e)
-                companyNameRef.current = e
-              }}
-              type="text"
-              placeholder={"Enter your company name"}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-            />
-            {errors.companyName && (
-              <p className="mt-1 text-sm text-red-600">
-                {errors.companyName.message}
-              </p>
-            )}
-          </div>
-          <div className="flex justify-end space-x-2">
+          <Input
+            label="Display Name *"
+            {...register("displayName")}
+            ref={(e) => {
+              register("displayName").ref(e)
+              displayNameRef.current = e
+            }}
+            type="text"
+            placeholder={"Enter your display name"}
+            reserveHelpTextSpace
+            error={errors.displayName && errors.displayName.message}
+          />
+          <Input
+            label="Company Name"
+            {...register("companyName")}
+            ref={(e) => {
+              register("companyName").ref(e)
+              companyNameRef.current = e
+            }}
+            type="text"
+            placeholder={"Enter your company name"}
+            reserveHelpTextSpace
+            error={errors.companyName && errors.companyName.message}
+          />
+
+          <div className="flex justify-end space-x-4">
             <Button
               type="button"
               variant="outlined"
               contentStyle="narrow"
-              onClick={() => console.log(">>>> CLOSE")}
+              onClick={onClose}
             >
               Cancel
             </Button>
@@ -141,11 +128,11 @@ export function ProfileEditOverlay({
               contentStyle="narrow"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Saving..." : "Save"}
+              {isSubmitting ? "Saving..." : "Save changes"}
             </Button>
           </div>
         </form>
       </div>
-    </div>
+    </Modal>
   )
 }

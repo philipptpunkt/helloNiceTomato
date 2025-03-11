@@ -32,5 +32,7 @@ export enum IconName {
   icThreadsLogo = "icThreadsLogo",
   icTiktokLogo = "icTiktokLogo",
   icTwitchLogo = "icTwitchLogo",
+  icX = "icX",
+  icXCircle = "icXCircle",
   icYoutubeLogo = "icYoutubeLogo",
 }

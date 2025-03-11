@@ -47,6 +47,11 @@
     color: var(--color-text);
   }
 
+  .qr-code canvas {
+    width: 100%;
+    max-width: 300px;
+  }
+
   @keyframes loading-skeleton {
     100% {
       transform: translateX(100%);

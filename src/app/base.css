@@ -5,6 +5,7 @@
 
     --theme-color-text: var(--color-neutral-900);
     --theme-color-text-soft: var(--color-neutral-500);
+    --theme-color-text-light: var(--color-neutral-400);
     --theme-color-text-placeholder: var(--color-neutral-300);
     --theme-color-text-inverted: var(--color-neutral-50);
     --theme-color-text-highlight: var(--color-primary-500);
@@ -38,6 +39,7 @@
 
     --theme-color-text: var(--color-neutral-50);
     --theme-color-text-soft: var(--color-neutral-300);
+    --theme-color-text-light: var(--color-neutral-400);
     --theme-color-text-placeholder: var(--color-neutral-700);
     --theme-color-text-inverted: var(--color-neutral-900);
     --theme-color-text-highlight: var(--color-primary-400);

@@ -1,13 +1,13 @@
 import { Suspense } from "react"
 import { createClient } from "@/utils/supabase/server"
-import { ProfileEditor } from "./_components/ProfileEditor"
-import { PublicProfileEditor } from "./_components/PublicProfileEditor"
+import { ProfileSection } from "./_sections/ProfileSection"
+import { PublicProfileSection } from "./_sections/PublicProfileSection"
+import { QrCodeSection } from "./_sections/QrCodeSection"
 import { PublicProfile } from "@/types/profile"
 import { notFound } from "next/navigation"
 import { Heading } from "@/design-system/Typography"
-import { Section } from "@/design-system/Layout"
+import { Section, Spacer } from "@/design-system/Layout"
 import { Skeleton } from "./_components/Skeleton"
-import { QrCodeEditor } from "./_components/QrCodeEditor"
 import { SkeletonQrCode } from "./_components/SkeletonQrCode"
 
 const uuidRegex =
@@ -67,30 +67,37 @@ export default async function AccountPage({
   }
 
   return (
-    <Section width="document" horizontalPadding>
-      <div className="space-y-8 mt-4">
+    <>
+      <Section width="document" horizontalPadding verticalPadding pageStart>
         <Heading
           type="highlight"
           defaultText="Your"
           highlightText="profile"
           size="reduced"
         />
+        <Spacer size="xl" />
         <Suspense
           fallback={<Skeleton screenReaderInfoText="Loading User Profile" />}
         >
-          <ProfileEditor userId={userId} profile={userProfile} />
+          <ProfileSection userId={userId} profile={userProfile} />
         </Suspense>
+      </Section>
+
+      <Section width="document" horizontalPadding verticalPadding>
         <Suspense
           fallback={<Skeleton screenReaderInfoText="Loading Public Profile" />}
         >
-          <PublicProfileEditor userId={userId} publicProfile={publicProfile} />
+          <PublicProfileSection userId={userId} publicProfile={publicProfile} />
         </Suspense>
+      </Section>
+
+      <Section width="document" horizontalPadding verticalPadding pageEnd>
         <Suspense
           fallback={<SkeletonQrCode screenReaderInfoText="Loading QR Code" />}
         >
-          <QrCodeEditor />
+          <QrCodeSection />
         </Suspense>
-      </div>
-    </Section>
+      </Section>
+    </>
   )
 }

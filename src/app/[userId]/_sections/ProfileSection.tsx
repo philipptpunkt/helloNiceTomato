@@ -1,13 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import { ProfileEditOverlay } from "@/components/overlays/ProfileEditOverlay"
 import { IconName } from "@/design-system/Icon"
 import { Card } from "@/design-system/Card"
 import { cn } from "@/utils/cn"
 import { ListItem } from "@/design-system/List"
+import { ProfileEditModal } from "./ProfileEditModal"
 
-interface ProfileEditorProps {
+interface ProfileSectionProps {
   userId: string
   profile: {
     display_name: string | null
@@ -16,16 +16,16 @@ interface ProfileEditorProps {
   }
 }
 
-export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
-  const [showEditOverlay, setShowEditOverlay] = useState(false)
+export function ProfileSection({ userId, profile }: ProfileSectionProps) {
+  const [showEditModal, setShowEditModal] = useState(false)
   const [focusField, setFocusField] = useState<"name" | "company" | null>(null)
 
   // If no display name set, show edit overlay immediately
   if (!profile.display_name) {
     return (
-      <ProfileEditOverlay
+      <ProfileEditModal
         userId={userId}
-        onClose={() => setShowEditOverlay(false)}
+        onClose={() => setShowEditModal(false)}
         focusField={"name"}
       />
     )
@@ -33,7 +33,7 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
 
   const handleEdit = (field: "name" | "company") => {
     setFocusField(field)
-    setShowEditOverlay(true)
+    setShowEditModal(true)
   }
 
   return (
@@ -43,7 +43,7 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
           <ListItem
             label="Display name"
             iconName={IconName.icPencilSimple}
-            iconColor="soft"
+            iconColor="light"
             onClick={() => handleEdit("name")}
             verticalPadding
           >
@@ -52,7 +52,7 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
           <ListItem
             label="Company name"
             iconName={IconName.icPencilSimple}
-            iconColor="soft"
+            iconColor="light"
             onClick={() => handleEdit("company")}
             verticalPadding
           >
@@ -73,13 +73,13 @@ export function ProfileEditor({ userId, profile }: ProfileEditorProps) {
         </ul>
       </Card>
 
-      {showEditOverlay && (
-        <ProfileEditOverlay
+      {showEditModal && (
+        <ProfileEditModal
           userId={userId}
           initialDisplayName={profile.display_name ?? undefined}
           initialCompanyName={profile.company_name ?? undefined}
           onClose={() => {
-            setShowEditOverlay(false)
+            setShowEditModal(false)
             setFocusField(null)
           }}
           focusField={focusField}

@@ -29,7 +29,7 @@ export default async function PublicProfilePage({
   }
 
   return (
-    <Section width="document" horizontalPadding>
+    <Section width="document" horizontalPadding pageStart>
       <Suspense fallback={<div>Loading Profile...</div>}>
         <CardWithHeading
           heading={

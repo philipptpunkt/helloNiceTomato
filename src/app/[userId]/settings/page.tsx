@@ -5,7 +5,7 @@ import { SettingsList } from "./_components/SettingsList"
 
 export default function SettingsPage() {
   return (
-    <Section width="document" horizontalPadding>
+    <Section width="document" horizontalPadding verticalPadding pageStart>
       <Heading type="default" size="reduced" text="Settings" />
       <Spacer />
       <Card>

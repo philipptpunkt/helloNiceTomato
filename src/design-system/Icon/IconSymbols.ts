@@ -33,6 +33,8 @@ import icTelegramLogo from "./svgs/ic-telegram-logo.svg"
 import icThreadsLogo from "./svgs/ic-threads-logo.svg"
 import icTiktokLogo from "./svgs/ic-tiktok-logo.svg"
 import icTwitchLogo from "./svgs/ic-twitch-logo.svg"
+import icX from "./svgs/ic-x.svg"
+import icXCircle from "./svgs/ic-x-circle.svg"
 import icYoutubeLogo from "./svgs/ic-youtube-logo.svg"
 
 export interface Svg {
@@ -74,5 +76,7 @@ export const iconSymbols = {
   icThreadsLogo,
   icTiktokLogo,
   icTwitchLogo,
+  icX,
+  icXCircle,
   icYoutubeLogo,
 } satisfies Record<IconName, Svg>

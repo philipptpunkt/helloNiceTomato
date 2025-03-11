@@ -46,7 +46,10 @@ const inputVariants = cva(
 )
 
 interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "type">,
+  extends Omit<
+      InputHTMLAttributes<HTMLInputElement>,
+      "className" | "style" | "type"
+    >,
     VariantProps<typeof inputVariants> {
   label?: string
   helpText?: string
