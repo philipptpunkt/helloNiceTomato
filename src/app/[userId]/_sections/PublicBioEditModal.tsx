@@ -6,6 +6,9 @@ import { z } from "zod"
 import { useToast } from "@/components/toast/ToastContext"
 import { updatePublicProfile } from "@/actions/publicProfile/update"
 import { PublicProfile } from "@/types/profile"
+import { Modal } from "@/design-system/Modal"
+import { Button } from "@/design-system/Button"
+import { Textarea } from "@/design-system/Input"
 
 const BioSchema = z.object({
   bio: z.string().max(500, "Bio must be 500 characters or less"),
@@ -13,17 +16,17 @@ const BioSchema = z.object({
 
 type Inputs = z.infer<typeof BioSchema>
 
-interface BioEditOverlayProps {
+interface PublicBioEditModalProps {
   profileId: string
   publicProfile: PublicProfile
   onClose: () => void
 }
 
-export function BioEditOverlay({
+export function PublicBioEditModal({
   profileId,
   publicProfile,
   onClose,
-}: BioEditOverlayProps) {
+}: PublicBioEditModalProps) {
   const { addToast } = useToast()
   const {
     register,
@@ -69,15 +72,14 @@ export function BioEditOverlay({
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-6 rounded-lg max-w-md w-full">
+    <Modal onClose={onClose}>
+      <div className="w-full md:w-xl">
         <h2 className="text-xl font-semibold mb-4">Edit Bio</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <textarea
+            <Textarea
               {...register("bio")}
               rows={6}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
               placeholder="Write something about yourself..."
             />
             <p className="mt-1 text-sm text-gray-500 text-right">
@@ -89,23 +91,20 @@ export function BioEditOverlay({
           </div>
 
           <div className="flex justify-end space-x-2">
-            <button
+            <Button
               type="button"
+              variant="outlined"
+              contentStyle="narrow"
               onClick={onClose}
-              className="px-4 py-2 text-gray-600 hover:text-gray-800"
             >
               Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
-            >
-              {isSubmitting ? "Saving..." : "Save"}
-            </button>
+            </Button>
+            <Button type="submit" contentStyle="narrow" disabled={isSubmitting}>
+              {isSubmitting ? "Saving..." : "Save changes"}
+            </Button>
           </div>
         </form>
       </div>
-    </div>
+    </Modal>
   )
 }

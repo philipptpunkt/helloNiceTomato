@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { BioEditOverlay } from "@/components/overlays/BioEditOverlay"
 import { PublicProfile } from "@/types/profile"
 import { Icon, IconName } from "@/design-system/Icon"
 import { CardWithHeading } from "@/design-system/Card"
@@ -9,6 +8,7 @@ import { ListItem } from "@/design-system/List"
 import Link from "next/link"
 import { PublicProfileEditModal } from "./PublicProfileEditModal"
 import { cn } from "@/utils/cn"
+import { PublicBioEditModal } from "./PublicBioEditModal"
 
 interface PublicProfileSectionProps {
   userId: string
@@ -21,7 +21,7 @@ export function PublicProfileSection({
 }: PublicProfileSectionProps) {
   const [showPublicProfilEditModal, setShowPublicProfilEditModal] =
     useState(false)
-  const [showBioOverlay, setShowBioOverlay] = useState(false)
+  const [showPublicBioEditModal, setShowPublicBioEditModal] = useState(false)
 
   if (!publicProfile) {
     return (
@@ -98,7 +98,7 @@ export function PublicProfileSection({
           label="Bio"
           iconName={IconName.icPencilSimple}
           iconColor="light"
-          onClick={() => setShowBioOverlay(true)}
+          onClick={() => setShowPublicBioEditModal(true)}
           verticalPadding
         >
           {publicProfile.bio || "No bio added yet"}
@@ -123,11 +123,11 @@ export function PublicProfileSection({
           onClose={() => setShowPublicProfilEditModal(false)}
         />
       )}
-      {showBioOverlay && (
-        <BioEditOverlay
+      {showPublicBioEditModal && (
+        <PublicBioEditModal
           profileId={publicProfile.id}
           publicProfile={publicProfile}
-          onClose={() => setShowBioOverlay(false)}
+          onClose={() => setShowPublicBioEditModal(false)}
         />
       )}
     </CardWithHeading>
