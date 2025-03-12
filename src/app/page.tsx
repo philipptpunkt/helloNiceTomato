@@ -37,8 +37,18 @@ export default function Home() {
         </div>
       </Section>
 
+      <Section
+        containerClassName={cn([
+          "bg-gradient-to-t from-neutral-50 from-10% to-primary-400 to-100%",
+          "dark:from-primary-950 dark:from-30% dark:to-primary-600",
+        ])}
+        className={cn(["h-screen"])}
+      >
+        Content Section
+      </Section>
+
       {/* Features Section */}
-      <section className="py-16 px-8 md:px-16 bg-primary-50">
+      <Section>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">
             Why Join Our Community?
@@ -58,7 +68,7 @@ export default function Home() {
             />
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Footer */}
       <footer className="bg-background py-12 px-8 md:px-16 border-t border-primary-100">

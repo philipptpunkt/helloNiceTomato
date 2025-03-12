@@ -4,9 +4,9 @@ export const topNavigationRoutes = [
     label: "How it works",
     href: "/how-it-works",
   },
-  {
-    id: 1,
-    label: "Help",
-    href: "/help",
-  },
+  // {
+  //   id: 1,
+  //   label: "Help",
+  //   href: "/help",
+  // },
 ]
