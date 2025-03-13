@@ -1,51 +1,13 @@
-import { SignInForm } from "@/components/forms/SignInForm"
 import { Section } from "@/design-system/Layout"
-import { cn } from "@/utils/cn"
-import Link from "next/link"
+import { Hero } from "./_sections/Hero/Hero"
+import { ThrowYourself } from "./_sections/ThrowYourself/ThrowYourself"
 
 export default function Home() {
   return (
     <main className="flex flex-col">
-      <Section
-        width="narrow"
-        containerClassName={cn([
-          "bg-gradient-to-b from-neutral-50 from-10% to-primary-400 to-90%",
-          "dark:from-primary-950 dark:from-30% dark:to-primary-600",
-        ])}
-        className={cn([
-          "min-h-[600px]",
-          "h-screen",
-          "flex flex-col md:flex-row",
-          "justify-center",
-        ])}
-      >
-        <div className="w-full md:w-1/2 px-4 md:px-8 flex flex-col justify-center">
-          <div>
-            <h1 className="text-center md:text-left">
-              <span>Hello&nbsp;nice </span>
-              <span className="text-text-highlight">to&nbsp;meet&nbsp;you</span>
-            </h1>
-            <p className="text-md md:text-xl lg:text-2xl text-center md:text-left mt-4 md:mt-8">
-              With HelloNiceTomato you can connect with people, promote your
-              business and much more. Simply create your profile and share the
-              QR code or link we provide.
-            </p>
-          </div>
-        </div>
-        <div className="w-full md:w-1/2 p-4 md:pt-8 flex items-center justify-center">
-          <SignInForm />
-        </div>
-      </Section>
+      <Hero />
 
-      <Section
-        containerClassName={cn([
-          "bg-gradient-to-t from-neutral-50 from-10% to-primary-400 to-90%",
-          "dark:from-primary-950 dark:from-30% dark:to-primary-600",
-        ])}
-        className={cn(["h-screen"])}
-      >
-        Content Section
-      </Section>
+      <ThrowYourself />
 
       {/* Features Section */}
       <Section>
@@ -69,68 +31,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-
-      {/* Footer */}
-      <footer className="bg-background py-12 px-8 md:px-16 border-t border-primary-100">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <h3 className="font-bold">About</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/about" className="hover:text-primary">
-                  Our Story
-                </Link>
-              </li>
-              <li>
-                <Link href="/team" className="hover:text-primary">
-                  Team
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="space-y-4">
-            <h3 className="font-bold">Community</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/guidelines" className="hover:text-primary">
-                  Guidelines
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="hover:text-primary">
-                  Blog
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="space-y-4">
-            <h3 className="font-bold">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/privacy" className="hover:text-primary">
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-primary">
-                  Terms
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="space-y-4">
-            <h3 className="font-bold">Follow Us</h3>
-            <div className="flex space-x-4">
-              <Link href="#" className="hover:text-primary">
-                Twitter
-              </Link>
-              <Link href="#" className="hover:text-primary">
-                Instagram
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </main>
   )
 }

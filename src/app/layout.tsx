@@ -4,6 +4,7 @@ import "./globals.css"
 import { ToastProvider } from "@/components/toast/ToastContext"
 import { ThemeProvider } from "next-themes"
 import { Navigation } from "@/components/navigation/Navigation"
+import { Footer } from "@/components/footer/Footer"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
           <ToastProvider>
             <Navigation />
             {children}
+            <Footer />
           </ToastProvider>
         </ThemeProvider>
       </body>

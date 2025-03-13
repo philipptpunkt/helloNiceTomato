@@ -67,7 +67,7 @@ export default async function AccountPage({
   }
 
   return (
-    <>
+    <main>
       <Section width="document" horizontalPadding verticalPadding pageStart>
         <Heading
           type="highlight"
@@ -98,6 +98,6 @@ export default async function AccountPage({
           <QrCodeSection />
         </Suspense>
       </Section>
-    </>
+    </main>
   )
 }

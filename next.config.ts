@@ -4,10 +4,10 @@ import type { RuleSetRule } from "webpack"
 const nextConfig: NextConfig = {
   output: "standalone",
   webpack(config) {
-    config.module.rules = config.module.rules.filter(
-      (rule: RuleSetRule) =>
-        !(rule.test instanceof RegExp && rule.test.test(".svg"))
-    )
+    // config.module.rules = config.module.rules.filter(
+    //   (rule: RuleSetRule) =>
+    //     !(rule.test instanceof RegExp && rule.test.test(".svg"))
+    // )
 
     config.module.rules.push({
       test: /\.svg$/,
@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
         },
       ],
     })
+
     return config
   },
 }
