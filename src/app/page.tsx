@@ -9,7 +9,7 @@ export default function Home() {
       <Section
         width="narrow"
         containerClassName={cn([
-          "bg-gradient-to-b from-neutral-50 from-10% to-primary-400 to-100%",
+          "bg-gradient-to-b from-neutral-50 from-10% to-primary-400 to-90%",
           "dark:from-primary-950 dark:from-30% dark:to-primary-600",
         ])}
         className={cn([
@@ -39,7 +39,7 @@ export default function Home() {
 
       <Section
         containerClassName={cn([
-          "bg-gradient-to-t from-neutral-50 from-10% to-primary-400 to-100%",
+          "bg-gradient-to-t from-neutral-50 from-10% to-primary-400 to-90%",
           "dark:from-primary-950 dark:from-30% dark:to-primary-600",
         ])}
         className={cn(["h-screen"])}

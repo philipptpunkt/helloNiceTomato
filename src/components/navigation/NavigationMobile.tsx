@@ -1,6 +1,6 @@
 "use client"
 
-import { SetStateAction, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Spin as BurgerIcon } from "hamburger-react"
 import { topNavigationRoutes as routes } from "./routes"
 import { useClickAway } from "react-use"
@@ -12,6 +12,7 @@ import { LogoutButton } from "./LogoutButton"
 import { cn } from "@/utils/cn"
 import { Session } from "@supabase/supabase-js"
 import { SettingsButton } from "./SettingsButton"
+import { useRouter, useSearchParams } from "next/navigation"
 
 function ListItemAnimationWrapper({
   index,
@@ -37,34 +38,32 @@ function ListItemAnimationWrapper({
   )
 }
 
-// function IconButtonWrapper({ children }: { children?: React.ReactNode }) {
-//   return (
-//     <div className="flex justify-center items-center w-12 h-12 bg-primary rounded-full">
-//       {children}
-//     </div>
-//   )
-// }
-
 function StyledLink({
   href,
   label,
   onClick,
+  highlight,
 }: {
   href: string
   label: string
-  onClick: (value: SetStateAction<boolean>) => void
+  onClick: () => void
+  highlight?: boolean
 }) {
   return (
     <Link
       href={href}
-      onClick={() => onClick((prev) => !prev)}
+      onClick={onClick}
       className={cn(
         "flex items-center justify-between",
         "w-full px-6 py-4",
         "rounded-full",
         "border-2 border-border",
         "transition-colors",
-        "hover:bg-neutral-200 dark:hover:bg-neutral-600 hover:border-secondary"
+        "hover:bg-neutral-200 dark:hover:bg-neutral-600 hover:border-secondary",
+        {
+          "text-primary": highlight,
+          "border-primary": highlight,
+        }
       )}
     >
       <span className="font-semibold">{label}</span>
@@ -72,18 +71,24 @@ function StyledLink({
   )
 }
 
-interface NavigationMobileProps {
-  session: Session | null
-}
-
-export function NavigationMobile({ session }: NavigationMobileProps) {
+export function NavigationMobileButton() {
   const [isMounted, setIsMounted] = useState(false)
-  const [isOpen, setOpen] = useState(false)
-  const ref = useRef(null)
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
-  const hasSession = Boolean(session)
+  const isOpen = searchParams.get("menu") === "open"
 
-  useClickAway(ref, () => setOpen(false))
+  const toggleMenu = () => {
+    const params = new URLSearchParams(searchParams.toString())
+    if (isOpen) {
+      params.delete("menu")
+    } else {
+      params.set("menu", "open")
+    }
+
+    // Update URL without full page reload
+    router.push(`?${params.toString()}`, { scroll: false })
+  }
 
   useEffect(() => {
     setIsMounted(true)
@@ -94,9 +99,28 @@ export function NavigationMobile({ session }: NavigationMobileProps) {
     return <div className="h-8 w-8" />
   }
 
+  return <BurgerIcon toggled={isOpen} size={24} toggle={toggleMenu} />
+}
+
+export function NavigationMobileMenu({ session }: { session: Session | null }) {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const ref = useRef(null)
+
+  const isOpen = searchParams.get("menu") === "open"
+
+  const hasSession = Boolean(session)
+
+  function closeMenu() {
+    const params = new URLSearchParams(searchParams.toString())
+    params.delete("menu")
+    router.push(`?${params.toString()}`, { scroll: false })
+  }
+
+  useClickAway(ref, () => closeMenu())
+
   return (
     <div ref={ref} className="relative">
-      <BurgerIcon toggled={isOpen} size={24} toggle={setOpen} />
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -104,7 +128,16 @@ export function NavigationMobile({ session }: NavigationMobileProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed w-full sm:max-w-96 bg-background-soft right-0 top-16 px-4 py-8"
+            className={cn([
+              "fixed",
+              "mt-2",
+              "z-20",
+              "w-full sm:max-w-96",
+              "backdrop-blur-xl",
+              "right-0 top-16",
+              "px-4 py-8",
+              "rounded-3xl",
+            ])}
           >
             <ul className="grid gap-4">
               <ListItemAnimationWrapper index={0}>
@@ -125,7 +158,8 @@ export function NavigationMobile({ session }: NavigationMobileProps) {
                   <StyledLink
                     href={`/${session!.user.id}`}
                     label="My Profile"
-                    onClick={setOpen}
+                    onClick={closeMenu}
+                    highlight
                   />
                 </ListItemAnimationWrapper>
               ) : null}
@@ -138,7 +172,7 @@ export function NavigationMobile({ session }: NavigationMobileProps) {
                     <StyledLink
                       href={route.href}
                       label={route.label}
-                      onClick={setOpen}
+                      onClick={closeMenu}
                     />
                   </ListItemAnimationWrapper>
                 )

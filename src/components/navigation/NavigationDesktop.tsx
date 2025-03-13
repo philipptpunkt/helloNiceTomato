@@ -1,5 +1,5 @@
-import Link from "next/link"
 import { topNavigationRoutes as routes } from "./routes"
+import { LinkItem } from "./LinkItem"
 
 export function NavigationDesktop() {
   return (
@@ -7,7 +7,7 @@ export function NavigationDesktop() {
       {routes.map((route) => {
         return (
           <li key={route.id} className="mr-8 last:mr-0">
-            <Link href={route.href}>{route.label}</Link>
+            <LinkItem {...route} />
           </li>
         )
       })}

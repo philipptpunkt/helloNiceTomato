@@ -3,10 +3,14 @@ import { TomatoLogo } from "./TomatoLogo"
 import { ThemeToggle } from "../theme/ThemeToggle"
 import { NavigationDesktop } from "./NavigationDesktop"
 import { cn } from "@/utils/cn"
-import { NavigationMobile } from "./NavigationMobile"
+import {
+  NavigationMobileButton,
+  NavigationMobileMenu,
+} from "./NavigationMobile"
 import { createClient } from "@/utils/supabase/server"
 import { LogoutButton } from "./LogoutButton"
 import { SettingsButton } from "./SettingsButton"
+import { Button } from "@/design-system/Button"
 
 function HomeLink({ containerClass }: { containerClass?: string }) {
   return (
@@ -26,38 +30,43 @@ export async function Navigation() {
   const hasSession = Boolean(session)
 
   return (
-    <header className="fixed top-0 z-20 w-full px-4 md:px-8 bg-transparent backdrop-blur">
-      <nav className="relative mx-auto flex h-16 max-w-[1280px] w-full items-center justify-center px-4">
-        <HomeLink containerClass="absolute left-0" />
+    <>
+      <header className="fixed top-0 z-20 w-full px-4 md:px-8 bg-transparent backdrop-blur">
+        <nav className="relative mx-auto flex h-16 max-w-[1280px] w-full items-center justify-center px-4">
+          <HomeLink containerClass="absolute left-0" />
 
-        <div className="hidden md:flex items-center space-x-8">
-          <NavigationDesktop />
-          {hasSession && (
-            <Link
-              href={`/${session!.user.id}`}
-              className="text-foreground hover:text-primary"
-            >
-              My Profile
-            </Link>
-          )}
-        </div>
+          <div className="hidden md:flex items-center space-x-8">
+            <NavigationDesktop />
+            {hasSession && (
+              <Button
+                type="link"
+                href={`/${session!.user.id}`}
+                variant="outlined"
+                contentStyle="narrow"
+              >
+                My Profile
+              </Button>
+            )}
+          </div>
 
-        <div className="hidden md:flex absolute right-0">
-          {hasSession ? (
-            <>
-              <SettingsButton userId={session!.user.id} />
-              <div className="w-2" />
-              <LogoutButton />
-              <div className="w-2" />
-            </>
-          ) : null}
-          <ThemeToggle />
-        </div>
+          <div className="hidden md:flex absolute right-0">
+            {hasSession ? (
+              <>
+                <SettingsButton userId={session!.user.id} />
+                <div className="w-2" />
+                <LogoutButton />
+                <div className="w-2" />
+              </>
+            ) : null}
+            <ThemeToggle />
+          </div>
 
-        <div className="md:hidden flex absolute right-0">
-          <NavigationMobile session={session} />
-        </div>
-      </nav>
-    </header>
+          <div className="md:hidden flex absolute right-0">
+            <NavigationMobileButton />
+          </div>
+        </nav>
+      </header>
+      <NavigationMobileMenu session={session} />
+    </>
   )
 }
