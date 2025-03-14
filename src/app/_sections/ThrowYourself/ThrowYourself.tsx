@@ -1,51 +1,76 @@
 import { Section } from "@/design-system/Layout"
 import { cn } from "@/utils/cn"
-import FindPartner from "../assets/find_a_partner.jpg"
-import MakeFriends from "../assets/make_new_friends.jpg"
-import { ImageCard } from "./ImageCard"
+import { ContentGrid } from "../Grid/ContentGrid"
+import { FindAPartnerBlob } from "./FindAPartnerBlob"
+import { PartnerImage } from "./PartnerImage"
+import { Corner } from "../Grid/Corner"
+import { FriendsImage } from "./FriendsImage"
 
 export function ThrowYourself() {
   return (
     <Section
       width="narrow"
-      containerClassName={cn([
-        "bg-gradient-to-t from-neutral-50 from-10% to-primary-400 to-90%",
-        "dark:from-primary-950 dark:from-30% dark:to-primary-600",
-      ])}
-      // className={cn(["h-screen"])}
+      containerClassName={cn(["bg-primary-400", "dark:bg-primary-950"])}
     >
-      <div className="flex justify-center my-16">
+      <div className="flex justify-center mt-16 mb-32">
         <h2 className="text-white text-6xl">Throw yourself out there</h2>
       </div>
-      <div className="space-y-16">
-        <ImageCard
-          imageUrl={FindPartner}
-          imageAlt="A couple sitting outside laughing"
-        >
-          <h3 className="font-black text-6xl mb-8 text-primary-900">
-            Find a partner
-          </h3>
-          <p className="text-4xl font-black text-primary-600">
-            <span className="text-6xl text-primary-700">Print the QR code</span>
-            <span className="text-5xl"> on a T&#8209;shirt and </span>
-            <span className="text-6xl text-primary-800">
-              let the world know
-            </span>
-            {` what you're `}
-            <span className="text-5xl text-primary-700">looking for</span>
-          </p>
-        </ImageCard>
+      <ContentGrid>
+        <FindAPartnerBlob />
 
-        <ImageCard
-          imageUrl={MakeFriends}
-          imageAlt="A couple sitting outside laughing"
-          imagePosition="right"
-        >
-          <h3 className="font-black text-6xl mb-8 text-primary-900">
-            Make new friends
-          </h3>
-        </ImageCard>
-      </div>
+        <PartnerImage />
+
+        <>
+          <div
+            className={cn([
+              "w-full h-24",
+              "col-start-1 col-span-6",
+              "row-start-8",
+            ])}
+          />
+
+          <div
+            className={cn([
+              "w-full h-24",
+              "col-start-1 col-span-6",
+              "row-start-9",
+              "bg-primary-200 dark:bg-primary-600",
+              "rounded-t-[3rem]",
+            ])}
+          />
+          <Corner position="bl" colStart={7} rowStart={9} />
+          <div
+            className={cn([
+              "w-full h-72",
+              "col-start-1 col-span-12",
+              "row-start-10",
+              "bg-primary-200 dark:bg-primary-600",
+              "rounded-tr-[3rem] rounded-bl-[3rem]",
+            ])}
+          />
+          <div
+            className={cn([
+              "w-full h-48",
+              "col-start-9 col-span-4",
+              "row-start-11",
+              "bg-primary-200 dark:bg-primary-600",
+              "rounded-b-[3rem]",
+            ])}
+          />
+          <Corner position="tr" colStart={8} rowStart={11} />
+        </>
+        <FriendsImage />
+
+        <div
+          className={cn([
+            "w-full h-48",
+            "col-start-9 col-span-4",
+            "row-start-12 end-row-14",
+            // "bg-primary-200 dark:bg-primary-600",
+            // "rounded-b-[3rem]",
+          ])}
+        />
+      </ContentGrid>
     </Section>
   )
 }

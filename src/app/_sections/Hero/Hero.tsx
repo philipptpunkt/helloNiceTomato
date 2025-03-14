@@ -8,7 +8,7 @@ export function Hero() {
       width="narrow"
       containerClassName={cn([
         "bg-gradient-to-b from-neutral-50 from-10% to-primary-400 to-90%",
-        "dark:from-primary-950 dark:from-30% dark:to-primary-600",
+        "dark:from-primary-950 dark:from-0% dark:via-primary-600 dark:via-50% dark:to-primary-950",
       ])}
       className={cn([
         "min-h-[600px]",

@@ -23,14 +23,18 @@ export function ImageCard({
         }
       )}
     >
+      <div className="flex flex-grow w-full max-w-[500px] h-[500px] bg-sky-500 rounded-full">
+        Test
+      </div>
       <div className="">
         <Image
           src={imageUrl}
-          // width={500}
-          // height={500}
+          width={500}
+          height={500}
           objectFit="cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt={imageAlt}
+          className="rounded-full"
         />
       </div>
       <div className="p-4 md:p-8">{children}</div>
