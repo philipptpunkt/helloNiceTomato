@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { TomatoLogo } from "./TomatoLogo"
 import { ThemeToggle } from "../theme/ThemeToggle"
 import { NavigationDesktop } from "./NavigationDesktop"
 import { cn } from "@/utils/cn"
@@ -11,13 +10,23 @@ import { createClient } from "@/utils/supabase/server"
 import { LogoutButton } from "./LogoutButton"
 import { SettingsButton } from "./SettingsButton"
 import { Button } from "@/design-system/Button"
+import TomatoLogo from "./assets/hello_nice_tomato_logo.svg"
 
 function HomeLink({ containerClass }: { containerClass?: string }) {
   return (
     <Link href="/" className={cn("flex items-center", containerClass)}>
-      <TomatoLogo className="h-8 w-8" />
-      <span>Hello Nice&nbsp;</span>
-      <span className="text-primary-600 dark:text-primary-300">Tomato</span>
+      <svg
+        className={cn(
+          "h-8 md:h-10 lg:h-12 w-8 md:w-10 lg:w-12",
+          "ml-[-0.5rem] mr-2"
+        )}
+      >
+        <use href={`#${TomatoLogo.id}`} />
+      </svg>
+      <span className="font-bold text-xl lg:text-3xl">Hello Nice&nbsp;</span>
+      <span className="font-black text-primary text-xl lg:text-3xl">
+        Tomato
+      </span>
     </Link>
   )
 }
