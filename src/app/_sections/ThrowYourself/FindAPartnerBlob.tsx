@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn"
-import { Corner } from "../Grid/Corner"
+import { Corner } from "../../_components/Grid/Corner"
 
 export function FindAPartnerBlob() {
   return (

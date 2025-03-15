@@ -4,7 +4,7 @@ export function Footer() {
       <div>Pages</div>
       <div>Legal Stuff and Help</div>
       <div>Social Media Links</div>
-      <div>Design System Link</div>
+      <div>Design System Link and Images links to unsplash</div>
     </footer>
   )
 }

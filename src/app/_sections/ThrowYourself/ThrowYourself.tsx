@@ -1,14 +1,15 @@
 import { Section } from "@/design-system/Layout"
 import { cn } from "@/utils/cn"
-import { ContentGrid } from "../Grid/ContentGrid"
+import { ContentGrid } from "../../_components/Grid/ContentGrid"
 import { FindAPartnerBlob } from "./FindAPartnerBlob"
 import { PartnerImage } from "./PartnerImage"
-import { Corner } from "../Grid/Corner"
+import { Corner } from "../../_components/Grid/Corner"
 import { FriendsImage } from "./FriendsImage"
 import { FriendshipBlob } from "./FriendshipBlob"
 import { RestaurantImage } from "./RestaurantImage"
 import { HandcraftImage } from "./HandcraftImage"
 import { Button } from "@/design-system/Button"
+import { SectionHeader } from "@/app/_components/SectionHeader"
 
 export function ThrowYourself() {
   return (
@@ -17,7 +18,7 @@ export function ThrowYourself() {
       containerClassName={cn(["bg-primary-400", "dark:bg-primary-950"])}
     >
       <div className="flex justify-center mt-16 mb-32">
-        <h2 className="text-white text-6xl">Throw yourself out there</h2>
+        <SectionHeader headline="Throw yourself out there" />
       </div>
       <ContentGrid>
         <FindAPartnerBlob />
