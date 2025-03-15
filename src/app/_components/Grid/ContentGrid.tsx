@@ -8,13 +8,7 @@ interface ContentGridProps {
 export function ContentGrid({ children, className }: ContentGridProps) {
   return (
     <div
-      className={cn(
-        "w-full",
-        "grid grid-cols-6",
-        "md:grid-cols-8",
-        "lg:grid-cols-12",
-        className
-      )}
+      className={cn("w-full", "grid grid-cols-8", "lg:grid-cols-12", className)}
     >
       {children}
     </div>

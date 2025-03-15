@@ -15,6 +15,7 @@ export function ThrowYourself() {
   return (
     <Section
       width="narrow"
+      horizontalPadding
       containerClassName={cn(["bg-primary-400", "dark:bg-primary-950"])}
     >
       <div className="flex justify-center mt-16 mb-32">
@@ -54,8 +55,14 @@ export function ThrowYourself() {
               "row-start-16",
               "bg-primary-200 dark:bg-primary-600",
               "rounded-tl-[3rem] rounded-bl-[3rem]",
+              "py-4 px-8",
+              "flex items-center",
             ])}
-          />
+          >
+            <h3 className="font-black text-6xl text-white">
+              Or how about promoting your restaurant?
+            </h3>
+          </div>
           <div
             className={cn([
               "w-full h-72",
@@ -63,8 +70,16 @@ export function ThrowYourself() {
               "row-start-18 row-end-22",
               "bg-primary-200 dark:bg-primary-600",
               "rounded-b-[3rem]",
+              "py-4 px-8",
             ])}
-          />
+          >
+            <p className="text-4xl font-black text-primary-100">
+              Link to your menu or your Instagram.
+            </p>
+            <p className="text-5xl font-black text-primary-50">
+              Or directly forward visitors to your website.
+            </p>
+          </div>
           <Corner position="tr" colStart={7} rowStart={18} />
         </>
 
@@ -96,8 +111,12 @@ export function ThrowYourself() {
               "row-start-25",
               "bg-primary-200 dark:bg-primary-600",
               "rounded-tl-[3rem] rounded-br-[3rem]",
+              "px-8",
+              "flex items-center",
             ])}
-          />
+          >
+            <h3 className="font-black text-6xl text-white">Got a business?</h3>
+          </div>
           <div
             className={cn([
               "w-full h-72",
@@ -105,8 +124,16 @@ export function ThrowYourself() {
               "row-start-26",
               "bg-primary-200 dark:bg-primary-600",
               "rounded-b-[3rem]",
+              "py-4 px-8",
             ])}
-          />
+          >
+            <p className="text-4xl font-black text-primary-100 mb-8">
+              Add your public profile.
+            </p>
+            <p className="text-5xl font-black text-primary-200">
+              Or add your own website to direktly forward visitors.
+            </p>
+          </div>
           <Corner position="tl" colStart={7} rowStart={26} />
         </>
         <HandcraftImage />

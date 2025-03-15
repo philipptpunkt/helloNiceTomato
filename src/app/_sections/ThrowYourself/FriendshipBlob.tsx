@@ -16,7 +16,7 @@ export function FriendshipBlob() {
           "bg-primary-200 dark:bg-primary-600",
           "rounded-t-[3rem]",
         ])}
-      />
+      ></div>
       <Corner position="bl" colStart={7} rowStart={9} />
       <div
         className={cn([
@@ -25,8 +25,18 @@ export function FriendshipBlob() {
           "row-start-10",
           "bg-primary-200 dark:bg-primary-600",
           "rounded-tr-[3rem] rounded-bl-[3rem]",
+          "py-4 px-8",
+          "flex flex-col justify-evenly",
         ])}
-      />
+      >
+        <h3 className="font-black text-6xl text-white">Make new friends?</h3>
+        <p className="text-5xl font-black text-primary-50">
+          Share all your socials
+        </p>
+        <p className="text-6xl font-black text-primary-100">
+          with just one link or the provided QR code
+        </p>
+      </div>
       <div
         className={cn([
           "w-full h-48",
