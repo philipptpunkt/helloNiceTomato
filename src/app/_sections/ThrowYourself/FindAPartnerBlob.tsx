@@ -25,10 +25,16 @@ export function FindAPartnerBlob() {
           "flex flex-col justify-evenly"
         )}
       >
-        <h3 className="font-black text-6xl text-white">Find a partner?</h3>
+        <h3 className="font-black text-6xl text-black dark:text-white">
+          Find a partner?
+        </h3>
         <p className="text-5xl font-black">
-          <span className="text-primary-100">Print the QR code </span>
-          <span className="text-primary-200 text-6xl">on a T-shirt</span>
+          <span className="text-primary-700 dark:text-primary-100">
+            Print the QR code{" "}
+          </span>
+          <span className="text-primary-800 dark:text-primary-200 text-6xl">
+            on a T-shirt
+          </span>
         </p>
       </div>
       <div
@@ -52,11 +58,11 @@ export function FindAPartnerBlob() {
         ])}
       >
         <div className="flex flex-col h-full">
-          <p className="text-6xl font-black text-primary-100 mb-8">
+          <p className="text-6xl font-black text-primary-600 dark:text-primary-100 mb-8">
             and let the world know
           </p>
-          <p className="text-5xl font-black text-primary-50">
-            what you are looking for
+          <p className="text-5xl font-black text-primary-800 dark:text-primary-50">
+            what you are looking for!
           </p>
         </div>
       </div>

@@ -59,7 +59,7 @@ export function ThrowYourself() {
               "flex items-center",
             ])}
           >
-            <h3 className="font-black text-6xl text-white">
+            <h3 className="font-black text-6xl text-black dark:text-white">
               Or how about promoting your restaurant?
             </h3>
           </div>
@@ -73,10 +73,10 @@ export function ThrowYourself() {
               "py-4 px-8",
             ])}
           >
-            <p className="text-4xl font-black text-primary-100">
+            <p className="text-4xl font-black text-primary-500 dark:text-primary-100">
               Link to your menu or your Instagram.
             </p>
-            <p className="text-5xl font-black text-primary-50">
+            <p className="text-5xl font-black text-primary-800 dark:text-primary-50">
               Or directly forward visitors to your website.
             </p>
           </div>
@@ -115,7 +115,9 @@ export function ThrowYourself() {
               "flex items-center",
             ])}
           >
-            <h3 className="font-black text-6xl text-white">Got a business?</h3>
+            <h3 className="font-black text-6xl text-black dark:text-white">
+              Got a business?
+            </h3>
           </div>
           <div
             className={cn([
@@ -127,10 +129,10 @@ export function ThrowYourself() {
               "py-4 px-8",
             ])}
           >
-            <p className="text-4xl font-black text-primary-100 mb-8">
+            <p className="text-4xl font-black text-primary-600 dark:text-primary-100 mb-8">
               Add your public profile.
             </p>
-            <p className="text-5xl font-black text-primary-200">
+            <p className="text-5xl font-black text-primary-500 dark:text-primary-200">
               Or add your own website to direktly forward visitors.
             </p>
           </div>

@@ -29,12 +29,14 @@ export function FriendshipBlob() {
           "flex flex-col justify-evenly",
         ])}
       >
-        <h3 className="font-black text-6xl text-white">Make new friends?</h3>
-        <p className="text-5xl font-black text-primary-50">
-          Share all your socials
+        <h3 className="font-black text-6xl text-black dark:text-white">
+          Make new friends?
+        </h3>
+        <p className="text-5xl font-black text-primary-800 dark:text-primary-50">
+          Share all your socials.
         </p>
-        <p className="text-6xl font-black text-primary-100">
-          with just one link or the provided QR code
+        <p className="text-6xl font-black text-primary-600 dark:text-primary-100">
+          With just one link or the provided QR code.
         </p>
       </div>
       <div
