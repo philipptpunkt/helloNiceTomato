@@ -20,6 +20,7 @@ export const iconVariants = cva("text-text-light dark:text-text-dark", {
       secondary: "text-secondary",
       error: "text-error",
       success: "text-success",
+      bluesky: "text-bluesky",
     },
     strokeWidth: {
       thin: "stroke-[0.25em]",

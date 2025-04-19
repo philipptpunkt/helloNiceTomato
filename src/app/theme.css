@@ -40,6 +40,10 @@
   --color-secondary-900: oklch(26.9% 0.056 134);
   --color-secondary-950: oklch(13.84% 0.024 136);
 
+  --color-bluesky: rgb(16, 131, 254);
+  --color-bluesky-hover: rgb(1, 104, 213);
+  --color-bluesky-active: rgb(80, 151, 254);
+
   /* Background Color Tokens */
   --color-background: var(--theme-color-background);
   --color-background-inverted: var(--theme-color-background-inverted);

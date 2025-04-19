@@ -40,8 +40,10 @@ export async function updateSession(request: NextRequest) {
 
   if (
     !user &&
+    !request.nextUrl.pathname.startsWith("/api") &&
     !request.nextUrl.pathname.startsWith("/auth") &&
-    !request.nextUrl.pathname.startsWith("/tpp") &&
+    !request.nextUrl.pathname.startsWith("/public") &&
+    !request.nextUrl.pathname.startsWith("/blue") && //Exclude blue routes for BLuesky/Atproto auth flow
     request.nextUrl.pathname !== "/"
   ) {
     // no user, potentially respond by redirecting the user to the login page

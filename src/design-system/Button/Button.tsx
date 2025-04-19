@@ -61,6 +61,9 @@ const buttonVariants = cva(
       secondary: {
         false: null,
       },
+      bluesky: {
+        false: null,
+      },
     },
     compoundVariants: [
       {
@@ -96,11 +99,47 @@ const buttonVariants = cva(
           "hover:border-secondary-400 dark:hover:border-secondary-500",
         ],
       },
+      {
+        variant: "contained",
+        bluesky: true,
+        class: [
+          "bg-bluesky dark:bg-bluesky",
+          "hover:bg-bluesky-hover dark:hover:bg-bluesky-hover",
+          "active:bg-bluesky-active dark:active:bg-bluesky-active",
+          "border-bluesky dark:border-bluesky",
+          "hover:border-bluesky-hover dark:hover:border-bluesky-hover",
+          "active:border-bluesky-active dark:active:border-bluesky-active",
+        ],
+      },
+      {
+        variant: "outlined",
+        bluesky: true,
+        class: [
+          "text-bluesky dark:text-bluesky",
+          "hover:text-bluesky-hover dark:hover:text-bluesky-hover",
+          "active:text-bluesky-active dark:active:text-bluesky-active",
+          "border-bluesky dark:border-bluesky",
+          "hover:border-bluesky-hover dark:hover:border-bluesky-hover",
+          "active:border-bluesky-active dark:active:border-bluesky-active",
+        ],
+      },
+      {
+        variant: "text",
+        bluesky: true,
+        class: [
+          "text-bluesky dark:text-bluesky",
+          "hover:text-bluesky-hover dark:hover:text-bluesky-hover",
+          "active:text-bluesky-active dark:active:text-bluesky-active",
+          "hover:border-bluesky-hover dark:hover:border-bluesky-hover",
+          "active:border-bluesky-active dark:active:border-bluesky-active",
+        ],
+      },
     ],
     defaultVariants: {
       variant: "contained",
       contentStyle: "wide",
       secondary: false,
+      bluesky: false,
     },
   }
 )
@@ -120,12 +159,20 @@ type ButtonAsLink = {
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink
 
-function Button({ variant, contentStyle, secondary, ...props }: ButtonProps) {
+function Button({
+  variant,
+  contentStyle,
+  secondary = false,
+  bluesky = false,
+  ...props
+}: ButtonProps) {
   if (props.type === "link") {
     const { href, ...linkProps } = props
     return (
       <Link
-        className={cn(buttonVariants({ variant, contentStyle, secondary }))}
+        className={cn(
+          buttonVariants({ variant, contentStyle, secondary, bluesky })
+        )}
         href={href}
         {...linkProps}
       />
@@ -137,7 +184,9 @@ function Button({ variant, contentStyle, secondary, ...props }: ButtonProps) {
   return (
     <button
       type={type}
-      className={buttonVariants({ variant, contentStyle, secondary })}
+      className={cn(
+        buttonVariants({ variant, contentStyle, secondary, bluesky })
+      )}
       {...buttonProps}
     />
   )

@@ -111,8 +111,8 @@ export function PublicProfileSection({
           verticalPadding="wider"
         >
           <Link
-            href={`${process.env.NEXT_PUBLIC_BASE_URL}/tpp/${publicProfile.id}`}
-          >{`${process.env.NEXT_PUBLIC_BASE_URL}/tpp/${publicProfile.id}`}</Link>
+            href={`${process.env.NEXT_PUBLIC_BASE_URL}/public/${publicProfile.id}`}
+          >{`${process.env.NEXT_PUBLIC_BASE_URL}/public/${publicProfile.id}`}</Link>
         </ListItem>
       </ul>
 

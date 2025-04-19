@@ -1,4 +1,5 @@
-import { SignInForm } from "@/components/forms/SignInForm"
+// import { SignInForm } from "@/components/forms/SignInForm"
+import { SignInWithBluesky } from "@/components/bluesky/SignInWithBluesky"
 import { Section } from "@/design-system/Layout"
 import { cn } from "@/utils/cn"
 
@@ -31,7 +32,8 @@ export function Hero() {
         </div>
       </div>
       <div className="w-full md:w-1/2 p-4 md:pt-8 flex items-center justify-center">
-        <SignInForm />
+        {/* <SignInForm /> */}
+        <SignInWithBluesky />
       </div>
     </Section>
   )
