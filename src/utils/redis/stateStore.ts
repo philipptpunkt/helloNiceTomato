@@ -19,6 +19,11 @@ export const stateStore = {
 
   async del(key: string) {
     const redis = await getRedis()
-    await redis.del(`oauth:state:${key}`)
+    try {
+      const result = await redis.del(`oauth:state:${key}`)
+      console.log(`Del state ${key}:`, result)
+    } catch (err) {
+      console.warn(`Failed to delete state key: oauth:state:${key}`, err)
+    }
   },
 }
