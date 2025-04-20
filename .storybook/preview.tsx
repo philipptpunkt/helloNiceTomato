@@ -37,9 +37,23 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme || "light"
+
+      // ✅ Update data-theme attribute
       document.documentElement.removeAttribute("data-theme")
       if (theme === "dark") {
         document.documentElement.setAttribute("data-theme", "dark")
+      }
+
+      // ✅ Handle background switch only if default
+      const background = context.globals.backgrounds?.value
+      const isDefaultBackground =
+        background === undefined ||
+        background === "light" ||
+        background === "dark"
+
+      if (isDefaultBackground) {
+        const bgColor = theme === "dark" ? "#1a1a1a" : "#ffffff"
+        document.body.style.backgroundColor = bgColor
       }
 
       let label = context.parameters.storyLabel
@@ -81,18 +95,9 @@ const preview: Preview = {
     a11y: {
       config: {
         rules: [
-          {
-            id: "color-contrast",
-            selector: ":not(.ignore-check)",
-          },
-          {
-            id: "heading-order",
-            selector: ":not(.ignore-check)",
-          },
-          {
-            id: "empty-heading",
-            selector: ":not(.ignore-check)",
-          },
+          { id: "color-contrast", selector: ":not(.ignore-check)" },
+          { id: "heading-order", selector: ":not(.ignore-check)" },
+          { id: "empty-heading", selector: ":not(.ignore-check)" },
         ],
       },
     },

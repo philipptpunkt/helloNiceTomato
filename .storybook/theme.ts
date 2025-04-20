@@ -1,7 +1,10 @@
 import { create } from "@storybook/theming"
 
+const isDarkMode =
+  window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+
 export default create({
-  base: "light",
+  base: isDarkMode ? "dark" : "light",
   brandTitle: "Ketchup",
   brandUrl: "https://hellonicetomato.com",
   brandImage: "/logo/Ketchup_Logo.png",

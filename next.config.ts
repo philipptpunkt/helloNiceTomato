@@ -2,6 +2,15 @@ import type { NextConfig } from "next"
 import type { RuleSetRule } from "webpack"
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.bsky.app",
+        pathname: "/**",
+      },
+    ],
+  },
   output: "standalone",
   webpack(config) {
     // config.module.rules = config.module.rules.filter(
