@@ -1,5 +1,4 @@
-// import { SignInForm } from "@/components/forms/SignInForm"
-import { SignInWithBluesky } from "@/components/bluesky/SignInWithBluesky"
+import { SignInForm } from "@/components/forms/SignInForm"
 import { Section } from "@/design-system/Layout"
 import { cn } from "@/utils/cn"
 
@@ -12,7 +11,7 @@ export function Hero() {
         "dark:from-primary-950 dark:from-0% dark:via-primary-600 dark:via-50% dark:to-primary-950",
       ])}
       className={cn([
-        "min-h-[600px]",
+        "min-h-[800px]",
         "h-screen",
         "flex flex-col md:flex-row",
         "justify-center",
@@ -32,8 +31,7 @@ export function Hero() {
         </div>
       </div>
       <div className="w-full md:w-1/2 p-4 md:pt-8 flex items-center justify-center">
-        {/* <SignInForm /> */}
-        <SignInWithBluesky />
+        <SignInForm />
       </div>
     </Section>
   )

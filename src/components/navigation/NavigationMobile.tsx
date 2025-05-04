@@ -117,7 +117,15 @@ export function NavigationMobileMenu({ session }: { session: Session | null }) {
     router.push(`?${params.toString()}`, { scroll: false })
   }
 
-  useClickAway(ref, () => closeMenu())
+  useClickAway(ref, (event) => {
+    // Check if the click was on the burger button
+    const burgerElement = document.querySelector(".hamburger-react")
+    if (burgerElement && burgerElement.contains(event.target as Node)) {
+      return
+    }
+
+    closeMenu()
+  })
 
   return (
     <div ref={ref} className="relative">

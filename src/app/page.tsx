@@ -7,7 +7,7 @@ export default function Home() {
     <main className="flex flex-col">
       <Hero />
 
-      <ThrowYourself />
+      {/* <ThrowYourself /> */}
 
       <HowItWorks />
     </main>

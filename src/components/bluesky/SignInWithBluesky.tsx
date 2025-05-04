@@ -22,7 +22,7 @@ export function SignInWithBluesky() {
   } = useForm<Inputs>({ resolver: zodResolver(SignInSchema) })
 
   return (
-    <div className="p-8 w-full max-w-[400px] bg-background rounded-3xl border-2 border-bluesky shadow-xl">
+    <div className="p-8 w-full max-w-[400px]">
       <div className="flex mb-8 justify-center">
         <Icon iconName={IconName.icButterfly} color="bluesky" size="lg" />
         <h3 className="text-bluesky text-center text-2xl ml-2">

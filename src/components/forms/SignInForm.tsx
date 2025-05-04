@@ -6,6 +6,7 @@ import { z } from "zod"
 import { signIn } from "../../actions/signIn"
 import { Button } from "@/design-system/Button"
 import { Input } from "@/design-system/Input"
+import { Icon, IconName } from "@/design-system/Icon"
 
 const SignInSchema = z.object({
   email: z
@@ -60,9 +61,21 @@ export function SignInForm() {
           </Button>
         </div>
       </form>
-      <div className="flex flex-col items-center mt-4">
+      <div className="flex flex-col items-center mt-4 space-y-2">
         <Button type="link" contentStyle="wide" secondary href="/auth/signup">
           Sign up for free
+        </Button>
+        <Button
+          type="link"
+          variant="text"
+          contentStyle="full"
+          href="/blue/auth/signin"
+        >
+          <p className="text-text font-bold">{"Or sign in with"}</p>
+          <div className="mx-1">
+            <Icon iconName={IconName.icButterfly} strokeWidth="bold" />
+          </div>
+          <p className="text-text font-bold">{"Bluesky"}</p>
         </Button>
       </div>
     </div>
