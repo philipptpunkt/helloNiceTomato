@@ -48,10 +48,9 @@ export const socialLinks = [
   },
 ]
 
-// Storybook subdomain should be renamed to ketchuo.hellonicetomato.com
 export const resourceLinks = [
   {
     title: "Ketchup - Design System",
-    href: "https://storybook.hellonicetomato.com",
+    href: "https://ketchup.hellonicetomato.com",
   },
 ]
