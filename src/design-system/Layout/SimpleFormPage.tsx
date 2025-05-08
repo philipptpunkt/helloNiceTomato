@@ -19,7 +19,7 @@ export function SimpleFormPage({
       className={cn(
         "min-h-[800px]",
         "h-screen",
-        "flex flex-col justify-center items-center h-screen -mt-16",
+        "flex flex-col justify-center items-center",
         "text-center"
       )}
     >
