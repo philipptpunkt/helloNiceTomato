@@ -2,6 +2,11 @@ import { updateSession } from "./utils/supabase/middleware"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function middleware(request: NextRequest) {
+  // Allow healthcheck endpoint to bypass authentication
+  if (request.nextUrl.pathname === "/api/healthcheck") {
+    return NextResponse.next()
+  }
+
   const auth = request.headers.get("authorization")
   const password = process.env.TEMP_PAGE_PASSWORD
 
