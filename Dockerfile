@@ -1,14 +1,16 @@
 # Base image
 FROM node:18-alpine AS base
 
-# Install dependencies only when needed
-FROM base AS deps
+# Install any native dependencies
 RUN apk add --no-cache libc6-compat
+
+# Install npm deps
+FROM base AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Build the source code
+# Build the Next.js app
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -23,28 +25,30 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Create unprivileged user
+# Create a non-root user
 RUN addgroup --system --gid 1001 nodejs \
- && adduser --system --uid 1001 nextjs
+ && adduser  --system --uid 1001 nextjs
 
-# Copy public assets
+# Copy over public assets
 COPY --from=builder /app/public ./public
 
-# Copy Next.js standalone build and static files, set ownership
+# Copy the standalone build and static files with correct ownership
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static     ./.next/static
 
-# Ensure all files in /app are owned by nextjs
+# Ensure the nextjs user owns all files
 RUN chown -R nextjs:nodejs /app
 
 USER nextjs
 
+# Expose the port and set env vars
 EXPOSE 3000
 ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
+ENV HEALTH_PATH=/healthcheck
 
-# Health check for Coolify/Docker
+# Healthcheck (uses the same PORT and the /healthcheck endpoint)
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s \
-  CMD curl -f http://localhost:3000/health || exit 1
+  CMD sh -c 'curl -f "http://localhost:${PORT}${HEALTH_PATH}" || exit 1'
 
+# Start the app
 CMD ["node", "server.js"]
