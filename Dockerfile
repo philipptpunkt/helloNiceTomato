@@ -18,6 +18,8 @@ COPY . .
 # Next.js collects anonymous telemetry data about general usage - disable it
 ENV NEXT_TELEMETRY_DISABLED 1
 
+# Ensure we're building in standalone mode
+ENV NEXT_OUTPUT_STANDALONE 1
 RUN npm run build
 
 # Production image, copy all the files and run next
@@ -34,8 +36,10 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
+RUN mkdir .next
 RUN mkdir -p .next/cache
-RUN chown -R nextjs:nodejs .next
+RUN chown nextjs:nodejs .next
+
 
 # Automatically leverage output traces to reduce image size
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
