@@ -1,54 +1,55 @@
-# Base image
 FROM node:18-alpine AS base
 
-# Install any native dependencies
-RUN apk add --no-cache libc6-compat
-
-# Install npm deps
+# Install dependencies only when needed
 FROM base AS deps
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
+
+# Copy package files
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Build the Next.js app
+# Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV NEXT_OUTPUT_STANDALONE=1
+
+# Next.js collects anonymous telemetry data about general usage - disable it
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# Ensure we're building in standalone mode
+ENV NEXT_OUTPUT_STANDALONE 1
 RUN npm run build
 
-# Production image
-FROM node:18-alpine AS runner
+# Production image, copy all the files and run next
+FROM base AS runner
 WORKDIR /app
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
 
-# Create a non-root user
-RUN addgroup --system --gid 1001 nodejs \
- && adduser  --system --uid 1001 nextjs
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
-# Copy over public assets
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy public folder
 COPY --from=builder /app/public ./public
 
-# Copy the standalone build and static files with correct ownership
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static     ./.next/static
+# Set the correct permission for prerender cache
+RUN mkdir .next
+RUN mkdir -p .next/cache
+RUN chown nextjs:nodejs .next
 
-# Ensure the nextjs user owns all files
-RUN chown -R nextjs:nodejs /app
+
+# Automatically leverage output traces to reduce image size
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-# Expose the port and set env vars
 EXPOSE 3000
-ENV PORT=3000
-ENV HEALTH_PATH=/healthcheck
 
-# Healthcheck (uses the same PORT and the /healthcheck endpoint)
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s \
-  CMD sh -c 'curl -f "http://localhost:${PORT}${HEALTH_PATH}" || exit 1'
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
 
-# Start the app
 CMD ["node", "server.js"]
