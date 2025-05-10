@@ -1,4 +1,4 @@
-import { getOAuthClient } from "@/utils/atproto/client"
+// import { getOAuthClient } from "@/utils/atproto/client"
 import { AtpAgent } from "@atproto/api"
 
 export default async function ProfilePage({

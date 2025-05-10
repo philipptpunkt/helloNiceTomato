@@ -6,6 +6,7 @@ import { z } from "zod"
 import { Button } from "@/design-system/Button"
 import { Input } from "@/design-system/Input"
 import { Icon, IconName } from "@/design-system/Icon"
+import { signInBlue } from "@/actions/blue/signin"
 
 const SignInSchema = z.object({
   handle: z.string().trim().nonempty({ message: "HAndle is required" }),
@@ -33,7 +34,7 @@ export function SignInFormBluesky() {
           Login with Bluesky
         </h3>
       </div>
-      <form onSubmit={handleSubmit(signInWithBluesky)}>
+      <form onSubmit={handleSubmit(signInBlue)}>
         <Input
           placeholder="bluesky handle"
           type="text"
