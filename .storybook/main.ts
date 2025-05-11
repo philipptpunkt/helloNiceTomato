@@ -20,6 +20,12 @@ const config: StorybookConfig = {
   },
   staticDirs: ["../public"],
 
+  env: (config) => ({
+    ...config,
+    STORYBOOK_BASE_URL:
+      process.env.STORYBOOK_BASE_URL || "https://ketchup.hellonicetomato.com",
+  }),
+
   webpackFinal: async (config) => {
     const fileLoaderRule = config.module?.rules?.find(
       (rule): rule is RuleSetRule =>
