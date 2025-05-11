@@ -14,6 +14,7 @@ RUN npm install
 
 # Copy source files and build
 COPY . .
+ENV STORYBOOK_DISABLE_TELEMETRY=1
 
 RUN mkdir -p public
 
