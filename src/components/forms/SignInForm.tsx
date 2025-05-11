@@ -32,20 +32,17 @@ export function SignInForm() {
 
   return (
     <div className="p-8 w-full max-w-[400px]">
-      <form onSubmit={handleSubmit(signIn)}>
+      <form onSubmit={handleSubmit(signIn)} className="flex flex-col space-y-4">
         <Input
           placeholder="email address"
           type="email"
           {...register("email")}
-          error={errors.email?.message}
-          reserveHelpTextSpace
         />
         <Input
           placeholder="password"
           type="password"
           {...register("password")}
-          error={errors.password?.message}
-          reserveHelpTextSpace
+          error={Boolean(errors.password?.message)}
         />
         <Button type="submit" contentStyle="full" disabled={isSubmitting}>
           {isSubmitting ? "loading..." : "Let's Go"}

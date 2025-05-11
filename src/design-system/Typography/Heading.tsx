@@ -1,8 +1,12 @@
 import { cn } from "@/utils/cn"
+import { ElementType } from "react"
+
+export type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
 interface Shared {
   size?: "normal" | "reduced"
   className?: string
+  as?: HeadingType
 }
 
 interface DefaultHeadline extends Shared {
@@ -21,13 +25,16 @@ export type HeadingProps = DefaultHeadline | HighlightHeadline
 export function Heading({
   size = "normal",
   className,
+  as = "h1",
   ...props
 }: HeadingProps) {
+  const defaultClasses = "text-5xl md:text-6xl lg:text-7xl font-extrabold"
   const reducedSizeClasses = "text-2xl sm:text-3xl md:text-4xl font-semibold"
+  const HeadingTag = as as ElementType
 
   if (props.type === "default") {
     return (
-      <h1
+      <HeadingTag
         className={cn(
           {
             [reducedSizeClasses]: size === "reduced",
@@ -36,20 +43,21 @@ export function Heading({
         )}
       >
         {props.text}
-      </h1>
+      </HeadingTag>
     )
   }
   return (
-    <h1
+    <HeadingTag
       className={cn(
         {
+          [defaultClasses]: size === "normal",
           [reducedSizeClasses]: size === "reduced",
         },
         className
       )}
     >
-      <span>{props.defaultText}&#8197;</span>
+      <span className="inherit">{props.defaultText}&#8197;</span>
       <span className="text-primary">{props.highlightText}</span>
-    </h1>
+    </HeadingTag>
   )
 }

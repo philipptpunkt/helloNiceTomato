@@ -10,6 +10,7 @@ export interface ButtonUIProps {
   label: string
   onClick?: () => void
   secondary?: boolean
+  bluesky?: boolean
   disabled?: boolean
 }
 
@@ -19,6 +20,7 @@ export const Button = ({
   label,
   onClick,
   secondary = false,
+  bluesky = false,
   disabled = false,
 }: ButtonUIProps) => {
   return (
@@ -28,6 +30,7 @@ export const Button = ({
       onClick={onClick}
       contentStyle={contentStyle}
       secondary={secondary}
+      bluesky={bluesky}
       disabled={disabled}
     >
       {label}

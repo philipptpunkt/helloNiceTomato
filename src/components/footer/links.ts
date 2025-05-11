@@ -1,13 +1,19 @@
 import { IconName } from "@/design-system/Icon"
 
-export const pageLinks = [
+type FooterLink = {
+  title: string
+  href: string
+  external?: boolean
+}
+
+export const pageLinks: FooterLink[] = [
   {
     title: "Home",
     href: "/",
   },
   {
     title: "How it works",
-    href: "/how-it-works",
+    href: "/public/how-it-works",
   },
   {
     title: "Password reset",
@@ -15,18 +21,30 @@ export const pageLinks = [
   },
   {
     title: "Bluesky signin",
-    href: "/blue/auth/sigin",
+    href: "/blue/auth/signin",
   },
 ]
 
-export const legalLinks = [
+export const legalLinks: FooterLink[] = [
   {
     title: "Legal notice",
-    href: "/terms",
+    href: "/public/terms",
+    external: true,
   },
   {
     title: "Privacy policy",
-    href: "/privacy-policy",
+    href: "/public/privacy-policy",
+    external: true,
+  },
+  {
+    title: "Bluesky Terms",
+    href: "https://bsky.social/about/support/tos",
+    external: true,
+  },
+  {
+    title: "Bluesky Privacy",
+    href: "https://bsky.social/about/support/privacy-policy",
+    external: true,
   },
 ]
 
@@ -48,9 +66,10 @@ export const socialLinks = [
   },
 ]
 
-export const resourceLinks = [
+export const resourceLinks: FooterLink[] = [
   {
     title: "Ketchup - Design System",
     href: "https://ketchup.hellonicetomato.com",
+    external: true,
   },
 ]

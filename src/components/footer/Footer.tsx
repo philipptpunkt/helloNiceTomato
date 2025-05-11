@@ -8,12 +8,17 @@ import { Input } from "@/design-system/Input"
 import { Button } from "@/design-system/Button"
 import { Heading } from "@/design-system/Typography"
 
+function FooterTitle({ title }: { title: string }) {
+  return <strong className="block font-bold text-lg mb-3">{title}</strong>
+}
+
 export function Footer() {
   return (
     <footer className="relative w-full bg-secondary-200 dark:bg-secondary-600">
       <Section width="narrow" horizontalPadding className="relative py-8">
         <Link href="/" className="inline-block">
           <Heading
+            as="h3"
             size="reduced"
             type="highlight"
             defaultText="Hello Nice"
@@ -29,7 +34,7 @@ export function Footer() {
               "z-10",
             ])}
           >
-            <strong className="block font-semibold text-lg mb-3">Pages</strong>
+            <FooterTitle title="Pages" />
             <PageLinks />
           </div>
           <div

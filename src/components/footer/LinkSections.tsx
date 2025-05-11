@@ -7,17 +7,27 @@ function LinkList({ children }: { children: React.ReactNode }) {
   return <ul className={cn(["list-none", "space-y-4"])}>{children}</ul>
 }
 
-function FooterLink({ title, href }: { title: string; href: string }) {
+function FooterLink({
+  title,
+  href,
+  external,
+}: {
+  title: string
+  href: string
+  external?: boolean
+}) {
   return (
     <Link
       href={href}
       className={cn([
         "inline-block",
-        "text-neutral-600 dark:text-neutral-300",
+        "text-neutral-900 dark:text-neutral-100",
         "hover:text-primary",
         "hover:scale-105",
         "font-semibold",
       ])}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
     >
       {title}
     </Link>
@@ -67,6 +77,8 @@ export function SocialMediaLinks() {
                 "inline-block",
                 "hover:scale-110",
               ])}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Icon iconName={link.icon} size="lg" />
             </Link>

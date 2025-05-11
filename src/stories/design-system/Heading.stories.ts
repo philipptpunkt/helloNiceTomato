@@ -11,6 +11,10 @@ const meta: Meta = {
     storyHeadline: "Heading",
   },
   argTypes: {
+    as: {
+      control: "radio",
+      options: ["h1", "h2", "h3", "h4", "h5", "h6"],
+    },
     size: {
       control: "radio",
       options: ["normal", "reduced"],
@@ -40,7 +44,7 @@ const meta: Meta = {
 
       if (context.globals.highlightMode) {
         emit(HIGHLIGHT, {
-          elements: ["h1"],
+          elements: ["h1", "h2", "h3", "h4", "h5", "h6"],
         })
       }
       return story()
@@ -48,6 +52,7 @@ const meta: Meta = {
   ],
   tags: ["autodocs"],
   args: {
+    as: "h1",
     type: "default",
     size: "normal",
     text: "Heading",
@@ -61,6 +66,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
+    as: "h1",
     type: "default",
     text: "Heading",
     size: "normal",
@@ -72,6 +78,7 @@ export const Default: Story = {
 
 export const Highlight: Story = {
   args: {
+    as: "h1",
     type: "highlight",
     defaultText: "Highlight",
     highlightText: "heading",
@@ -95,6 +102,7 @@ export const Reduced: Story = {
 
 export const ReducedHighlight: Story = {
   args: {
+    as: "h1",
     type: "highlight",
     defaultText: "Highlight",
     highlightText: "heading",

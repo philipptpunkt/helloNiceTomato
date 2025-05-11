@@ -28,6 +28,10 @@ const meta: Meta = {
       description: "Enables the secondary color option",
       control: "boolean",
     },
+    bluesky: {
+      description: "Enables the Bluesky color option",
+      control: "boolean",
+    },
     disabled: {
       description: "Disabled state of the button",
       control: "boolean",
@@ -54,6 +58,7 @@ const meta: Meta = {
     variant: "contained",
     contentStyle: "wide",
     secondary: false,
+    bluesky: false,
     disabled: false,
   },
 } satisfies Meta<typeof Button>
@@ -67,6 +72,7 @@ export const Contained: Story = {
     contentStyle: "wide",
     label: "Click Me",
     secondary: false,
+    bluesky: false,
     disabled: false,
   },
   parameters: {
@@ -91,5 +97,17 @@ export const Text: Story = {
   },
   parameters: {
     storyLabel: "Text Button",
+  },
+}
+
+export const Bluesky: Story = {
+  args: {
+    ...Contained.args,
+    bluesky: true,
+    label: "Login with Bluesky",
+    variant: "contained",
+  },
+  parameters: {
+    storyLabel: "Bluesky Button",
   },
 }

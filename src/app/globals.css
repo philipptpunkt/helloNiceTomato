@@ -53,6 +53,24 @@
     color: var(--color-text);
   }
 
+  h4 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+  }
+
+  h5 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+  }
+
+  h6 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+  }
+
   .qr-code canvas {
     width: 100%;
     max-width: 300px;
