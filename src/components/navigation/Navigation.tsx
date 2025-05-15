@@ -9,14 +9,13 @@ import { createClient } from "@/utils/supabase/server"
 import { LogoutButton } from "./LogoutButton"
 import { SettingsButton } from "./SettingsButton"
 import { Button } from "@/design-system/Button"
-// import TomatoLogo from "./assets/hello_nice_tomato_logo.svg"
 import { Logo } from "../Logo/Logo"
 import { cn } from "@/utils/cn"
 
 function HomeLink() {
   return (
     <Link href="/" className={cn("absolute left-0", "ml-[-0.5rem] mr-2")}>
-      <Logo />
+      <Logo withVersion />
     </Link>
   )
 }

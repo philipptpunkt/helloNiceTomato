@@ -1,5 +1,5 @@
 import { Hero } from "./_sections/Hero/Hero"
-// import { ThrowYourself } from "./_sections/ThrowYourself/ThrowYourself"
+import { ThrowYourself } from "./_sections/ThrowYourself/ThrowYourself"
 import { HowItWorks } from "./_sections/HowItWorks/HowIsWorks"
 
 export default function Home() {

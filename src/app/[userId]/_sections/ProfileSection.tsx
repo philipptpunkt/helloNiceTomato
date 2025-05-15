@@ -12,7 +12,6 @@ interface ProfileSectionProps {
   profile: {
     display_name: string | null
     company_name: string | null
-    email: string
   }
 }
 
@@ -41,7 +40,7 @@ export function ProfileSection({ userId, profile }: ProfileSectionProps) {
       <Card>
         <ul>
           <ListItem
-            label="Display name"
+            label="Name"
             iconName={IconName.icPencilSimple}
             iconColor="light"
             onClick={() => handleEdit("name")}
@@ -66,9 +65,6 @@ export function ProfileSection({ userId, profile }: ProfileSectionProps) {
             >
               {profile.company_name ? profile.company_name : "not set"}
             </p>
-          </ListItem>
-          <ListItem label="Email" verticalPadding="wide">
-            {profile.email}
           </ListItem>
         </ul>
       </Card>

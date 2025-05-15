@@ -44,7 +44,7 @@ export function Footer() {
               "z-10",
             ])}
           >
-            <strong className="block font-semibold text-lg mb-3">Legal</strong>
+            <FooterTitle title="Legal" />
             <LegalLinks />
           </div>
 
@@ -54,9 +54,7 @@ export function Footer() {
               "row-start-1 row-span-2 sm:row-start-1 sm:row-span-2",
             ])}
           >
-            <strong className="block font-semibold text-lg mb-3">
-              Connect
-            </strong>
+            <FooterTitle title="Connect" />
             <SocialMediaLinks />
           </div>
 

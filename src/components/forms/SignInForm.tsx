@@ -37,6 +37,7 @@ export function SignInForm() {
           placeholder="email address"
           type="email"
           {...register("email")}
+          error={Boolean(errors.email?.message)}
         />
         <Input
           placeholder="password"
